@@ -1,7 +1,7 @@
 # Book settings
 # Learn more at https://jupyterbook.org/customize/config.html
 
-title: Measuring Global Rice Paddy CH4 Emissions
+title: PMC Submission
 author: Justin Napolitano
 logo: logo/logo.png
 
@@ -22,14 +22,14 @@ bibtex_bibfiles:
 
 # Information about where the book exists on the web
 repository:
-  url: https://github.com/justin-napolitano/ch4-emissions # Online location of your book
-  path_to_book: docs  # Optional path to your book, relative to the repository root
+  url: https://github.com/justin-napolitano/pmc-submission # Online location of your book
+  path_to_book: jupyter-book  # Optional path to your book, relative to the repository root
   branch: master  # Which branch of the repository should be used when creating links (optional)
 
 # Add GitHub buttons to your book
 # See https://jupyterbook.org/customize/config.html#add-a-link-to-your-repository
 html:
-  use_issues_button: true
+  use_issues_button: false
   use_repository_button: true
   favicon: favicon/android-chrome-512x512.png
 

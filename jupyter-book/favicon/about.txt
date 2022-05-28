@@ -1,6 +1,6 @@
 This favicon was generated using the following font:
 
-- Font Title: Open Sans
-- Font Author: Copyright 2020 The Open Sans Project Authors (https://github.com/googlefonts/opensans)
-- Font Source: http://fonts.gstatic.com/s/opensans/v28/memSYaGs126MiZpBA-UvWbX2vVnXBbObj2OVZyOOSr4dVJWUgsjZ0C4nY1M2xLER.ttf
-- Font License: Apache License, version 2.0 (http://www.apache.org/licenses/LICENSE-2.0.html))
+- Font Title: IBM Plex Mono
+- Font Author: Copyright 2017 IBM Corp. All rights reserved.
+- Font Source: http://fonts.gstatic.com/s/ibmplexmono/v12/-F63fjptAgt5VM-kVkqdyU8n5igg1l9kn-s.ttf
+- Font License: SIL Open Font License, 1.1 (http://scripts.sil.org/OFL))
