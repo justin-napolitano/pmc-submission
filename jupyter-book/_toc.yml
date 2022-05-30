@@ -4,10 +4,11 @@
 format: jb-book
 root: index
 parts:
-  - caption: Part 1 SQL Queries
+  - caption: Part 1 SQL Queries andData Exploration
     maxdepth: 4
     chapters:
      - file: notebooks/question_1.ipynb
+     - file: notebooks/nyc-taxi-fare-data-exploration.ipynb
   - caption: Part 2 Rest Api's and DB's
     maxdepth: 3
     chapters:
