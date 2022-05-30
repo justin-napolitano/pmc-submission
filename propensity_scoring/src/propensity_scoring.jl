@@ -1,6 +1,8 @@
 module propensity_scoring
+using CSV
+using DataFrames
 
-df = DataFrame(CSV.File("../Data/marketing_data.csv"))
-first(df,5)
+df = DataFrame(CSV.File("../marketing_data.csv"))
+display(first(df,5))
 
 end # module
