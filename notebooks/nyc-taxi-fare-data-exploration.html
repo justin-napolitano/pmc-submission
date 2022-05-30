@@ -101,7 +101,7 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
-  Part 1 SQL Queries andData Exploration
+  Part 1 SQL Queries and Data Exploration
  </span>
 </p>
 <ul class="current nav bd-sidenav">
@@ -256,8 +256,8 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#querying-the-yellow-cab-dataset">
-   Querying the Yellow Cab DataSet.
+  <a class="reference internal nav-link" href="#querying-the-green-cab-data-set">
+   Querying the Green Cab Data Set.
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
@@ -357,8 +357,8 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#querying-the-yellow-cab-dataset">
-   Querying the Yellow Cab DataSet.
+  <a class="reference internal nav-link" href="#querying-the-green-cab-data-set">
+   Querying the Green Cab Data Set.
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
@@ -474,9 +474,9 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 <p>As this dataset is huge reading all data would require a lot of memory. Therefore I read a limited number of rows while exploring the data. When my exploration code (e.g. this notebook) is ready I re-run the notebook while reading more rows.</p>
 </div>
-<div class="section" id="querying-the-yellow-cab-dataset">
-<h2>Querying the Yellow Cab DataSet.<a class="headerlink" href="#querying-the-yellow-cab-dataset" title="Permalink to this headline">¶</a></h2>
-<p>The Green Cab data was somewhat limited.  To demonstrate my analysis skill set, I decided to use the yellow cab data set.</p>
+<div class="section" id="querying-the-green-cab-data-set">
+<h2>Querying the Green Cab Data Set.<a class="headerlink" href="#querying-the-green-cab-data-set" title="Permalink to this headline">¶</a></h2>
+<p>The queries below clean the data and prepare it for analysis.</p>
 <div class="section" id="sql-import-functions">
 <h3>SQL Import Functions<a class="headerlink" href="#sql-import-functions" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
@@ -1397,11 +1397,11 @@ dtype: object
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/kw/lt24g6yd1ml1zznc5n22lbb00000gn/T/ipykernel_14037/3595766640.py:6: MatplotlibDeprecationWarning: Auto-removal of grids by pcolor() and pcolormesh() is deprecated since 3.5 and will be removed two minor releases later; please call grid(False) first.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/kw/lt24g6yd1ml1zznc5n22lbb00000gn/T/ipykernel_15204/3595766640.py:6: MatplotlibDeprecationWarning: Auto-removal of grids by pcolor() and pcolormesh() is deprecated since 3.5 and will be removed two minor releases later; please call grid(False) first.
   cbar = fig.colorbar(im, ax=axs[0])
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/kw/lt24g6yd1ml1zznc5n22lbb00000gn/T/ipykernel_14037/3595766640.py:14: MatplotlibDeprecationWarning: Auto-removal of grids by pcolor() and pcolormesh() is deprecated since 3.5 and will be removed two minor releases later; please call grid(False) first.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/kw/lt24g6yd1ml1zznc5n22lbb00000gn/T/ipykernel_15204/3595766640.py:14: MatplotlibDeprecationWarning: Auto-removal of grids by pcolor() and pcolormesh() is deprecated since 3.5 and will be removed two minor releases later; please call grid(False) first.
   cbar = fig.colorbar(im, ax=axs[1])
 </pre></div>
 </div>
@@ -2157,11 +2157,11 @@ Name: fare_per_mile, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/kw/lt24g6yd1ml1zznc5n22lbb00000gn/T/ipykernel_14037/3705102942.py:7: MatplotlibDeprecationWarning: Auto-removal of grids by pcolor() and pcolormesh() is deprecated since 3.5 and will be removed two minor releases later; please call grid(False) first.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/kw/lt24g6yd1ml1zznc5n22lbb00000gn/T/ipykernel_15204/3705102942.py:7: MatplotlibDeprecationWarning: Auto-removal of grids by pcolor() and pcolormesh() is deprecated since 3.5 and will be removed two minor releases later; please call grid(False) first.
   cbar = fig.colorbar(im, ax=axs[0])
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/kw/lt24g6yd1ml1zznc5n22lbb00000gn/T/ipykernel_14037/3705102942.py:16: MatplotlibDeprecationWarning: Auto-removal of grids by pcolor() and pcolormesh() is deprecated since 3.5 and will be removed two minor releases later; please call grid(False) first.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/kw/lt24g6yd1ml1zznc5n22lbb00000gn/T/ipykernel_15204/3705102942.py:16: MatplotlibDeprecationWarning: Auto-removal of grids by pcolor() and pcolormesh() is deprecated since 3.5 and will be removed two minor releases later; please call grid(False) first.
   cbar = fig.colorbar(im, ax=axs[1])
 </pre></div>
 </div>
@@ -2204,11 +2204,11 @@ Name: fare_per_mile, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/kw/lt24g6yd1ml1zznc5n22lbb00000gn/T/ipykernel_14037/1958965034.py:11: MatplotlibDeprecationWarning: Auto-removal of grids by pcolor() and pcolormesh() is deprecated since 3.5 and will be removed two minor releases later; please call grid(False) first.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/kw/lt24g6yd1ml1zznc5n22lbb00000gn/T/ipykernel_15204/1958965034.py:11: MatplotlibDeprecationWarning: Auto-removal of grids by pcolor() and pcolormesh() is deprecated since 3.5 and will be removed two minor releases later; please call grid(False) first.
   cbar = fig.colorbar(im, ax=axs[0])
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/kw/lt24g6yd1ml1zznc5n22lbb00000gn/T/ipykernel_14037/1958965034.py:20: MatplotlibDeprecationWarning: Auto-removal of grids by pcolor() and pcolormesh() is deprecated since 3.5 and will be removed two minor releases later; please call grid(False) first.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/kw/lt24g6yd1ml1zznc5n22lbb00000gn/T/ipykernel_15204/1958965034.py:20: MatplotlibDeprecationWarning: Auto-removal of grids by pcolor() and pcolormesh() is deprecated since 3.5 and will be removed two minor releases later; please call grid(False) first.
   cbar = fig.colorbar(im, ax=axs[1])
 </pre></div>
 </div>
@@ -2273,11 +2273,11 @@ I’ll remove all of the airports just to see what is left.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/kw/lt24g6yd1ml1zznc5n22lbb00000gn/T/ipykernel_14037/1133551596.py:13: MatplotlibDeprecationWarning: Auto-removal of grids by pcolor() and pcolormesh() is deprecated since 3.5 and will be removed two minor releases later; please call grid(False) first.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/kw/lt24g6yd1ml1zznc5n22lbb00000gn/T/ipykernel_15204/1133551596.py:13: MatplotlibDeprecationWarning: Auto-removal of grids by pcolor() and pcolormesh() is deprecated since 3.5 and will be removed two minor releases later; please call grid(False) first.
   cbar = fig.colorbar(im, ax=axs[0])
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/kw/lt24g6yd1ml1zznc5n22lbb00000gn/T/ipykernel_14037/1133551596.py:22: MatplotlibDeprecationWarning: Auto-removal of grids by pcolor() and pcolormesh() is deprecated since 3.5 and will be removed two minor releases later; please call grid(False) first.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/kw/lt24g6yd1ml1zznc5n22lbb00000gn/T/ipykernel_15204/1133551596.py:22: MatplotlibDeprecationWarning: Auto-removal of grids by pcolor() and pcolormesh() is deprecated since 3.5 and will be removed two minor releases later; please call grid(False) first.
   cbar = fig.colorbar(im, ax=axs[1])
 </pre></div>
 </div>
