@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# # Question 2B Data Streaming Solution: BigTable
+# # Question 2B: Data Streaming Solution via BigTable
 # 
 # ## Question
 # 

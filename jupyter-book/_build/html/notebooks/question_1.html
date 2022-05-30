@@ -54,6 +54,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="shortcut icon" href="../_static/android-chrome-512x512.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Question 2a: CSV Solution" href="RecordingWeather.html" />
     <link rel="prev" title="Introduction" href="../index.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -100,13 +101,47 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
-  Part 1
+  Part 1 SQL Queries
  </span>
 </p>
 <ul class="current nav bd-sidenav">
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
    Part 1: BigQuery and SQL
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Part 2 Rest Api's and DB's
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="RecordingWeather.html">
+   Question 2a: CSV Solution
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="recording_weather_datastream_solution.html">
+   Question 2B: Data Streaming Solution via BigTable
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="restful_api.html">
+   Restful Api to Upload Data to a BigTable Instance
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Part 3 Logistic Regression Model of Customer Churn Rate
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="propensity_scoring.html">
+   Churn Modelling Marketing Data with Julia
   </a>
  </li>
 </ul>
@@ -1360,43 +1395,43 @@ const thebe_selector_output = ".output, .cell_output"
   <tbody>
     <tr>
       <th>0</th>
-      <td>2015-01-03 00:00:00+00:00</td>
-      <td>54940</td>
-      <td>743433.15</td>
-      <td>13.531728</td>
-      <td>129472.05</td>
+      <td>2015-03-11 00:00:00+00:00</td>
+      <td>51349</td>
+      <td>785893.71</td>
+      <td>15.304947</td>
+      <td>-12892.21</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>2015-05-01 00:00:00+00:00</td>
-      <td>67761</td>
-      <td>1037402.03</td>
-      <td>15.309721</td>
-      <td>196040.99</td>
+      <td>2015-04-30 00:00:00+00:00</td>
+      <td>54682</td>
+      <td>841361.04</td>
+      <td>15.386435</td>
+      <td>92337.70</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>2015-06-15 00:00:00+00:00</td>
-      <td>48133</td>
-      <td>712725.39</td>
-      <td>14.807417</td>
-      <td>-265996.60</td>
+      <td>2015-01-02 00:00:00+00:00</td>
+      <td>44343</td>
+      <td>613961.10</td>
+      <td>13.845728</td>
+      <td>-349817.92</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>2015-02-05 00:00:00+00:00</td>
-      <td>55600</td>
-      <td>791448.22</td>
-      <td>14.234680</td>
-      <td>77218.07</td>
+      <td>2015-02-17 00:00:00+00:00</td>
+      <td>42433</td>
+      <td>607052.73</td>
+      <td>14.306147</td>
+      <td>-61255.96</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>2015-04-09 00:00:00+00:00</td>
-      <td>52984</td>
-      <td>786562.69</td>
-      <td>14.845287</td>
-      <td>43462.45</td>
+      <td>2015-04-01 00:00:00+00:00</td>
+      <td>53156</td>
+      <td>779533.09</td>
+      <td>14.665007</td>
+      <td>22250.61</td>
     </tr>
     <tr>
       <th>...</th>
@@ -1408,43 +1443,43 @@ const thebe_selector_output = ".output, .cell_output"
     </tr>
     <tr>
       <th>177</th>
-      <td>2015-03-20 00:00:00+00:00</td>
-      <td>63261</td>
-      <td>906365.49</td>
-      <td>14.327397</td>
-      <td>116974.15</td>
+      <td>2015-01-15 00:00:00+00:00</td>
+      <td>48662</td>
+      <td>703349.06</td>
+      <td>14.453764</td>
+      <td>71308.53</td>
     </tr>
     <tr>
       <th>178</th>
-      <td>2015-05-11 00:00:00+00:00</td>
-      <td>47852</td>
-      <td>729028.92</td>
-      <td>15.235077</td>
-      <td>-287655.24</td>
+      <td>2015-02-24 00:00:00+00:00</td>
+      <td>51009</td>
+      <td>735429.01</td>
+      <td>14.417632</td>
+      <td>-63239.31</td>
     </tr>
     <tr>
       <th>179</th>
-      <td>2015-02-23 00:00:00+00:00</td>
-      <td>53761</td>
-      <td>798668.32</td>
-      <td>14.855905</td>
-      <td>-19776.49</td>
+      <td>2015-03-07 00:00:00+00:00</td>
+      <td>74557</td>
+      <td>1113229.81</td>
+      <td>14.931258</td>
+      <td>120360.35</td>
     </tr>
     <tr>
       <th>180</th>
-      <td>2015-03-16 00:00:00+00:00</td>
-      <td>45735</td>
-      <td>673452.43</td>
-      <td>14.725100</td>
-      <td>-244233.85</td>
+      <td>2015-03-10 00:00:00+00:00</td>
+      <td>52225</td>
+      <td>798785.92</td>
+      <td>15.295087</td>
+      <td>107550.57</td>
     </tr>
     <tr>
       <th>181</th>
-      <td>2015-06-30 00:00:00+00:00</td>
-      <td>43692</td>
-      <td>670744.92</td>
-      <td>15.351664</td>
-      <td>26634.03</td>
+      <td>2015-05-29 00:00:00+00:00</td>
+      <td>62678</td>
+      <td>980866.89</td>
+      <td>15.649301</td>
+      <td>150118.05</td>
     </tr>
   </tbody>
 </table>
@@ -2172,6 +2207,13 @@ const thebe_selector_output = ".output, .cell_output"
             <p class="prev-next-subtitle">previous</p>
             <p class="prev-next-title">Introduction</p>
         </div>
+    </a>
+    <a class='right-next' id="next-link" href="RecordingWeather.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Question 2a: CSV Solution</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
     </a>
 </div>
             
