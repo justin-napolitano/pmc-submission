@@ -4,7 +4,7 @@
 format: jb-book
 root: index
 parts:
-  - caption: Part 1 SQL Queries andData Exploration
+  - caption: Part 1 SQL Queries and Data Exploration
     maxdepth: 4
     chapters:
      - file: notebooks/question_1.ipynb

@@ -10,9 +10,7 @@ In addition to those questions I included:
 * logistic regression based propensity model of customer churn rate prepared in the Julia language. 
 * Data Exploration and analysis of the Green Cab data. 
 
-- Justin Napolitano
-
- 
+## Contents 
 
 ```{tableofcontents}
 ```

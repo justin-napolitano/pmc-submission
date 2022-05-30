@@ -29,9 +29,9 @@ import matplotlib.pyplot as plt
 
 # As this dataset is huge reading all data would require a lot of memory. Therefore I read a limited number of rows while exploring the data. When my exploration code (e.g. this notebook) is ready I re-run the notebook while reading more rows.
 
-# ## Querying the Yellow Cab DataSet.
+# ## Querying the Green Cab Data Set.
 # 
-# The Green Cab data was somewhat limited.  To demonstrate my analysis skill set, I decided to use the yellow cab data set.  
+# The queries below clean the data and prepare it for analysis. 
 
 # ### SQL Import Functions
 
