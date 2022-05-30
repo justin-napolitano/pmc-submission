@@ -1,0 +1,2244 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Part 1: BigQuery and SQL &#8212; PMC Submission</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="shortcut icon" href="../_static/android-chrome-512x512.png"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="New York City Taxi Fare Data Exploration" href="nyc-taxi-fare-data-exploration.html" />
+    <link rel="prev" title="Justin Napolitano’s Technical Submission to PMC" href="../index.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">PMC Submission</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../index.html">
+   Justin Napolitano’s Technical Submission to PMC
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Part 1 SQL Queries andData Exploration
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Part 1: BigQuery and SQL
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="nyc-taxi-fare-data-exploration.html">
+   New York City Taxi Fare Data Exploration
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Part 2 Rest Api's and DB's
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="RecordingWeather.html">
+   Question 2a: CSV Solution
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="recording_weather_datastream_solution.html">
+   Question 2b: Data Streaming Solution via BigTable
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="restful_api.html">
+   Restful Api to Upload Data to a BigTable Instance
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Part 3 Logistic Regression Model of Customer Churn Rate
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="propensity_scoring.html">
+   Churn Modelling Marketing Data with Julia
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/notebooks/question_1.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/justin-napolitano/pmc-submission"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/justin-napolitano/pmc-submission/master?urlpath=tree/jupyter-book/notebooks/question_1.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#python-solutions">
+   Python Solutions
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#import-statements">
+     Import Statements
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#utility-big-query-function">
+     Utility Big Query Function
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#question-1">
+   Question 1
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#question-1-1">
+   Question 1.1
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#discussion-of-the-problem">
+     Discussion of the Problem
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#the-problem-with-this-approach">
+     The Problem with this Approach.
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#cleaning-the-data">
+     Cleaning the data
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#discussion-of-the-clean-data">
+     Discussion of the Clean Data
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#discussion-of-the-solution-to-problem-1-1">
+     Discussion of the Solution to Problem 1.1
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#question-1-2">
+   Question 1.2
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#discussion-of-question-1-2">
+     Discussion of Question 1.2
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#question-1-3">
+   Question 1.3
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#discussion-of-question-1-3">
+     Discussion of Question 1.3
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#question-1-4">
+   Question 1.4
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#date-trunc-method">
+     Date_trunc Method
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#discussion-of-date-trunc-method">
+       Discussion of Date Trunc Method
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#the-extract-method">
+     The Extract Method
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#discussion-of-the-extract-method">
+       Discussion of the Extract Method
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Part 1: BigQuery and SQL</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#python-solutions">
+   Python Solutions
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#import-statements">
+     Import Statements
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#utility-big-query-function">
+     Utility Big Query Function
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#question-1">
+   Question 1
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#question-1-1">
+   Question 1.1
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#discussion-of-the-problem">
+     Discussion of the Problem
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#the-problem-with-this-approach">
+     The Problem with this Approach.
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#cleaning-the-data">
+     Cleaning the data
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#discussion-of-the-clean-data">
+     Discussion of the Clean Data
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#discussion-of-the-solution-to-problem-1-1">
+     Discussion of the Solution to Problem 1.1
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#question-1-2">
+   Question 1.2
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#discussion-of-question-1-2">
+     Discussion of Question 1.2
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#question-1-3">
+   Question 1.3
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#discussion-of-question-1-3">
+     Discussion of Question 1.3
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#question-1-4">
+   Question 1.4
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#date-trunc-method">
+     Date_trunc Method
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#discussion-of-date-trunc-method">
+       Discussion of Date Trunc Method
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#the-extract-method">
+     The Extract Method
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#discussion-of-the-extract-method">
+       Discussion of the Extract Method
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="part-1-bigquery-and-sql">
+<h1>Part 1: BigQuery and SQL<a class="headerlink" href="#part-1-bigquery-and-sql" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="python-solutions">
+<h2>Python Solutions<a class="headerlink" href="#python-solutions" title="Permalink to this headline">¶</a></h2>
+<p>To test my sql queries I wrote python scripts to interface directly with the Big Query API.  This permitted me to run a test driven development environment to automate most of the work.</p>
+<div class="section" id="import-statements">
+<h3>Import Statements<a class="headerlink" href="#import-statements" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">google.cloud</span> <span class="kn">import</span> <span class="n">bigquery</span>
+<span class="kn">from</span> <span class="nn">pprint</span> <span class="kn">import</span> <span class="n">pprint</span>
+<span class="kn">import</span> <span class="nn">os</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/jnapolitano/venvs/finance/lib/python3.9/site-packages/geopandas/_compat.py:111: UserWarning: The Shapely GEOS version (3.10.2-CAPI-1.16.0) is incompatible with the GEOS version PyGEOS was compiled with (3.10.1-CAPI-1.16.0). Conversions between both will be slow.
+  warnings.warn(
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="utility-big-query-function">
+<h3>Utility Big Query Function<a class="headerlink" href="#utility-big-query-function" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">query_big_query</span><span class="p">(</span><span class="n">query_string</span><span class="p">):</span>
+    <span class="n">client</span> <span class="o">=</span> <span class="n">bigquery</span><span class="o">.</span><span class="n">Client</span><span class="p">()</span>
+    <span class="n">query_job</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">query_string</span><span class="p">)</span>
+
+    <span class="n">results</span> <span class="o">=</span> <span class="n">query_job</span><span class="o">.</span><span class="n">result</span><span class="p">()</span>  <span class="c1"># Waits for job to complete.</span>
+    <span class="k">return</span> <span class="n">results</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;GOOGLE_APPLICATION_CREDENTIALS&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;/Users/jnapolitano/Projects/pmc-submission/creds.json&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="question-1">
+<h2>Question 1<a class="headerlink" href="#question-1" title="Permalink to this headline">¶</a></h2>
+<ol class="simple">
+<li><p>Use the publicly available BigQuery dataset named <code class="docutils literal notranslate"><span class="pre">nyc-tlc.green.trips_2015</span></code>, provide SQL queries to answer the following questions:</p></li>
+</ol>
+<ul class="simple">
+<li><p>What is the total amount and passenger counts for the months of February, March and April?</p></li>
+<li><p>What has been the average hourly passenger count throughout the year?</p></li>
+<li><p>What has been the change/delta in total amount billed over days? What we would like see is how much (positive or negative)</p></li>
+<li><p>What hour of the day has seen the longest rides in April?</p></li>
+</ul>
+</div>
+<div class="section" id="question-1-1">
+<h2>Question 1.1<a class="headerlink" href="#question-1-1" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>What is the total amount and passenger counts for the months of February, March and April?</p></li>
+</ul>
+<div class="section" id="discussion-of-the-problem">
+<h3>Discussion of the Problem<a class="headerlink" href="#discussion-of-the-problem" title="Permalink to this headline">¶</a></h3>
+<p>I initally approached this problem somewhat naively.  I did not consider the possibliity of taxi rides overlapping per hour.</p>
+<p>For example the code below simply considered the pickup_datetime in the analysis.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">naive_query_passengers_by_month</span><span class="p">():</span>
+    <span class="n">query_string</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">        SELECT date_trunc(dropoff_datetime,MONTH) as Month,</span>
+<span class="s2">        sum(passenger_count) as Sum_PASS,</span>
+<span class="s2">        sum(total_amount) as TOTAL_AMOUNT_SUM</span>
+<span class="s2">        FROM `nyc-tlc.green.trips_2015` </span>
+<span class="s2">        where dropoff_datetime BETWEEN &#39;2015-02-01&#39; AND &#39;2015-04-30&#39;</span>
+<span class="s2">        GROUP BY Month;</span>
+<span class="s2">        &quot;&quot;&quot;</span>
+
+    <span class="n">result</span> <span class="o">=</span> <span class="n">query_big_query</span><span class="p">(</span><span class="n">query_string</span> <span class="o">=</span> <span class="n">query_string</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">result</span><span class="o">.</span><span class="n">to_dataframe</span><span class="p">()</span>
+<span class="n">naive_df</span> <span class="o">=</span> <span class="n">naive_query_passengers_by_month</span><span class="p">()</span>    
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">naive_df</span> 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Month</th>
+      <th>Sum_PASS</th>
+      <th>TOTAL_AMOUNT_SUM</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2015-03-01 00:00:00+00:00</td>
+      <td>2373043</td>
+      <td>2.512727e+07</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2015-04-01 00:00:00+00:00</td>
+      <td>2220040</td>
+      <td>2.384763e+07</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2015-02-01 00:00:00+00:00</td>
+      <td>2170450</td>
+      <td>2.281705e+07</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>I then attempted to create intervals to unpiviot the table with the following code.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">total_passenger_total_ammount</span><span class="p">():</span>
+
+    <span class="n">query_string</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">        #standardSQL</span>
+<span class="s2">        select timestamp_trunc(int, month) month, </span>
+<span class="s2">        count(pickup_datetime) rides,</span>
+<span class="s2">        sum(passenger_count) as passenger_count,</span>
+<span class="s2">        avg(passenger_count) as avg_passenger_count,</span>
+<span class="s2">        sum(total_amount) as total_amount,</span>
+<span class="s2">        avg(total_amount) as avg_total_amount</span>
+<span class="s2">        from `nyc-tlc.green.trips_2015`, </span>
+<span class="s2">        unnest(generate_timestamp_array(</span>
+<span class="s2">        pickup_datetime, </span>
+<span class="s2">        dropoff_datetime, </span>
+<span class="s2">        interval 1 hour)) int</span>
+<span class="s2">        where pickup_datetime BETWEEN &#39;2015-02-01&#39; AND &#39;2015-04-30&#39;</span>
+<span class="s2">        group by month</span>
+<span class="s2">        order by month</span>
+<span class="s2">         &quot;&quot;&quot;</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">query_big_query</span><span class="p">(</span><span class="n">query_string</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">result</span><span class="o">.</span><span class="n">to_dataframe</span><span class="p">()</span>
+
+<span class="n">df_first_try</span> <span class="o">=</span> <span class="n">total_passenger_total_ammount</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_first_try</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>month</th>
+      <th>rides</th>
+      <th>passenger_count</th>
+      <th>avg_passenger_count</th>
+      <th>total_amount</th>
+      <th>avg_total_amount</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2015-02-01 00:00:00+00:00</td>
+      <td>1612934</td>
+      <td>2226402</td>
+      <td>1.380343</td>
+      <td>2.378246e+07</td>
+      <td>14.744847</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2015-03-01 00:00:00+00:00</td>
+      <td>1777205</td>
+      <td>2448797</td>
+      <td>1.377892</td>
+      <td>2.647535e+07</td>
+      <td>14.897184</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2015-04-01 00:00:00+00:00</td>
+      <td>1667508</td>
+      <td>2298610</td>
+      <td>1.378470</td>
+      <td>2.526557e+07</td>
+      <td>15.151694</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2015-05-01 00:00:00+00:00</td>
+      <td>1488</td>
+      <td>1488</td>
+      <td>1.000000</td>
+      <td>5.803200e+03</td>
+      <td>3.900000</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2015-06-01 00:00:00+00:00</td>
+      <td>1440</td>
+      <td>1440</td>
+      <td>1.000000</td>
+      <td>5.616000e+03</td>
+      <td>3.900000</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>70</th>
+      <td>2020-12-01 00:00:00+00:00</td>
+      <td>1488</td>
+      <td>1488</td>
+      <td>1.000000</td>
+      <td>5.803200e+03</td>
+      <td>3.900000</td>
+    </tr>
+    <tr>
+      <th>71</th>
+      <td>2021-01-01 00:00:00+00:00</td>
+      <td>1488</td>
+      <td>1488</td>
+      <td>1.000000</td>
+      <td>5.803200e+03</td>
+      <td>3.900000</td>
+    </tr>
+    <tr>
+      <th>72</th>
+      <td>2021-02-01 00:00:00+00:00</td>
+      <td>1344</td>
+      <td>1344</td>
+      <td>1.000000</td>
+      <td>5.241600e+03</td>
+      <td>3.900000</td>
+    </tr>
+    <tr>
+      <th>73</th>
+      <td>2021-03-01 00:00:00+00:00</td>
+      <td>1488</td>
+      <td>1488</td>
+      <td>1.000000</td>
+      <td>5.803200e+03</td>
+      <td>3.900000</td>
+    </tr>
+    <tr>
+      <th>74</th>
+      <td>2021-04-01 00:00:00+00:00</td>
+      <td>138</td>
+      <td>138</td>
+      <td>1.000000</td>
+      <td>5.382000e+02</td>
+      <td>3.900000</td>
+    </tr>
+  </tbody>
+</table>
+<p>75 rows × 6 columns</p>
+</div></div></div>
+</div>
+</div>
+<div class="section" id="the-problem-with-this-approach">
+<h3>The Problem with this Approach.<a class="headerlink" href="#the-problem-with-this-approach" title="Permalink to this headline">¶</a></h3>
+<p>Firstly the data extends to 2021 for some reason.  There are also negative values within the return set.  I spent a full day tinkering the query to clean the data.</p>
+</div>
+<div class="section" id="cleaning-the-data">
+<h3>Cleaning the data<a class="headerlink" href="#cleaning-the-data" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">clean_up_data</span><span class="p">():</span>
+
+  <span class="n">query_string</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">      SELECT </span>
+<span class="s2">      t.*,</span>
+<span class="s2">      FROM</span>
+<span class="s2">      (</span>
+<span class="s2">      SELECT *,</span>
+<span class="s2">      TIMESTAMP_DIFF(dropoff_datetime,pickup_datetime,SECOND) as time_duration_in_secs,</span>
+<span class="s2">      TIMESTAMP_DIFF(dropoff_datetime,pickup_datetime,MINUTE) as time_duration_in_mins,</span>
+<span class="s2">      ROUND(trip_distance/TIMESTAMP_DIFF(dropoff_datetime,pickup_datetime,SECOND),2)*3600 as driving_speed_miles_per_hour,</span>
+<span class="s2">      (CASE WHEN total_amount=0 THEN 0</span>
+<span class="s2">      ELSE ROUND(tip_amount*100/total_amount,2) END) as tip_rate,</span>
+<span class="s2">      EXTRACT(YEAR from pickup_datetime) as pickup_year,</span>
+<span class="s2">      EXTRACT(MONTH from pickup_datetime) as pickup_month,</span>
+<span class="s2">      CONCAT(CAST(EXTRACT(YEAR from pickup_datetime) as STRING),&quot;-&quot;,CAST(EXTRACT(MONTH from pickup_datetime) AS STRING)) as pickup_yearmonth,</span>
+<span class="s2">      EXTRACT(DATE from pickup_datetime) as pickup_date,</span>
+<span class="s2">      FORMAT_DATE(&#39;%A&#39;,DATE(pickup_datetime)) as pickup_weekday_name,</span>
+<span class="s2">      EXTRACT(HOUR from pickup_datetime) as pickup_hour,</span>
+<span class="s2">      EXTRACT(YEAR from dropoff_datetime) as dropoff_year,</span>
+<span class="s2">      EXTRACT(MONTH from dropoff_datetime) as dropoff_month,</span>
+<span class="s2">      CONCAT(CAST(EXTRACT(YEAR from dropoff_datetime) as STRING),&quot;-&quot;,CAST(EXTRACT(MONTH from dropoff_datetime) AS STRING)) as dropoff_yearmonth,</span>
+<span class="s2">      EXTRACT(DATE from dropoff_datetime) as dropoff_date,</span>
+<span class="s2">      FORMAT_DATE(&#39;%A&#39;,DATE(dropoff_datetime)) as dropoff_weekday_name,</span>
+<span class="s2">      EXTRACT(HOUR from dropoff_datetime) as dropoff_hour</span>
+<span class="s2">      FROM `nyc-tlc.green.trips_2015`</span>
+<span class="s2">      ) t</span>
+<span class="s2">      WHERE </span>
+<span class="s2">      pickup_datetime BETWEEN &#39;2015-01-01&#39; AND &#39;2016-12-31&#39; </span>
+<span class="s2">      AND dropoff_datetime BETWEEN &#39;2015-01-01&#39; AND &#39;2016-12-31&#39;</span>
+<span class="s2">      AND TIMESTAMP_DIFF(dropoff_datetime,pickup_datetime,SECOND) &gt; 0</span>
+<span class="s2">      AND passenger_count &gt; 0</span>
+<span class="s2">      AND trip_distance &gt;= 0 </span>
+<span class="s2">      AND tip_amount &gt;= 0 </span>
+<span class="s2">      AND tolls_amount &gt;= 0 </span>
+<span class="s2">      AND mta_tax &gt;= 0 </span>
+<span class="s2">      AND fare_amount &gt;= 0</span>
+<span class="s2">      AND total_amount &gt;= 0</span>
+<span class="s2">      order by pickup_date DESC</span>
+<span class="s2">      limit 100000</span>
+<span class="s2">      &quot;&quot;&quot;</span>
+
+
+  <span class="n">result</span> <span class="o">=</span> <span class="n">query_big_query</span><span class="p">(</span><span class="n">query_string</span><span class="p">)</span>
+      
+  <span class="k">return</span> <span class="n">result</span><span class="o">.</span><span class="n">to_dataframe</span><span class="p">()</span>
+
+<span class="n">clean_df</span> <span class="o">=</span> <span class="n">clean_up_data</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">clean_df</span><span class="o">.</span><span class="n">columns</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Index([&#39;pickup_datetime&#39;, &#39;dropoff_datetime&#39;, &#39;store_and_fwd_flag&#39;,
+       &#39;rate_code&#39;, &#39;pickup_longitude&#39;, &#39;pickup_latitude&#39;, &#39;dropoff_longitude&#39;,
+       &#39;dropoff_latitude&#39;, &#39;passenger_count&#39;, &#39;trip_distance&#39;, &#39;fare_amount&#39;,
+       &#39;extra&#39;, &#39;mta_tax&#39;, &#39;tip_amount&#39;, &#39;tolls_amount&#39;, &#39;ehail_fee&#39;,
+       &#39;total_amount&#39;, &#39;payment_type&#39;, &#39;distance_between_service&#39;,
+       &#39;time_between_service&#39;, &#39;trip_type&#39;, &#39;time_duration_in_secs&#39;,
+       &#39;time_duration_in_mins&#39;, &#39;driving_speed_miles_per_hour&#39;, &#39;tip_rate&#39;,
+       &#39;pickup_year&#39;, &#39;pickup_month&#39;, &#39;pickup_yearmonth&#39;, &#39;pickup_date&#39;,
+       &#39;pickup_weekday_name&#39;, &#39;pickup_hour&#39;, &#39;dropoff_year&#39;, &#39;dropoff_month&#39;,
+       &#39;dropoff_yearmonth&#39;, &#39;dropoff_date&#39;, &#39;dropoff_weekday_name&#39;,
+       &#39;dropoff_hour&#39;],
+      dtype=&#39;object&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="discussion-of-the-clean-data">
+<h3>Discussion of the Clean Data<a class="headerlink" href="#discussion-of-the-clean-data" title="Permalink to this headline">¶</a></h3>
+<p>As we can the see the cleaned data is far more usable.  Typically, I would have performed analysis across a spark cluster or pandas if the resource requirements were not too great.</p>
+<p>Another approach would have been to export the table to another bigtable instance.   I may experiment with this approach if I have time.</p>
+<p>For the sake of the problem given to me, I include the table above as a tmp table within the following working queries.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">total_passenger_total_ammount</span><span class="p">():</span>
+
+    <span class="n">query_string</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">        #standardSQL</span>
+<span class="s2">        select timestamp_trunc(int, month) month, </span>
+<span class="s2">        count(pickup_datetime) rides,</span>
+<span class="s2">        sum(passenger_count) as passenger_count,</span>
+<span class="s2">        avg(passenger_count) as avg_passenger_count,</span>
+<span class="s2">        sum(total_amount) as total_amount,</span>
+<span class="s2">        avg(total_amount) as avg_total_amount</span>
+<span class="s2">        from `nyc-tlc.green.trips_2015`, </span>
+<span class="s2">        unnest(generate_timestamp_array(</span>
+<span class="s2">        pickup_datetime, </span>
+<span class="s2">        dropoff_datetime, </span>
+<span class="s2">        interval 1 hour)) int</span>
+<span class="s2">        where pickup_datetime BETWEEN &#39;2015-02-01&#39; AND &#39;2015-04-30&#39;</span>
+<span class="s2">        group by month</span>
+<span class="s2">        order by month</span>
+<span class="s2">         &quot;&quot;&quot;</span>
+
+    <span class="n">query_string_2</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">        with clean as (      </span>
+<span class="s2">            SELECT </span>
+<span class="s2">            t.*,</span>
+<span class="s2">            FROM</span>
+<span class="s2">            (</span>
+<span class="s2">            SELECT *,</span>
+<span class="s2">            TIMESTAMP_DIFF(dropoff_datetime,pickup_datetime,SECOND) as time_duration_in_secs,</span>
+<span class="s2">            TIMESTAMP_DIFF(dropoff_datetime,pickup_datetime,MINUTE) as time_duration_in_mins,</span>
+<span class="s2">            ROUND(trip_distance/TIMESTAMP_DIFF(dropoff_datetime,pickup_datetime,SECOND),2)*3600 as driving_speed_miles_per_hour,</span>
+<span class="s2">            (CASE WHEN total_amount=0 THEN 0</span>
+<span class="s2">            ELSE ROUND(tip_amount*100/total_amount,2) END) as tip_rate,</span>
+<span class="s2">            EXTRACT(YEAR from pickup_datetime) as pickup_year,</span>
+<span class="s2">            EXTRACT(MONTH from pickup_datetime) as pickup_month,</span>
+<span class="s2">            CONCAT(CAST(EXTRACT(YEAR from pickup_datetime) as STRING),&quot;-&quot;,CAST(EXTRACT(MONTH from pickup_datetime) AS STRING)) as pickup_yearmonth,</span>
+<span class="s2">            EXTRACT(DATE from pickup_datetime) as pickup_date,</span>
+<span class="s2">            FORMAT_DATE(&#39;%A&#39;,DATE(pickup_datetime)) as pickup_weekday_name,</span>
+<span class="s2">            EXTRACT(HOUR from pickup_datetime) as pickup_hour,</span>
+<span class="s2">            EXTRACT(YEAR from dropoff_datetime) as dropoff_year,</span>
+<span class="s2">            EXTRACT(MONTH from dropoff_datetime) as dropoff_month,</span>
+<span class="s2">            CONCAT(CAST(EXTRACT(YEAR from dropoff_datetime) as STRING),&quot;-&quot;,CAST(EXTRACT(MONTH from dropoff_datetime) AS STRING)) as dropoff_yearmonth,</span>
+<span class="s2">            EXTRACT(DATE from dropoff_datetime) as dropoff_date,</span>
+<span class="s2">            FORMAT_DATE(&#39;%A&#39;,DATE(dropoff_datetime)) as dropoff_weekday_name,</span>
+<span class="s2">            EXTRACT(HOUR from dropoff_datetime) as dropoff_hour</span>
+<span class="s2">            FROM `nyc-tlc.green.trips_2015`</span>
+<span class="s2">            /* filter by latitude &amp; longitude that are within the correct range */</span>
+<span class="s2">            WHERE </span>
+<span class="s2">                ((pickup_latitude BETWEEN -90 AND 90) AND</span>
+<span class="s2">                (pickup_longitude BETWEEN -180 AND 180)) </span>
+<span class="s2">            AND</span>
+<span class="s2">                ((dropoff_latitude BETWEEN -90 AND 90) AND</span>
+<span class="s2">                (dropoff_longitude BETWEEN -180 AND 180))</span>
+<span class="s2">            ) t</span>
+<span class="s2">            /* find the boroughs and zone names for dropoff locations */</span>
+<span class="s2">            INNER JOIN `bigquery-public-data.new_york_taxi_trips.taxi_zone_geom` tz_do ON </span>
+<span class="s2">            (ST_DWithin(tz_do.zone_geom,ST_GeogPoint(dropoff_longitude, dropoff_latitude), 0))</span>
+<span class="s2">            /* find the boroughs and zone names for pickup locations */</span>
+<span class="s2">            INNER JOIN `bigquery-public-data.new_york_taxi_trips.taxi_zone_geom` tz_pu ON </span>
+<span class="s2">            (ST_DWithin(tz_pu.zone_geom,ST_GeogPoint(pickup_longitude, pickup_latitude), 0))</span>
+<span class="s2">            WHERE </span>
+<span class="s2">            pickup_datetime BETWEEN &#39;2015-01-01&#39; AND &#39;2016-12-31&#39; </span>
+<span class="s2">            AND dropoff_datetime BETWEEN &#39;2015-01-01&#39; AND &#39;2016-12-31&#39;</span>
+<span class="s2">            AND TIMESTAMP_DIFF(dropoff_datetime,pickup_datetime,SECOND) &gt; 0</span>
+<span class="s2">            AND passenger_count &gt; 0</span>
+<span class="s2">            AND trip_distance &gt;= 0 </span>
+<span class="s2">            AND tip_amount &gt;= 0 </span>
+<span class="s2">            AND tolls_amount &gt;= 0 </span>
+<span class="s2">            AND mta_tax &gt;= 0 </span>
+<span class="s2">            AND fare_amount &gt;= 0</span>
+<span class="s2">            AND total_amount &gt;= 0</span>
+<span class="s2">            )</span>
+
+<span class="s2">            #standardSQL</span>
+<span class="s2">            select date_trunc(int, MONTH) Month_Datetime,</span>
+<span class="s2">            count(pickup_datetime) rides,</span>
+<span class="s2">            sum(passenger_count) as passenger_count,</span>
+<span class="s2">            avg(passenger_count) as avg_passenger_count,</span>
+<span class="s2">            sum(total_amount) as total_amount,</span>
+<span class="s2">            avg(total_amount) as avg_total_amount</span>
+<span class="s2">            from clean,</span>
+<span class="s2">            unnest(generate_timestamp_array(</span>
+<span class="s2">            pickup_datetime, </span>
+<span class="s2">            dropoff_datetime, </span>
+<span class="s2">            interval 1 hour)) as int</span>
+<span class="s2">            where pickup_datetime BETWEEN &#39;2015-02-01&#39; AND &#39;2015-04-30&#39;</span>
+<span class="s2">            group by Month_Datetime</span>
+<span class="s2">            order by Month_Datetime</span>
+<span class="s2">            </span>
+<span class="s2">        </span>
+<span class="s2">         &quot;&quot;&quot;</span>
+
+<span class="c1">## In theory the interval could be as small as 1 minute.  Doing so could in theory be more accurate, however, it may also overcount the total ammount billed and the passenger count in the group by.</span>
+
+    <span class="n">result</span> <span class="o">=</span> <span class="n">query_big_query</span><span class="p">(</span><span class="n">query_string</span><span class="o">=</span><span class="n">query_string_2</span><span class="p">)</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">to_dataframe</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">df</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">total_passenger_total_ammount</span><span class="p">()</span>
+    
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Month_Datetime</th>
+      <th>rides</th>
+      <th>passenger_count</th>
+      <th>avg_passenger_count</th>
+      <th>total_amount</th>
+      <th>avg_total_amount</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2015-02-01 00:00:00+00:00</td>
+      <td>1600035</td>
+      <td>2209835</td>
+      <td>1.381117</td>
+      <td>23452447.87</td>
+      <td>14.657459</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2015-03-01 00:00:00+00:00</td>
+      <td>1763018</td>
+      <td>2430562</td>
+      <td>1.378637</td>
+      <td>26096490.67</td>
+      <td>14.802169</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2015-04-01 00:00:00+00:00</td>
+      <td>1652599</td>
+      <td>2279631</td>
+      <td>1.379422</td>
+      <td>24885815.08</td>
+      <td>15.058593</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</div>
+<div class="section" id="discussion-of-the-solution-to-problem-1-1">
+<h3>Discussion of the Solution to Problem 1.1<a class="headerlink" href="#discussion-of-the-solution-to-problem-1-1" title="Permalink to this headline">¶</a></h3>
+<p>The resulting data can is accurate to the month.  It is also account for cases when rides overlap across datetimes.  For example, if a ride begins at 12:00 but ends at 14:00, the query above will count the ridership at hours 12 and 13.</p>
+<p>The one drawback to this approach is that it can in theory inflate the total_amount value.  If considering 1 minute intervals as opposed to an hour the rate of hour expands the total_amount value too greatly.  The solution to the problem would be to work with the rate to recalculate the total amount per hour, minute, etc.  Thankfully, as most rides are less than an hour long, it is uncecessary for the question posed.</p>
+</div>
+</div>
+<div class="section" id="question-1-2">
+<h2>Question 1.2<a class="headerlink" href="#question-1-2" title="Permalink to this headline">¶</a></h2>
+<p>What has been the average hourly passenger count throughout the year?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">hourly_count_through_year</span><span class="p">():</span>
+
+
+    <span class="n">query_string_2</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">        with clean as (      </span>
+<span class="s2">            SELECT </span>
+<span class="s2">            t.*,</span>
+<span class="s2">            FROM</span>
+<span class="s2">            (</span>
+<span class="s2">            SELECT *,</span>
+<span class="s2">            TIMESTAMP_DIFF(dropoff_datetime,pickup_datetime,SECOND) as time_duration_in_secs,</span>
+<span class="s2">            TIMESTAMP_DIFF(dropoff_datetime,pickup_datetime,MINUTE) as time_duration_in_mins,</span>
+<span class="s2">            ROUND(trip_distance/TIMESTAMP_DIFF(dropoff_datetime,pickup_datetime,SECOND),2)*3600 as driving_speed_miles_per_hour,</span>
+<span class="s2">            (CASE WHEN total_amount=0 THEN 0</span>
+<span class="s2">            ELSE ROUND(tip_amount*100/total_amount,2) END) as tip_rate,</span>
+<span class="s2">            EXTRACT(YEAR from pickup_datetime) as pickup_year,</span>
+<span class="s2">            EXTRACT(MONTH from pickup_datetime) as pickup_month,</span>
+<span class="s2">            CONCAT(CAST(EXTRACT(YEAR from pickup_datetime) as STRING),&quot;-&quot;,CAST(EXTRACT(MONTH from pickup_datetime) AS STRING)) as pickup_yearmonth,</span>
+<span class="s2">            EXTRACT(DATE from pickup_datetime) as pickup_date,</span>
+<span class="s2">            FORMAT_DATE(&#39;%A&#39;,DATE(pickup_datetime)) as pickup_weekday_name,</span>
+<span class="s2">            EXTRACT(HOUR from pickup_datetime) as pickup_hour,</span>
+<span class="s2">            EXTRACT(YEAR from dropoff_datetime) as dropoff_year,</span>
+<span class="s2">            EXTRACT(MONTH from dropoff_datetime) as dropoff_month,</span>
+<span class="s2">            CONCAT(CAST(EXTRACT(YEAR from dropoff_datetime) as STRING),&quot;-&quot;,CAST(EXTRACT(MONTH from dropoff_datetime) AS STRING)) as dropoff_yearmonth,</span>
+<span class="s2">            EXTRACT(DATE from dropoff_datetime) as dropoff_date,</span>
+<span class="s2">            FORMAT_DATE(&#39;%A&#39;,DATE(dropoff_datetime)) as dropoff_weekday_name,</span>
+<span class="s2">            EXTRACT(HOUR from dropoff_datetime) as dropoff_hour</span>
+<span class="s2">            FROM `nyc-tlc.green.trips_2015`</span>
+<span class="s2">            /* filter by latitude &amp; longitude that are within the correct range */</span>
+<span class="s2">            WHERE </span>
+<span class="s2">                ((pickup_latitude BETWEEN -90 AND 90) AND</span>
+<span class="s2">                (pickup_longitude BETWEEN -180 AND 180)) </span>
+<span class="s2">            AND</span>
+<span class="s2">                ((dropoff_latitude BETWEEN -90 AND 90) AND</span>
+<span class="s2">                (dropoff_longitude BETWEEN -180 AND 180))</span>
+<span class="s2">            ) t</span>
+<span class="s2">            WHERE </span>
+<span class="s2">            pickup_datetime BETWEEN &#39;2015-01-01&#39; AND &#39;2016-12-31&#39; </span>
+<span class="s2">            AND dropoff_datetime BETWEEN &#39;2015-01-01&#39; AND &#39;2016-12-31&#39;</span>
+<span class="s2">            AND passenger_count &gt; 0</span>
+<span class="s2">            AND trip_distance &gt;= 0 </span>
+<span class="s2">            AND tip_amount &gt;= 0 </span>
+<span class="s2">            AND tolls_amount &gt;= 0 </span>
+<span class="s2">            AND mta_tax &gt;= 0 </span>
+<span class="s2">            AND fare_amount &gt;= 0</span>
+<span class="s2">            AND total_amount &gt;= 0</span>
+<span class="s2">            )</span>
+<span class="s2">            #standardSQL</span>
+<span class="s2">            select date_trunc(int, hour) Hour_Datetime,</span>
+<span class="s2">            count(pickup_datetime) rides,</span>
+<span class="s2">            sum(passenger_count) as passenger_count,</span>
+<span class="s2">            avg(passenger_count) as avg_passenger_count,</span>
+<span class="s2">            from clean,</span>
+<span class="s2">            unnest(generate_timestamp_array(</span>
+<span class="s2">            pickup_datetime, </span>
+<span class="s2">            dropoff_datetime, </span>
+<span class="s2">            interval 1 hour)) as int</span>
+<span class="s2">            group by Hour_Datetime</span>
+<span class="s2">            order by Hour_Datetime</span>
+<span class="s2">            </span>
+<span class="s2">            &quot;&quot;&quot;</span>
+
+<span class="c1">## In theory the interval could be as small as 1 minute.  Doing so could in theory be more accurate, however, it may also overcount the total ammount billed and the passenger count in the group by.</span>
+
+    <span class="n">result</span> <span class="o">=</span> <span class="n">query_big_query</span><span class="p">(</span><span class="n">query_string</span><span class="o">=</span><span class="n">query_string_2</span><span class="p">)</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">to_dataframe</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">df</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">hourly_count_through_year</span><span class="p">()</span>
+    
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Hour_Datetime</th>
+      <th>rides</th>
+      <th>passenger_count</th>
+      <th>avg_passenger_count</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2015-01-01 00:00:00+00:00</td>
+      <td>6458</td>
+      <td>9605</td>
+      <td>1.487303</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2015-01-01 01:00:00+00:00</td>
+      <td>6871</td>
+      <td>10175</td>
+      <td>1.480862</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2015-01-01 02:00:00+00:00</td>
+      <td>6487</td>
+      <td>9851</td>
+      <td>1.518576</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2015-01-01 03:00:00+00:00</td>
+      <td>5913</td>
+      <td>8822</td>
+      <td>1.491967</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2015-01-01 04:00:00+00:00</td>
+      <td>5095</td>
+      <td>7663</td>
+      <td>1.504024</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>4362</th>
+      <td>2015-07-01 18:00:00+00:00</td>
+      <td>7</td>
+      <td>8</td>
+      <td>1.142857</td>
+    </tr>
+    <tr>
+      <th>4363</th>
+      <td>2015-07-01 19:00:00+00:00</td>
+      <td>5</td>
+      <td>6</td>
+      <td>1.200000</td>
+    </tr>
+    <tr>
+      <th>4364</th>
+      <td>2015-07-01 20:00:00+00:00</td>
+      <td>5</td>
+      <td>6</td>
+      <td>1.200000</td>
+    </tr>
+    <tr>
+      <th>4365</th>
+      <td>2015-07-01 21:00:00+00:00</td>
+      <td>4</td>
+      <td>5</td>
+      <td>1.250000</td>
+    </tr>
+    <tr>
+      <th>4366</th>
+      <td>2015-07-01 22:00:00+00:00</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1.000000</td>
+    </tr>
+  </tbody>
+</table>
+<p>4367 rows × 4 columns</p>
+</div></div></div>
+</div>
+<div class="section" id="discussion-of-question-1-2">
+<h3>Discussion of Question 1.2<a class="headerlink" href="#discussion-of-question-1-2" title="Permalink to this headline">¶</a></h3>
+<p>At first, I was confused why the data terminated at 2015-07-01.  I thought, I had made a mistake. I tested the data on the yellow line data without error.  I then reviewed the big query table to find that it actually terminates at 2015-07-01.</p>
+</div>
+</div>
+<div class="section" id="question-1-3">
+<h2>Question 1.3<a class="headerlink" href="#question-1-3" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>What has been the change/delta in total amount billed over days? What we would like see is how much (positive or negative)?</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">difference_by_day</span><span class="p">():</span>
+
+
+    <span class="n">query_string_2</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">        with clean as (      </span>
+<span class="s2">            SELECT </span>
+<span class="s2">            t.*,</span>
+<span class="s2">            FROM</span>
+<span class="s2">            (</span>
+<span class="s2">            SELECT *,</span>
+<span class="s2">            TIMESTAMP_DIFF(dropoff_datetime,pickup_datetime,SECOND) as time_duration_in_secs,</span>
+<span class="s2">            TIMESTAMP_DIFF(dropoff_datetime,pickup_datetime,MINUTE) as time_duration_in_mins,</span>
+<span class="s2">            ROUND(trip_distance/TIMESTAMP_DIFF(dropoff_datetime,pickup_datetime,SECOND),2)*3600 as driving_speed_miles_per_hour,</span>
+<span class="s2">            (CASE WHEN total_amount=0 THEN 0</span>
+<span class="s2">            ELSE ROUND(tip_amount*100/total_amount,2) END) as tip_rate,</span>
+<span class="s2">            EXTRACT(YEAR from pickup_datetime) as pickup_year,</span>
+<span class="s2">            EXTRACT(MONTH from pickup_datetime) as pickup_month,</span>
+<span class="s2">            CONCAT(CAST(EXTRACT(YEAR from pickup_datetime) as STRING),&quot;-&quot;,CAST(EXTRACT(MONTH from pickup_datetime) AS STRING)) as pickup_yearmonth,</span>
+<span class="s2">            EXTRACT(DATE from pickup_datetime) as pickup_date,</span>
+<span class="s2">            FORMAT_DATE(&#39;%A&#39;,DATE(pickup_datetime)) as pickup_weekday_name,</span>
+<span class="s2">            EXTRACT(HOUR from pickup_datetime) as pickup_hour,</span>
+<span class="s2">            EXTRACT(YEAR from dropoff_datetime) as dropoff_year,</span>
+<span class="s2">            EXTRACT(MONTH from dropoff_datetime) as dropoff_month,</span>
+<span class="s2">            CONCAT(CAST(EXTRACT(YEAR from dropoff_datetime) as STRING),&quot;-&quot;,CAST(EXTRACT(MONTH from dropoff_datetime) AS STRING)) as dropoff_yearmonth,</span>
+<span class="s2">            EXTRACT(DATE from dropoff_datetime) as dropoff_date,</span>
+<span class="s2">            FORMAT_DATE(&#39;%A&#39;,DATE(dropoff_datetime)) as dropoff_weekday_name,</span>
+<span class="s2">            EXTRACT(HOUR from dropoff_datetime) as dropoff_hour</span>
+<span class="s2">            FROM `nyc-tlc.green.trips_2015`</span>
+<span class="s2">            /* filter by latitude &amp; longitude that are within the correct range */</span>
+<span class="s2">            WHERE </span>
+<span class="s2">                ((pickup_latitude BETWEEN -90 AND 90) AND</span>
+<span class="s2">                (pickup_longitude BETWEEN -180 AND 180)) </span>
+<span class="s2">            AND</span>
+<span class="s2">                ((dropoff_latitude BETWEEN -90 AND 90) AND</span>
+<span class="s2">                (dropoff_longitude BETWEEN -180 AND 180))</span>
+<span class="s2">            ) t</span>
+<span class="s2">            /* find the boroughs and zone names for dropoff locations */</span>
+<span class="s2">            INNER JOIN `bigquery-public-data.new_york_taxi_trips.taxi_zone_geom` tz_do ON </span>
+<span class="s2">            (ST_DWithin(tz_do.zone_geom,ST_GeogPoint(dropoff_longitude, dropoff_latitude), 0))</span>
+<span class="s2">            /* find the boroughs and zone names for pickup locations */</span>
+<span class="s2">            INNER JOIN `bigquery-public-data.new_york_taxi_trips.taxi_zone_geom` tz_pu ON </span>
+<span class="s2">            (ST_DWithin(tz_pu.zone_geom,ST_GeogPoint(pickup_longitude, pickup_latitude), 0))</span>
+<span class="s2">            WHERE </span>
+<span class="s2">            pickup_datetime BETWEEN &#39;2015-01-01&#39; AND &#39;2016-12-31&#39; </span>
+<span class="s2">            AND dropoff_datetime BETWEEN &#39;2015-01-01&#39; AND &#39;2016-12-31&#39;</span>
+<span class="s2">            AND TIMESTAMP_DIFF(dropoff_datetime,pickup_datetime,SECOND) &gt; 0</span>
+<span class="s2">            AND passenger_count &gt; 0</span>
+<span class="s2">            AND trip_distance &gt;= 0 </span>
+<span class="s2">            AND tip_amount &gt;= 0 </span>
+<span class="s2">            AND tolls_amount &gt;= 0 </span>
+<span class="s2">            AND mta_tax &gt;= 0 </span>
+<span class="s2">            AND fare_amount &gt;= 0</span>
+<span class="s2">            AND total_amount &gt;= 0</span>
+<span class="s2">            ),</span>
+<span class="s2">            daily as(</span>
+<span class="s2">            #standardSQL</span>
+<span class="s2">            select date_trunc(int, DAY) DAY_Datetime,</span>
+<span class="s2">            count(pickup_datetime) rides,</span>
+<span class="s2">            sum(total_amount) as total_amount,</span>
+<span class="s2">            avg(total_amount) as avg_total_amount</span>
+<span class="s2">            from clean,</span>
+<span class="s2">            unnest(generate_timestamp_array(</span>
+<span class="s2">            pickup_datetime, </span>
+<span class="s2">            dropoff_datetime, </span>
+<span class="s2">            interval 1 hour)) as int</span>
+<span class="s2">            group by DAY_Datetime</span>
+<span class="s2">            order by DAY_Datetime</span>
+<span class="s2">            )</span>
+
+<span class="s2">            select *,</span>
+<span class="s2">            total_amount - LAG(total_amount) OVER (ORDER BY DAY_Datetime) AS Difference</span>
+<span class="s2">            FROM daily;</span>
+<span class="s2">            </span>
+<span class="s2">        </span>
+<span class="s2">         &quot;&quot;&quot;</span>
+
+<span class="c1">## In theory the interval could be as small as 1 minute.  Doing so could in theory be more accurate, however, it may also overcount the total ammount billed and the passenger count in the group by.</span>
+
+    <span class="n">result</span> <span class="o">=</span> <span class="n">query_big_query</span><span class="p">(</span><span class="n">query_string</span><span class="o">=</span><span class="n">query_string_2</span><span class="p">)</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">to_dataframe</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">df</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">difference_by_day</span><span class="p">()</span>
+    
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>DAY_Datetime</th>
+      <th>rides</th>
+      <th>total_amount</th>
+      <th>avg_total_amount</th>
+      <th>Difference</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2015-03-11 00:00:00+00:00</td>
+      <td>51349</td>
+      <td>785893.71</td>
+      <td>15.304947</td>
+      <td>-12892.21</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2015-04-30 00:00:00+00:00</td>
+      <td>54682</td>
+      <td>841361.04</td>
+      <td>15.386435</td>
+      <td>92337.70</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2015-01-02 00:00:00+00:00</td>
+      <td>44343</td>
+      <td>613961.10</td>
+      <td>13.845728</td>
+      <td>-349817.92</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2015-02-17 00:00:00+00:00</td>
+      <td>42433</td>
+      <td>607052.73</td>
+      <td>14.306147</td>
+      <td>-61255.96</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2015-04-01 00:00:00+00:00</td>
+      <td>53156</td>
+      <td>779533.09</td>
+      <td>14.665007</td>
+      <td>22250.61</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>177</th>
+      <td>2015-01-15 00:00:00+00:00</td>
+      <td>48662</td>
+      <td>703349.06</td>
+      <td>14.453764</td>
+      <td>71308.53</td>
+    </tr>
+    <tr>
+      <th>178</th>
+      <td>2015-02-24 00:00:00+00:00</td>
+      <td>51009</td>
+      <td>735429.01</td>
+      <td>14.417632</td>
+      <td>-63239.31</td>
+    </tr>
+    <tr>
+      <th>179</th>
+      <td>2015-03-07 00:00:00+00:00</td>
+      <td>74557</td>
+      <td>1113229.81</td>
+      <td>14.931258</td>
+      <td>120360.35</td>
+    </tr>
+    <tr>
+      <th>180</th>
+      <td>2015-03-10 00:00:00+00:00</td>
+      <td>52225</td>
+      <td>798785.92</td>
+      <td>15.295087</td>
+      <td>107550.57</td>
+    </tr>
+    <tr>
+      <th>181</th>
+      <td>2015-05-29 00:00:00+00:00</td>
+      <td>62678</td>
+      <td>980866.89</td>
+      <td>15.649301</td>
+      <td>150118.05</td>
+    </tr>
+  </tbody>
+</table>
+<p>182 rows × 5 columns</p>
+</div></div></div>
+</div>
+<div class="section" id="discussion-of-question-1-3">
+<h3>Discussion of Question 1.3<a class="headerlink" href="#discussion-of-question-1-3" title="Permalink to this headline">¶</a></h3>
+<p>The approach is almost identical to my previous answers.  The only major difference is the inclusion of the lag function to determine the running differences.</p>
+</div>
+</div>
+<div class="section" id="question-1-4">
+<h2>Question 1.4<a class="headerlink" href="#question-1-4" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>What hour of the day has seen the longest rides in April?</p></li>
+</ul>
+<div class="section" id="date-trunc-method">
+<h3>Date_trunc Method<a class="headerlink" href="#date-trunc-method" title="Permalink to this headline">¶</a></h3>
+<p>Date_trunc will return the requested results per date per hour.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">longest_rides_per_hour</span><span class="p">():</span>
+
+
+    <span class="n">query_string_2</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">        with clean as (      </span>
+<span class="s2">            SELECT </span>
+<span class="s2">            t.*,</span>
+<span class="s2">            FROM</span>
+<span class="s2">            (</span>
+<span class="s2">            SELECT *,</span>
+<span class="s2">            TIMESTAMP_DIFF(dropoff_datetime,pickup_datetime,SECOND) as time_duration_in_secs,</span>
+<span class="s2">            TIMESTAMP_DIFF(dropoff_datetime,pickup_datetime,MINUTE) as time_duration_in_mins,</span>
+<span class="s2">            ROUND(trip_distance/TIMESTAMP_DIFF(dropoff_datetime,pickup_datetime,SECOND),2)*3600 as driving_speed_miles_per_hour,</span>
+<span class="s2">            (CASE WHEN total_amount=0 THEN 0</span>
+<span class="s2">            ELSE ROUND(tip_amount*100/total_amount,2) END) as tip_rate,</span>
+<span class="s2">            EXTRACT(YEAR from pickup_datetime) as pickup_year,</span>
+<span class="s2">            EXTRACT(MONTH from pickup_datetime) as pickup_month,</span>
+<span class="s2">            CONCAT(CAST(EXTRACT(YEAR from pickup_datetime) as STRING),&quot;-&quot;,CAST(EXTRACT(MONTH from pickup_datetime) AS STRING)) as pickup_yearmonth,</span>
+<span class="s2">            EXTRACT(DATE from pickup_datetime) as pickup_date,</span>
+<span class="s2">            FORMAT_DATE(&#39;%A&#39;,DATE(pickup_datetime)) as pickup_weekday_name,</span>
+<span class="s2">            EXTRACT(HOUR from pickup_datetime) as pickup_hour,</span>
+<span class="s2">            EXTRACT(YEAR from dropoff_datetime) as dropoff_year,</span>
+<span class="s2">            EXTRACT(MONTH from dropoff_datetime) as dropoff_month,</span>
+<span class="s2">            CONCAT(CAST(EXTRACT(YEAR from dropoff_datetime) as STRING),&quot;-&quot;,CAST(EXTRACT(MONTH from dropoff_datetime) AS STRING)) as dropoff_yearmonth,</span>
+<span class="s2">            EXTRACT(DATE from dropoff_datetime) as dropoff_date,</span>
+<span class="s2">            FORMAT_DATE(&#39;%A&#39;,DATE(dropoff_datetime)) as dropoff_weekday_name,</span>
+<span class="s2">            EXTRACT(HOUR from dropoff_datetime) as dropoff_hour</span>
+<span class="s2">            FROM `nyc-tlc.green.trips_2015`</span>
+<span class="s2">            /* filter by latitude &amp; longitude that are within the correct range */</span>
+<span class="s2">            WHERE </span>
+<span class="s2">                ((pickup_latitude BETWEEN -90 AND 90) AND</span>
+<span class="s2">                (pickup_longitude BETWEEN -180 AND 180)) </span>
+<span class="s2">            AND</span>
+<span class="s2">                ((dropoff_latitude BETWEEN -90 AND 90) AND</span>
+<span class="s2">                (dropoff_longitude BETWEEN -180 AND 180))</span>
+<span class="s2">            ) t</span>
+<span class="s2">            /* find the boroughs and zone names for dropoff locations */</span>
+<span class="s2">            INNER JOIN `bigquery-public-data.new_york_taxi_trips.taxi_zone_geom` tz_do ON </span>
+<span class="s2">            (ST_DWithin(tz_do.zone_geom,ST_GeogPoint(dropoff_longitude, dropoff_latitude), 0))</span>
+<span class="s2">            /* find the boroughs and zone names for pickup locations */</span>
+<span class="s2">            INNER JOIN `bigquery-public-data.new_york_taxi_trips.taxi_zone_geom` tz_pu ON </span>
+<span class="s2">            (ST_DWithin(tz_pu.zone_geom,ST_GeogPoint(pickup_longitude, pickup_latitude), 0))</span>
+<span class="s2">            WHERE </span>
+<span class="s2">            pickup_datetime BETWEEN &#39;2015-01-01&#39; AND &#39;2016-12-31&#39; </span>
+<span class="s2">            AND dropoff_datetime BETWEEN &#39;2015-01-01&#39; AND &#39;2016-12-31&#39;</span>
+<span class="s2">            AND TIMESTAMP_DIFF(dropoff_datetime,pickup_datetime,SECOND) &gt; 0</span>
+<span class="s2">            AND passenger_count &gt; 0</span>
+<span class="s2">            AND trip_distance &gt;= 0 </span>
+<span class="s2">            AND tip_amount &gt;= 0 </span>
+<span class="s2">            AND tolls_amount &gt;= 0 </span>
+<span class="s2">            AND mta_tax &gt;= 0 </span>
+<span class="s2">            AND fare_amount &gt;= 0</span>
+<span class="s2">            AND total_amount &gt;= 0</span>
+<span class="s2">            ),</span>
+<span class="s2">            hourly as(</span>
+<span class="s2">            #standardSQL</span>
+<span class="s2">            select date_trunc(int, hour) DAY_Datetime,</span>
+<span class="s2">            count(pickup_datetime) rides,</span>
+<span class="s2">            sum(total_amount) as total_amount,</span>
+<span class="s2">            avg(total_amount) as avg_total_amount,</span>
+<span class="s2">            avg(time_duration_in_mins) as avg_trip_duration_mins,</span>
+<span class="s2">            max(time_duration_in_mins) as max_time_duration_mins,</span>
+<span class="s2">            avg(trip_distance) as avg_trip_distance,</span>
+<span class="s2">            max(trip_distance) as max_trip_distance</span>
+<span class="s2">            from clean,</span>
+<span class="s2">            unnest(generate_timestamp_array(</span>
+<span class="s2">            pickup_datetime, </span>
+<span class="s2">            dropoff_datetime, </span>
+<span class="s2">            interval 1 hour)) as int</span>
+<span class="s2">            where pickup_datetime BETWEEN &#39;2015-04-01&#39; AND &#39;2015-04-30&#39; </span>
+<span class="s2">            AND dropoff_datetime BETWEEN &#39;2015-04-01&#39; AND &#39;2015-04-30&#39; </span>
+<span class="s2">            group by DAY_Datetime</span>
+<span class="s2">            order by DAY_Datetime</span>
+<span class="s2">            )</span>
+
+<span class="s2">            select *,</span>
+<span class="s2">            FROM hourly</span>
+<span class="s2">            order by avg_trip_distance DESC, avg_trip_duration_mins DESC;</span>
+<span class="s2">            </span>
+<span class="s2">        </span>
+<span class="s2">         &quot;&quot;&quot;</span>
+
+<span class="c1">## In theory the interval could be as small as 1 minute.  Doing so could in theory be more accurate, however, it may also overcount the total ammount billed and the passenger count in the group by.</span>
+
+    <span class="n">result</span> <span class="o">=</span> <span class="n">query_big_query</span><span class="p">(</span><span class="n">query_string</span><span class="o">=</span><span class="n">query_string_2</span><span class="p">)</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">to_dataframe</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">df</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">longest_rides_per_hour</span><span class="p">()</span>
+    
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>DAY_Datetime</th>
+      <th>rides</th>
+      <th>total_amount</th>
+      <th>avg_total_amount</th>
+      <th>avg_trip_duration_mins</th>
+      <th>max_time_duration_mins</th>
+      <th>avg_trip_distance</th>
+      <th>max_trip_distance</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2015-04-22 05:00:00+00:00</td>
+      <td>437</td>
+      <td>8832.02</td>
+      <td>20.210572</td>
+      <td>168.228833</td>
+      <td>1434</td>
+      <td>4.680458</td>
+      <td>38.68</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2015-04-21 05:00:00+00:00</td>
+      <td>408</td>
+      <td>7779.64</td>
+      <td>19.067745</td>
+      <td>157.294118</td>
+      <td>1438</td>
+      <td>4.563897</td>
+      <td>22.88</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2015-04-08 05:00:00+00:00</td>
+      <td>417</td>
+      <td>7911.22</td>
+      <td>18.971751</td>
+      <td>178.841727</td>
+      <td>1439</td>
+      <td>4.525180</td>
+      <td>26.10</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2015-04-24 05:00:00+00:00</td>
+      <td>572</td>
+      <td>11226.31</td>
+      <td>19.626416</td>
+      <td>187.965035</td>
+      <td>1439</td>
+      <td>4.501678</td>
+      <td>23.00</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2015-04-01 05:00:00+00:00</td>
+      <td>371</td>
+      <td>6904.21</td>
+      <td>18.609730</td>
+      <td>19.574124</td>
+      <td>1402</td>
+      <td>4.483531</td>
+      <td>21.81</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>691</th>
+      <td>2015-04-07 20:00:00+00:00</td>
+      <td>3355</td>
+      <td>43535.74</td>
+      <td>12.976376</td>
+      <td>32.518331</td>
+      <td>1439</td>
+      <td>2.451830</td>
+      <td>42.14</td>
+    </tr>
+    <tr>
+      <th>692</th>
+      <td>2015-04-29 20:00:00+00:00</td>
+      <td>3599</td>
+      <td>47430.23</td>
+      <td>13.178725</td>
+      <td>16.185051</td>
+      <td>1438</td>
+      <td>2.426913</td>
+      <td>44.00</td>
+    </tr>
+    <tr>
+      <th>693</th>
+      <td>2015-04-22 18:00:00+00:00</td>
+      <td>4136</td>
+      <td>59788.97</td>
+      <td>14.455747</td>
+      <td>29.315039</td>
+      <td>1437</td>
+      <td>2.410539</td>
+      <td>60.83</td>
+    </tr>
+    <tr>
+      <th>694</th>
+      <td>2015-04-07 18:00:00+00:00</td>
+      <td>3621</td>
+      <td>50035.31</td>
+      <td>13.818092</td>
+      <td>32.520851</td>
+      <td>1439</td>
+      <td>2.334471</td>
+      <td>54.83</td>
+    </tr>
+    <tr>
+      <th>695</th>
+      <td>2015-04-07 19:00:00+00:00</td>
+      <td>3954</td>
+      <td>54699.25</td>
+      <td>13.833902</td>
+      <td>29.794133</td>
+      <td>1439</td>
+      <td>2.280878</td>
+      <td>54.83</td>
+    </tr>
+  </tbody>
+</table>
+<p>696 rows × 8 columns</p>
+</div></div></div>
+</div>
+<div class="section" id="discussion-of-date-trunc-method">
+<h4>Discussion of Date Trunc Method<a class="headerlink" href="#discussion-of-date-trunc-method" title="Permalink to this headline">¶</a></h4>
+<p>I wanted to see if avg_trip_duration would correlate with avg_trip_distance.</p>
+<p>In this sample it does seem to. I would like to test the distributions later for correlation.</p>
+<p>To answer the question, 2014-04-22 at 5:00 am recorded the longest trips.  Interestingly, most of longest trips are at 5:00.  I expected the evening rush hour to record a larger number of results. As this is the green line, it would make sense that a large majority of taking the vehicle to the airport or to a determined destination as opposed to randomly hailing a yellow cab.</p>
+<p>Review the code below for a results below for a more succint table.</p>
+</div>
+</div>
+<div class="section" id="the-extract-method">
+<h3>The Extract Method<a class="headerlink" href="#the-extract-method" title="Permalink to this headline">¶</a></h3>
+<p>Extract will record the values by hour of the 24 hour clock.  It will aggregate accordinly.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">longest_rides_per_hour_etracted</span><span class="p">():</span>
+
+
+    <span class="n">query_string_2</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">        with clean as (      </span>
+<span class="s2">            SELECT </span>
+<span class="s2">            t.*,</span>
+<span class="s2">            FROM</span>
+<span class="s2">            (</span>
+<span class="s2">            SELECT *,</span>
+<span class="s2">            TIMESTAMP_DIFF(dropoff_datetime,pickup_datetime,SECOND) as time_duration_in_secs,</span>
+<span class="s2">            TIMESTAMP_DIFF(dropoff_datetime,pickup_datetime,MINUTE) as time_duration_in_mins,</span>
+<span class="s2">            ROUND(trip_distance/TIMESTAMP_DIFF(dropoff_datetime,pickup_datetime,SECOND),2)*3600 as driving_speed_miles_per_hour,</span>
+<span class="s2">            (CASE WHEN total_amount=0 THEN 0</span>
+<span class="s2">            ELSE ROUND(tip_amount*100/total_amount,2) END) as tip_rate,</span>
+<span class="s2">            EXTRACT(YEAR from pickup_datetime) as pickup_year,</span>
+<span class="s2">            EXTRACT(MONTH from pickup_datetime) as pickup_month,</span>
+<span class="s2">            CONCAT(CAST(EXTRACT(YEAR from pickup_datetime) as STRING),&quot;-&quot;,CAST(EXTRACT(MONTH from pickup_datetime) AS STRING)) as pickup_yearmonth,</span>
+<span class="s2">            EXTRACT(DATE from pickup_datetime) as pickup_date,</span>
+<span class="s2">            FORMAT_DATE(&#39;%A&#39;,DATE(pickup_datetime)) as pickup_weekday_name,</span>
+<span class="s2">            EXTRACT(HOUR from pickup_datetime) as pickup_hour,</span>
+<span class="s2">            EXTRACT(YEAR from dropoff_datetime) as dropoff_year,</span>
+<span class="s2">            EXTRACT(MONTH from dropoff_datetime) as dropoff_month,</span>
+<span class="s2">            CONCAT(CAST(EXTRACT(YEAR from dropoff_datetime) as STRING),&quot;-&quot;,CAST(EXTRACT(MONTH from dropoff_datetime) AS STRING)) as dropoff_yearmonth,</span>
+<span class="s2">            EXTRACT(DATE from dropoff_datetime) as dropoff_date,</span>
+<span class="s2">            FORMAT_DATE(&#39;%A&#39;,DATE(dropoff_datetime)) as dropoff_weekday_name,</span>
+<span class="s2">            EXTRACT(HOUR from dropoff_datetime) as dropoff_hour</span>
+<span class="s2">            FROM `nyc-tlc.green.trips_2015`</span>
+<span class="s2">            /* filter by latitude &amp; longitude that are within the correct range */</span>
+<span class="s2">            WHERE </span>
+<span class="s2">                ((pickup_latitude BETWEEN -90 AND 90) AND</span>
+<span class="s2">                (pickup_longitude BETWEEN -180 AND 180)) </span>
+<span class="s2">            AND</span>
+<span class="s2">                ((dropoff_latitude BETWEEN -90 AND 90) AND</span>
+<span class="s2">                (dropoff_longitude BETWEEN -180 AND 180))</span>
+<span class="s2">            ) t</span>
+<span class="s2">            /* find the boroughs and zone names for dropoff locations */</span>
+<span class="s2">            INNER JOIN `bigquery-public-data.new_york_taxi_trips.taxi_zone_geom` tz_do ON </span>
+<span class="s2">            (ST_DWithin(tz_do.zone_geom,ST_GeogPoint(dropoff_longitude, dropoff_latitude), 0))</span>
+<span class="s2">            /* find the boroughs and zone names for pickup locations */</span>
+<span class="s2">            INNER JOIN `bigquery-public-data.new_york_taxi_trips.taxi_zone_geom` tz_pu ON </span>
+<span class="s2">            (ST_DWithin(tz_pu.zone_geom,ST_GeogPoint(pickup_longitude, pickup_latitude), 0))</span>
+<span class="s2">            WHERE </span>
+<span class="s2">            pickup_datetime BETWEEN &#39;2015-01-01&#39; AND &#39;2016-12-31&#39; </span>
+<span class="s2">            AND dropoff_datetime BETWEEN &#39;2015-01-01&#39; AND &#39;2016-12-31&#39;</span>
+<span class="s2">            AND TIMESTAMP_DIFF(dropoff_datetime,pickup_datetime,SECOND) &gt; 0</span>
+<span class="s2">            AND passenger_count &gt; 0</span>
+<span class="s2">            AND trip_distance &gt;= 0 </span>
+<span class="s2">            AND tip_amount &gt;= 0 </span>
+<span class="s2">            AND tolls_amount &gt;= 0 </span>
+<span class="s2">            AND mta_tax &gt;= 0 </span>
+<span class="s2">            AND fare_amount &gt;= 0</span>
+<span class="s2">            AND total_amount &gt;= 0</span>
+<span class="s2">            ),</span>
+<span class="s2">            hourly as(</span>
+<span class="s2">            #standardSQL</span>
+<span class="s2">            select EXTRACT(HOUR from int) DAY_Datetime,</span>
+<span class="s2">            count(pickup_datetime) rides,</span>
+<span class="s2">            sum(total_amount) as total_amount,</span>
+<span class="s2">            avg(total_amount) as avg_total_amount,</span>
+<span class="s2">            avg(time_duration_in_mins) as avg_trip_duration_mins,</span>
+<span class="s2">            max(time_duration_in_mins) as max_time_duration_mins,</span>
+<span class="s2">            avg(trip_distance) as avg_trip_distance,</span>
+<span class="s2">            max(trip_distance) as max_trip_distance</span>
+<span class="s2">            from clean,</span>
+<span class="s2">            unnest(generate_timestamp_array(</span>
+<span class="s2">            pickup_datetime, </span>
+<span class="s2">            dropoff_datetime, </span>
+<span class="s2">            interval 1 hour)) as int</span>
+<span class="s2">            where pickup_datetime BETWEEN &#39;2015-04-01&#39; AND &#39;2015-04-30&#39; </span>
+<span class="s2">            AND dropoff_datetime BETWEEN &#39;2015-04-01&#39; AND &#39;2015-04-30&#39; </span>
+<span class="s2">            group by DAY_Datetime</span>
+<span class="s2">            order by DAY_Datetime</span>
+<span class="s2">            )</span>
+
+<span class="s2">            select *,</span>
+<span class="s2">            FROM hourly</span>
+<span class="s2">            order by avg_trip_distance DESC, avg_trip_duration_mins DESC;</span>
+<span class="s2">            </span>
+<span class="s2">        </span>
+<span class="s2">         &quot;&quot;&quot;</span>
+
+<span class="c1">## In theory the interval could be as small as 1 minute.  Doing so could in theory be more accurate, however, it may also overcount the total ammount billed and the passenger count in the group by.</span>
+
+    <span class="n">result</span> <span class="o">=</span> <span class="n">query_big_query</span><span class="p">(</span><span class="n">query_string</span><span class="o">=</span><span class="n">query_string_2</span><span class="p">)</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">to_dataframe</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">df</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">longest_rides_per_hour_etracted</span><span class="p">()</span>
+    
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>DAY_Datetime</th>
+      <th>rides</th>
+      <th>total_amount</th>
+      <th>avg_total_amount</th>
+      <th>avg_trip_duration_mins</th>
+      <th>max_time_duration_mins</th>
+      <th>avg_trip_distance</th>
+      <th>max_trip_distance</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>6</td>
+      <td>23407</td>
+      <td>406676.31</td>
+      <td>17.374132</td>
+      <td>120.617807</td>
+      <td>1439</td>
+      <td>4.013681</td>
+      <td>58.49</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>5</td>
+      <td>18530</td>
+      <td>323255.01</td>
+      <td>17.444955</td>
+      <td>147.563195</td>
+      <td>1439</td>
+      <td>3.994335</td>
+      <td>87.90</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>4</td>
+      <td>28836</td>
+      <td>446638.44</td>
+      <td>15.488918</td>
+      <td>98.029338</td>
+      <td>1439</td>
+      <td>3.406666</td>
+      <td>87.90</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>7</td>
+      <td>43269</td>
+      <td>679401.77</td>
+      <td>15.701814</td>
+      <td>72.091081</td>
+      <td>1439</td>
+      <td>3.254081</td>
+      <td>70.94</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>3</td>
+      <td>35060</td>
+      <td>515585.82</td>
+      <td>14.705813</td>
+      <td>81.675670</td>
+      <td>1439</td>
+      <td>3.136565</td>
+      <td>87.91</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>23</td>
+      <td>89991</td>
+      <td>1347089.17</td>
+      <td>14.969154</td>
+      <td>42.006667</td>
+      <td>1439</td>
+      <td>3.023357</td>
+      <td>297.06</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>9</td>
+      <td>67749</td>
+      <td>1045347.79</td>
+      <td>15.429715</td>
+      <td>51.702977</td>
+      <td>1439</td>
+      <td>3.018475</td>
+      <td>70.94</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>0</td>
+      <td>75056</td>
+      <td>1107289.88</td>
+      <td>14.752850</td>
+      <td>44.033082</td>
+      <td>1439</td>
+      <td>3.014348</td>
+      <td>134.26</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>2</td>
+      <td>45003</td>
+      <td>645698.17</td>
+      <td>14.347892</td>
+      <td>65.855010</td>
+      <td>1439</td>
+      <td>2.993119</td>
+      <td>87.91</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>8</td>
+      <td>63888</td>
+      <td>987487.01</td>
+      <td>15.456533</td>
+      <td>54.133186</td>
+      <td>1439</td>
+      <td>2.992707</td>
+      <td>70.94</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>1</td>
+      <td>59383</td>
+      <td>859156.03</td>
+      <td>14.468047</td>
+      <td>52.410690</td>
+      <td>1439</td>
+      <td>2.970133</td>
+      <td>134.26</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>22</td>
+      <td>97416</td>
+      <td>1444937.04</td>
+      <td>14.832646</td>
+      <td>39.692453</td>
+      <td>1439</td>
+      <td>2.969648</td>
+      <td>297.06</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>10</td>
+      <td>62846</td>
+      <td>941869.28</td>
+      <td>14.986941</td>
+      <td>54.270678</td>
+      <td>1439</td>
+      <td>2.966649</td>
+      <td>375.64</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>11</td>
+      <td>61425</td>
+      <td>922729.92</td>
+      <td>15.022058</td>
+      <td>55.576703</td>
+      <td>1439</td>
+      <td>2.955951</td>
+      <td>375.64</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>13</td>
+      <td>62655</td>
+      <td>948215.73</td>
+      <td>15.133920</td>
+      <td>55.472125</td>
+      <td>1439</td>
+      <td>2.954582</td>
+      <td>375.64</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>12</td>
+      <td>62336</td>
+      <td>940571.12</td>
+      <td>15.088731</td>
+      <td>55.376476</td>
+      <td>1439</td>
+      <td>2.944434</td>
+      <td>375.64</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>14</td>
+      <td>71541</td>
+      <td>1087273.14</td>
+      <td>15.197902</td>
+      <td>51.073734</td>
+      <td>1439</td>
+      <td>2.923313</td>
+      <td>375.64</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>15</td>
+      <td>80211</td>
+      <td>1228121.11</td>
+      <td>15.311131</td>
+      <td>47.997295</td>
+      <td>1439</td>
+      <td>2.896561</td>
+      <td>375.64</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>16</td>
+      <td>86157</td>
+      <td>1371038.06</td>
+      <td>15.913252</td>
+      <td>46.012396</td>
+      <td>1439</td>
+      <td>2.860492</td>
+      <td>375.64</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>21</td>
+      <td>99867</td>
+      <td>1441899.37</td>
+      <td>14.438197</td>
+      <td>38.715141</td>
+      <td>1439</td>
+      <td>2.824972</td>
+      <td>297.06</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>17</td>
+      <td>96276</td>
+      <td>1501988.38</td>
+      <td>15.600860</td>
+      <td>42.422130</td>
+      <td>1439</td>
+      <td>2.747579</td>
+      <td>375.64</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>20</td>
+      <td>104678</td>
+      <td>1482750.27</td>
+      <td>14.164870</td>
+      <td>37.491994</td>
+      <td>1439</td>
+      <td>2.710590</td>
+      <td>297.06</td>
+    </tr>
+    <tr>
+      <th>22</th>
+      <td>19</td>
+      <td>106840</td>
+      <td>1557368.06</td>
+      <td>14.576639</td>
+      <td>37.460680</td>
+      <td>1439</td>
+      <td>2.670077</td>
+      <td>297.06</td>
+    </tr>
+    <tr>
+      <th>23</th>
+      <td>18</td>
+      <td>107685</td>
+      <td>1609981.95</td>
+      <td>14.950847</td>
+      <td>38.261262</td>
+      <td>1439</td>
+      <td>2.662435</td>
+      <td>375.64</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="section" id="discussion-of-the-extract-method">
+<h4>Discussion of the Extract Method<a class="headerlink" href="#discussion-of-the-extract-method" title="Permalink to this headline">¶</a></h4>
+<p>The longest time duration is recorded at 5 am.  The distance between 5 and 6 am are marginal.</p>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "finance"
+        },
+        kernelOptions: {
+            kernelName: "finance",
+            path: "./notebooks"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'finance'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="../index.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Justin Napolitano’s Technical Submission to PMC</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="nyc-taxi-fare-data-exploration.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">New York City Taxi Fare Data Exploration</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      By Justin Napolitano<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>
