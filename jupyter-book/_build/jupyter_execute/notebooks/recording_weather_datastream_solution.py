@@ -17,7 +17,7 @@
 # 
 # #### BigTable or Apache Hbase
 # 
-# Writing to a csv file at scale with asychronous calls is not difficult to manage.  File corruption, migrations, and file management require admins to oversee.  
+# Writing to a csv file at scale with asychronous calls is difficult to manage.  File corruption, migrations, and file management are problems that will manifest at scale.
 # 
 # A BigTable solution reduces the complexity of the data pipeline and ensures that files are never lost or mismanaged.   Instead of writing to a csv, I would prefer to write the data of each request to a big table.  
 # 
@@ -31,20 +31,21 @@
 # 
 # I would use google cloud compute or a comparible service to run the csv solution code from my solution to 2a. It would take input from a local file containing search cities and intervals.  Each city's data will be stored on individual csv partitioned by the hour at maximum.  
 # 
-# That data would be store do on the storage solution of the cloud platform just on google drive or dropbox via their apis if necessary.  
+# That data would be store do on the storage solution of the cloud platform or on google drive or dropbox via their apis if necessary.  
 # 
-# Finally, I would migrate the data to a postgresql db(open source-no licensing fees) daily with chron jobs and schema building pyspark scripts.  I could also use also write sql queries to integrate the csv's and clean the data if the server workload is low.  
+# Finally, I would migrate the data to a postgresql dbm(open source-no licensing fees) daily with chron jobs and schema building pyspark scripts.  I could also use also write sql queries to integrate the csv's and to clean the data if the server workload is low.  
 # 
 # ### Searching for Many Cities
 # 
 # To search for many cities, I would integrate the code below into a restful framework that passes a city name to the open weather endpoint.  
 # 
-# It would then pass the result needed to thebig-query endpoint detailed in the part.  
+# It would then pass the result needed to the big-query endpoint detailed in the section.  
 # 
-# Finally, I would write another program that takes input from whatever source the team is most comfortable editing.  For example,  a google sheet with cities and search intervals.  Then, have the program search for data at a the interval set in the config file.   
+# Finally, I would write another program that takes input from whatever source the team is most comfortable editing.  For example,  a google sheet with cities and search intervals.  Then, have the program request data at the interval set in the config file.   
 # 
 # 
 # ## The Code Below
+# 
 # The code below is written to take advantage of the bigtable/hbase method.  It will run asynchronously without corrupting csv files. It also forwards the data to a rest api that I wrote to store data on a bigtable.
 
 # ### Imports
