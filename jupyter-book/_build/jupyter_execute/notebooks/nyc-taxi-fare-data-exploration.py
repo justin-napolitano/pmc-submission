@@ -3,10 +3,8 @@
 
 # # New York City Taxi Fare Data Exploration
 # 
-# ## Reading data and first exploration
+# ## Reading Data and First Impressions
 # 
-# 
-# First thing I like to do with a new dataset is to explore the data. This means investigating the number of features, their datatype, their meaning and statistics.
 
 # In[1]:
 
@@ -27,8 +25,6 @@ import contextily as cx
 import matplotlib.pyplot as plt
 
 
-# As this dataset is huge reading all data would require a lot of memory. Therefore I read a limited number of rows while exploring the data. When my exploration code (e.g. this notebook) is ready I re-run the notebook while reading more rows.
-
 # ## Querying the Green Cab Data Set.
 # 
 # The queries below clean the data and prepare it for analysis. 
@@ -47,12 +43,6 @@ def query_big_query(query_string):
 
 
 # In[3]:
-
-
-os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "/Users/jnapolitano/Projects/pmc-submission/creds.json"
-
-
-# In[4]:
 
 
 def clean_up_data():
@@ -112,7 +102,7 @@ def clean_up_data():
 clean_df = clean_up_data()
 
 
-# In[5]:
+# In[4]:
 
 
 # read data in pandas dataframe
@@ -122,14 +112,14 @@ clean_df = clean_up_data()
 clean_df.head()
 
 
-# In[6]:
+# In[5]:
 
 
 # check datatypes
 clean_df.dtypes
 
 
-# In[7]:
+# In[6]:
 
 
 # check statistics of the features
@@ -138,7 +128,7 @@ clean_df.describe()
 
 # Checking for negative values and anything else I missed from the initial sql clean:
 
-# In[8]:
+# In[7]:
 
 
 print('Old size: %d' % len(clean_df))
@@ -148,7 +138,7 @@ print('New size: %d' % len(clean_df))
 
 # No negative values reported.
 
-# In[9]:
+# In[8]:
 
 
 # plot histogram of fare
@@ -159,13 +149,13 @@ plt.title('Histogram');
 
 # In the histogram of the `fare_amount` there are some small spikes between \$40 and \$55. This could indicate some fixed fare price (e.g. to/from airport). This will be explored further.
 # 
-# Also the graph is unusually not biased towards the right.  The minimaal rate must reduce the possibility of a normal distribution.  
+# Also the graph is unusually not biased towards the right.  The minimum rate must reduce the possibility of a normal distribution.  
 
 # ## Remove missing data
 # 
 # Always check to see if there is missing data. As this dataset is huge, removing datapoints with missing data probably has no effect on the models beings trained.
 
-# In[10]:
+# In[9]:
 
 
 print(clean_df.isnull().sum())
@@ -173,7 +163,7 @@ print(clean_df.isnull().sum())
 
 # The only data points with null are thee ehail_fees.  It is negative a cross every data point.  I'l just drop the column
 
-# In[11]:
+# In[10]:
 
 
 print('Old size: %d' % (clean_df.size))
@@ -185,44 +175,35 @@ print('New size: %d' % (clean_df.size))
 # 
 # As we're dealing with location data, I want to plot the coordinates on a map. This gives a better view of the data. For this, I use the following website:
 # 
-# - Easy to use map and GPS tool: https://www.gps-coordinates.net/ 
-# - Calculate distance between locations: https://www.travelmath.com/flying-distance/
-# - Open street map to grab using bouding box a map: https://www.openstreetmap.org/export#map=8/52.154/5.295
 # 
 # New York city coordinates are (https://www.travelmath.com/cities/New+York,+NY):
 # 
 # - longitude = -74.0063889
 # - lattitude = 40.7141667
 # 
-# I define a bounding box of interest by [long_min, long_max, latt_min, latt_max] using the minimum and maximum coordinates from the testset. This way, I'm sure to train a model for the full pickup/dropoff coordinate range of the test set.
+# I define a bounding box of interest by [long_min, long_max, latt_min, latt_max] using the minimum and maximum coordinates from the testset. 
 # 
-# From Open Street Map I grab a map and I drop any datapoint outside this box.
+
+# In[11]:
+
+
+# minimum and maximum longitude test set
+min(clean_df.pickup_longitude.min(), clean_df.dropoff_longitude.min()), max(clean_df.pickup_longitude.max(), clean_df.dropoff_longitude.max())
+
 
 # In[12]:
 
 
-# minimum and maximum longitude test set
-min(clean_df.pickup_longitude.min(), clean_df.dropoff_longitude.min()), \
-max(clean_df.pickup_longitude.max(), clean_df.dropoff_longitude.max())
+# minimum and maximum latitude test
+min(clean_df.pickup_latitude.min(), clean_df.dropoff_latitude.min()), max(clean_df.pickup_latitude.max(), clean_df.dropoff_latitude.max())
 
 
 # In[13]:
 
 
-# minimum and maximum latitude test
-min(clean_df.pickup_latitude.min(), clean_df.dropoff_latitude.min()), \
-max(clean_df.pickup_latitude.max(), clean_df.dropoff_latitude.max())
-
-
-# In[14]:
-
-
 # this function will also be used with the test set below
 def select_within_boundingbox(df, BB):
-    return (df.pickup_longitude >= BB[0]) & (df.pickup_longitude <= BB[1]) & \
-           (df.pickup_latitude >= BB[2]) & (df.pickup_latitude <= BB[3]) & \
-           (df.dropoff_longitude >= BB[0]) & (df.dropoff_longitude <= BB[1]) & \
-           (df.dropoff_latitude >= BB[2]) & (df.dropoff_latitude <= BB[3])
+    return (df.pickup_longitude >= BB[0]) & (df.pickup_longitude <= BB[1]) &            (df.pickup_latitude >= BB[2]) & (df.pickup_latitude <= BB[3]) &            (df.dropoff_longitude >= BB[0]) & (df.dropoff_longitude <= BB[1]) &            (df.dropoff_latitude >= BB[2]) & (df.dropoff_latitude <= BB[3])
             
 # load image of NYC map
 BB = (-74.5, -72.8, 40.5, 41.8)
@@ -233,7 +214,7 @@ BB_zoom = (-74.3, -73.7, 40.5, 40.9)
 #nyc_map_zoom = plt.imread('https://aiblog.nl/download/nyc_-74.3_-73.7_40.5_40.9.png')
 
 
-# In[15]:
+# In[14]:
 
 
 print('Old size: %d' % len(clean_df))
@@ -243,7 +224,8 @@ print('New size: %d' % len(clean_df))
 
 # ### Adding a Geometry column to the table
 
-# In[16]:
+# In[15]:
+
 
 
 def json_serial(obj):
@@ -254,7 +236,8 @@ def json_serial(obj):
     raise TypeError ("Type %s not serializable" % type(obj))
 
 
-# In[17]:
+# In[16]:
+
 
 
 gdf = geopandas.GeoDataFrame(
@@ -263,7 +246,7 @@ gdf = geopandas.GeoDataFrame(
 
 # When using interactie maps, all of the columns within a df must be json seriable to interact with apis.  The code below serializes all of the date columns for plottin.  
 
-# In[18]:
+# In[17]:
 
 
 gdf.pickup_datetime = gdf.pickup_datetime.map(json_serial)
@@ -272,7 +255,7 @@ gdf.dropoff_date =  gdf.dropoff_date.map(json_serial)
 gdf.pickup_date = gdf.pickup_date.map(json_serial)
 
 
-# In[19]:
+# In[18]:
 
 
 gdf.dtypes
@@ -280,7 +263,7 @@ gdf.dtypes
 
 # ### Checking Coordinate System
 
-# In[20]:
+# In[19]:
 
 
 #gdf = EPSG:3857
@@ -288,7 +271,7 @@ gdf.crs = "EPSG:4236"
 gdf = gdf.to_crs(epsg=3857)
 
 
-# In[21]:
+# In[20]:
 
 
 ax = gdf.plot(figsize=(10, 10), alpha=0.5, edgecolor='k', markersize = .01)
@@ -301,7 +284,7 @@ cx.add_basemap(ax,)
 # 
 # A scatterplot of the pickup and dropoff locations gives a quick impression of the density. However, it is more accurate to count the number of datapoints per area to visualize the density. The code below counts pickup and dropoff datapoints per sq miles. This gives a better view on the 'hot spots'.
 
-# In[22]:
+# In[21]:
 
 
 # For this plot and further analysis, we need a function to calculate the distance in miles between locations in lon,lat coordinates.
@@ -348,7 +331,7 @@ for i in range(n_lon):
         density_dropoff[j, i] = np.sum((inds_dropoff_lon==i+1) & (inds_dropoff_lat==(n_lat-j))) / dxdy
 
 
-# In[23]:
+# In[22]:
 
 
 # Plot the density arrays
@@ -374,7 +357,7 @@ cbar.set_label('log(1 + #datapoints per sq mile)', rotation=270)
 # ## Pickup traffic density
 # The density plots of above triggered me to see if I can visualize traffic density by the hour (and year). By counting the number of pickups in an area we should get some impression of the traffic density. The more traffic, the longer it could take to make a drive.
 
-# In[24]:
+# In[23]:
 
 
 # add time information
@@ -387,7 +370,7 @@ gdf['pickup_codes'] = gdf.pickup_weekday_name.map(labels)
 gdf['dropoff_codes'] = gdf.dropoff_weekday_name.map(labels)
 
 
-# In[25]:
+# In[24]:
 
 
 # some constants needed to calculate pickup traffic density
@@ -433,8 +416,7 @@ def calculate_trafic_density(df):
 
                 for i in range(n_bins_lon):
                     for j in range(n_bins_lat):
-                        traffic[y, d, h, j, i] = traffic[y, d, h, j, i] + \
-                                                 np.sum((inds_pickup_lon==i+1) & (inds_pickup_lat==j+1))
+                        traffic[y, d, h, j, i] = traffic[y, d, h, j, i] +                                                  np.sum((inds_pickup_lon==i+1) & (inds_pickup_lat==j+1))
     
     return traffic 
 
@@ -457,13 +439,13 @@ def plot_traffic(traffic, y, d):
 # 
 # NOTE: the quality of the plots depends on the number of datapoints used. This notebook uses by default 500k points, which is not sufficient for good traffic density plots. Increase the number of points and you get better plots.
 
-# In[26]:
+# In[25]:
 
 
 traffic = calculate_trafic_density(gdf)
 
 
-# In[27]:
+# In[26]:
 
 
 plot_traffic(traffic, 2015, 'monday')
@@ -485,7 +467,7 @@ plot_traffic(traffic, 2015, 'sunday')
 # 
 # To visualize the distance - fare relation we need to calculate the distance of a trip first. 
 
-# In[28]:
+# In[27]:
 
 
 # add new column to dataframe with distance in miles
@@ -498,23 +480,23 @@ gdf.trip_distance.describe()
 # It seems that most rides are just short rides, with a small peak at ~3 miles.
 # Let's also see the influence of `passenger_count`.
 
-# In[29]:
+# In[28]:
 
 
 gdf.groupby(['passenger_count','trip_distance', 'fare_amount']).mean()
 
 
-# A `passenger_count` of zero seems odd. Perhaps a taxi transporting some goods or an administration error? The latter seems not the case as the `fare_amount` is also significantly lower.
+# A `passenger_count` of zero seems odd. Perhaps a taxi transporting some goods or an administration error?
 # 
 # Instead of looking to the `fare_amount` using the 'fare per mile' also provides some insights.
 
-# In[30]:
+# In[29]:
 
 
 print("Average $USD/Mile : {:0.2f}".format(gdf.fare_amount.sum()/gdf.trip_distance.sum()))
 
 
-# In[31]:
+# In[30]:
 
 
 # scatter plot distance - fare
@@ -540,7 +522,7 @@ axs[1].set_title('Zoom in on distance < 15 mile, fare < $100');
 # - Overall there seems to be a (linear) relation between distance and fare with an average rate of +/- 100/20 = 5 \$USD/mile.
 # 
 
-# In[32]:
+# In[31]:
 
 
 # remove datapoints with distance <0.05 milesf
@@ -554,7 +536,7 @@ print('New size: %d' % len(gdf))
 # 
 # Another way to explore this data is to check trips to/from well known places. E.g. a trip to JFK airport. Depending on the distance, a trip to an airport is often a fixed price. Let's see.
 
-# In[33]:
+# In[32]:
 
 
 # JFK airport coordinates, see https://www.travelmath.com/airport/JFK
@@ -579,7 +561,7 @@ plot_location_fare(jfk, 'JFK Airport')
 
 # The majority of rides seem to be going to the airport in this set.  The price is probably fxed around 55-60 dollars.  The price from the airport to manhattan is probably around 25-27 dollars.  
 
-# In[34]:
+# In[33]:
 
 
 ewr = (-74.175, 40.69) # Newark Liberty International Airport, see https://www.travelmath.com/airport/EWR
@@ -588,13 +570,11 @@ plot_location_fare(ewr, 'Newark Airport')
 plot_location_fare(lgr, 'LaGuardia Airport')
 
 
-# Trips from newark are rare.  Trips from newark are occasionl.  Laguardia pickpus and dropoff rates ae nearly identical.  Interestingly there are more dropoffs to the airport.  The rate is farely normal, with shifting fares it seems according to distance I assume.  
+# Trips from newark are rare.  Trips to newark are occasional.  Laguardia pickpus and dropoff rates are nearly identical.  Interestingly there are more dropoffs to the airport.  The rate is fairly normal with shifting fares it seems according to distance.
 
-# ## Fare at night is different from day time
-# 
-# To visualize the relation between time and fare/km three more columns are added to the data: the year, the hour of the day and the fare $USD per KM.
+# ## Fare Per Mile
 
-# In[35]:
+# In[34]:
 
 
 # Lambada ensure that memory issues do not arise from improperly copying. It takes forever though.  I could probaly vectorize the function. 
@@ -603,7 +583,7 @@ gdf['fare_per_mile'] = gdf.apply(lambda x: x.fare_amount/x.trip_distance, axis =
 gdf.fare_per_mile.describe()
 
 
-# In[36]:
+# In[35]:
 
 
 idx = (gdf.trip_distance < 3) & (gdf.fare_amount < 100)
@@ -621,7 +601,7 @@ plt.plot(x, theta[0]/x + theta[1], '--', c='r', lw=2);
 
 # Let's continue with the time vs fare per distance analysis. Next we use a pandas pivot table to calculate a summary and to plot them.
 
-# In[37]:
+# In[36]:
 
 
 # display pivot table
@@ -631,9 +611,9 @@ plt.ylabel('Fare $USD / mile');
 
 # It can be clearly seen that the fare $USD/mile varies over the hour. 
 
-# A more in-depth analysis of the fare / time dependency is illustrated below. Here, I calculate per year and per hour the fare and do a linear regression. When investigating the plots, you clearly see the price increase over the years.
+# A more in-depth analysis of the fare / time dependency is illustrated below. Here, I calculate per year and per hour the fare and do a linear regression.
 
-# In[38]:
+# In[37]:
 
 
 from sklearn.linear_model import LinearRegression
@@ -646,8 +626,7 @@ for year in gdf.pickup_year.unique():
     
     # plot for all hours
     for h in range(24):
-        idx = (gdf.trip_distance < 15) & (gdf.fare_amount < 100) & (gdf.pickup_hour == h) & \
-              (gdf.pickup_year == year)
+        idx = (gdf.trip_distance < 15) & (gdf.fare_amount < 100) & (gdf.pickup_hour == h) &               (gdf.pickup_year == year)
         axs[h].scatter(gdf[idx].pickup_hour, gdf[idx].fare_amount, alpha=0.2, s=1)
         axs[h].set_xlabel('distance miles')
         axs[h].set_ylabel('fare $USD')
@@ -670,7 +649,7 @@ for year in gdf.pickup_year.unique():
 # 
 # To visualize whether the fare per km varies with the location the distance to the center of New York is calculated. 
 
-# In[39]:
+# In[38]:
 
 
 # add new column to dataframe with distance in mile
@@ -679,7 +658,7 @@ gdf['distance_to_center'] = distance(nyc[1], nyc[0], gdf.pickup_latitude, gdf.pi
 
 # Plotting the distance to NYC center vs distance of the trip vs the fare amount gives some insight in this complex relation. 
 
-# In[40]:
+# In[39]:
 
 
 fig, axs = plt.subplots(1, 2, figsize=(16,6))
@@ -703,14 +682,14 @@ cbar.ax.set_ylabel('fare_amount', rotation=270);
 
 # There are a lot of 'green' dots, which is about \$50 to \$60 fare amount near 13 miles distance of NYC center of distrance of trip. This could be due to trips from/to JFK airport. Let's remove them to see what we're left with.
 
-# In[41]:
+# In[40]:
 
 
 gdf['pickup_distance_to_jfk'] = distance(jfk[1], jfk[0], gdf.pickup_latitude, gdf.pickup_longitude)
 gdf['dropoff_distance_to_jfk'] = distance(jfk[1], jfk[0], gdf.dropoff_latitude, gdf.dropoff_longitude)
 
 
-# In[42]:
+# In[41]:
 
 
 # remove all to/from JFK trips
@@ -738,9 +717,10 @@ cbar.ax.set_ylabel('fare_amount', rotation=270)
 
 # Now there are some 'yellow' dots (fare amount > \$80) left. To understand these datapoints we plot them on the map.
 
-# In[43]:
+# In[42]:
 
 
+# Pickup_locations
 idx = (gdf.fare_amount>80) & (gdf.trip_distance<35) 
 gdf[idx]
 ax = gdf.plot(figsize=(10, 10), alpha=0.5, edgecolor='k', markersize = .01)
@@ -751,7 +731,7 @@ cx.add_basemap(ax)
 # I'll remove all of the airports just to see what is left.
 # 
 
-# In[44]:
+# In[43]:
 
 
 gdf['pickup_distance_to_ewr'] = distance(ewr[1], ewr[0], gdf.pickup_latitude, gdf.pickup_longitude)
@@ -760,7 +740,7 @@ gdf['pickup_distance_to_lgr'] = distance(lgr[1], lgr[0], gdf.pickup_latitude, gd
 gdf['dropoff_distance_to_lgr'] = distance(lgr[1], lgr[0],gdf.dropoff_latitude,gdf.dropoff_longitude)
 
 
-# In[45]:
+# In[44]:
 
 
 # remove all to/from airport trips
@@ -788,7 +768,7 @@ cbar = fig.colorbar(im, ax=axs[1])
 cbar.ax.set_ylabel('fare_amount', rotation=270)
 
 
-# In[46]:
+# In[45]:
 
 
 idx = idx = ~((gdf.pickup_distance_to_jfk < 1) | (gdf.dropoff_distance_to_jfk < 1) |
@@ -799,7 +779,7 @@ ax = gdf.plot(figsize=(10, 10), alpha=0.5, edgecolor='k', markersize = .01)
 cx.add_basemap(ax)
 
 
-# In[47]:
+# In[46]:
 
 
 idx = ~((gdf.pickup_distance_to_jfk < 1) | (gdf.dropoff_distance_to_jfk < 1) |
@@ -808,11 +788,11 @@ idx = ~((gdf.pickup_distance_to_jfk < 1) | (gdf.dropoff_distance_to_jfk < 1) |
 gdf[idx]
 
 
-# Removing the to/from airport trips doesn't really change the outcome of the data.  The number of trips to the airports from the boroughs is less than I thought.  
+# Removing the to/from airport trips doesn't really change the outcome of the data.  The number of to and from trips within the set are marginal.
 
 # ## Final Thoughts
 # 
-# Very few of these cabs operatine in Manhattan. I was confused hy this. I found that most green cabs operate in the boroughs.  The few number of these going to the center, accounted for such high rates as this is not their typical range of operation. 
+# Very few of these cabs operatine in Manhattan. I was confused by this. I found that most green cabs operate in the boroughs.  The few number of these going to the center, accounted for such high rates as this is not their typical range of operation. 
 # 
 
 # 
