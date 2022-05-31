@@ -1,0 +1,810 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Churn Modelling Marketing Data with Julia &#8212; PMC Submission</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="shortcut icon" href="../_static/android-chrome-512x512.png"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="Restful Api to Upload Data to a BigTable Instance" href="restful_api.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">PMC Submission</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../index.html">
+   Justin Napolitano’s Technical Submission to PMC
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Part 1 SQL Queries and Data Exploration
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="question_1.html">
+   Part 1: BigQuery and SQL
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="nyc-taxi-fare-data-exploration.html">
+   New York City Taxi Fare Data Exploration
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Part 2 Rest Api's and DB's
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="RecordingWeather.html">
+   Question 2a: CSV Solution
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="recording_weather_datastream_solution.html">
+   Question 2b: Data Streaming Solution via BigTable
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="restful_api.html">
+   Restful Api to Upload Data to a BigTable Instance
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Part 3 Logistic Regression Model of Customer Churn Rate
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Churn Modelling Marketing Data with Julia
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/notebooks/propensity_scoring.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/justin-napolitano/pmc-submission"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#loading-data">
+   Loading Data
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#check-class-imbalance">
+     Check Class Imbalance
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#data-preprocessing">
+   Data Preprocessing
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#one-hot-encoding">
+     One Hot Encoding
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#split-train-and-test-data">
+     Split Train/and Test Data
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#build-model">
+   Build Model
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#model-predictions-and-evaluation">
+   Model Predictions and Evaluation
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#prediction-accuracy">
+     Prediction Accuracy
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#confusion-matrix">
+     Confusion Matrix
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#results">
+     Results
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#the-class-imbalance-problem">
+   The Class Imbalance Problem
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#smote-to-fix-imbalance">
+     Smote to fix imbalance
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#retest">
+     Retest
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#final-discussion">
+   Final Discussion
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Churn Modelling Marketing Data with Julia</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#loading-data">
+   Loading Data
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#check-class-imbalance">
+     Check Class Imbalance
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#data-preprocessing">
+   Data Preprocessing
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#one-hot-encoding">
+     One Hot Encoding
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#split-train-and-test-data">
+     Split Train/and Test Data
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#build-model">
+   Build Model
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#model-predictions-and-evaluation">
+   Model Predictions and Evaluation
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#prediction-accuracy">
+     Prediction Accuracy
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#confusion-matrix">
+     Confusion Matrix
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#results">
+     Results
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#the-class-imbalance-problem">
+   The Class Imbalance Problem
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#smote-to-fix-imbalance">
+     Smote to fix imbalance
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#retest">
+     Retest
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#final-discussion">
+   Final Discussion
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="churn-modelling-marketing-data-with-julia">
+<h1>Churn Modelling Marketing Data with Julia<a class="headerlink" href="#churn-modelling-marketing-data-with-julia" title="Permalink to this headline">¶</a></h1>
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="k">using</span> <span class="n">Pkg</span>
+<span class="k">using</span> <span class="n">DataFrames</span>
+<span class="k">using</span> <span class="n">CSV</span>
+<span class="k">using</span> <span class="n">Plots</span>
+<span class="k">using</span> <span class="n">GLM</span>
+<span class="k">using</span> <span class="n">StatsBase</span>
+<span class="k">using</span> <span class="n">Lathe</span>
+<span class="k">using</span> <span class="n">MLBase</span>
+<span class="k">using</span> <span class="n">ClassImbalance</span>
+<span class="k">using</span> <span class="n">ROCAnalysis</span>
+<span class="k">using</span> <span class="n">PyCall</span>
+<span class="n">sklearn</span> <span class="o">=</span> <span class="n">pyimport</span><span class="p">(</span><span class="s">&quot;sklearn.metrics&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>PyObject &lt;module &#39;sklearn.metrics&#39; from &#39;/Users/jnapolitano/venvs/finance/lib/python3.9/site-packages/sklearn/metrics/__init__.py&#39;&gt;
+</pre></div>
+</div>
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="k">function</span> <span class="n">load_csv</span><span class="p">()</span> 
+
+    <span class="n">df</span> <span class="o">=</span> <span class="n">DataFrame</span><span class="p">(</span><span class="n">CSV</span><span class="o">.</span><span class="n">File</span><span class="p">(</span><span class="s">&quot;./Churn_Modelling.csv&quot;</span><span class="p">))</span> 
+    <span class="k">return</span> <span class="n">df</span> 
+<span class="k">end</span>
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>load_csv (generic function with 1 method)
+</pre></div>
+</div>
+<div class="section" id="loading-data">
+<h2>Loading Data<a class="headerlink" href="#loading-data" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">marketing_df</span> <span class="o">=</span> <span class="n">load_csv</span><span class="p">()</span>
+<span class="n">first</span><span class="p">(</span><span class="n">marketing_df</span><span class="p">,</span><span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+<table class="data-frame"><thead><tr><th></th><th>RowNumber</th><th>CustomerId</th><th>Surname</th><th>CreditScore</th><th>Geography</th><th>Gender</th><th>Age</th><th>Tenure</th></tr><tr><th></th><th>Int64</th><th>Int64</th><th>String31</th><th>Int64</th><th>String7</th><th>String7</th><th>Int64</th><th>Int64</th></tr></thead><tbody><p>5 rows × 14 columns (omitted printing of 6 columns)</p><tr><th>1</th><td>1</td><td>15634602</td><td>Hargrave</td><td>619</td><td>France</td><td>Female</td><td>42</td><td>2</td></tr><tr><th>2</th><td>2</td><td>15647311</td><td>Hill</td><td>608</td><td>Spain</td><td>Female</td><td>41</td><td>1</td></tr><tr><th>3</th><td>3</td><td>15619304</td><td>Onio</td><td>502</td><td>France</td><td>Female</td><td>42</td><td>8</td></tr><tr><th>4</th><td>4</td><td>15701354</td><td>Boni</td><td>699</td><td>France</td><td>Female</td><td>39</td><td>1</td></tr><tr><th>5</th><td>5</td><td>15737888</td><td>Mitchell</td><td>850</td><td>Spain</td><td>Female</td><td>43</td><td>2</td></tr></tbody></table>
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">println</span><span class="p">(</span><span class="n">size</span><span class="p">(</span><span class="n">marketing_df</span><span class="p">))</span>
+<span class="n">describe</span><span class="p">(</span><span class="n">marketing_df</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>(10000, 14)
+</pre></div>
+</div>
+<table class="data-frame"><thead><tr><th></th><th>variable</th><th>mean</th><th>min</th><th>median</th><th>max</th><th>nunique</th><th>nmissing</th><th>eltype</th></tr><tr><th></th><th>Symbol</th><th>Union…</th><th>Any</th><th>Union…</th><th>Any</th><th>Union…</th><th>Nothing</th><th>DataType</th></tr></thead><tbody><p>14 rows × 8 columns</p><tr><th>1</th><td>RowNumber</td><td>5000.5</td><td>1</td><td>5000.5</td><td>10000</td><td></td><td></td><td>Int64</td></tr><tr><th>2</th><td>CustomerId</td><td>1.56909e7</td><td>15565701</td><td>1.56907e7</td><td>15815690</td><td></td><td></td><td>Int64</td></tr><tr><th>3</th><td>Surname</td><td></td><td>Abazu</td><td></td><td>Zuyeva</td><td>2932</td><td></td><td>String31</td></tr><tr><th>4</th><td>CreditScore</td><td>650.529</td><td>350</td><td>652.0</td><td>850</td><td></td><td></td><td>Int64</td></tr><tr><th>5</th><td>Geography</td><td></td><td>France</td><td></td><td>Spain</td><td>3</td><td></td><td>String7</td></tr><tr><th>6</th><td>Gender</td><td></td><td>Female</td><td></td><td>Male</td><td>2</td><td></td><td>String7</td></tr><tr><th>7</th><td>Age</td><td>38.9218</td><td>18</td><td>37.0</td><td>92</td><td></td><td></td><td>Int64</td></tr><tr><th>8</th><td>Tenure</td><td>5.0128</td><td>0</td><td>5.0</td><td>10</td><td></td><td></td><td>Int64</td></tr><tr><th>9</th><td>Balance</td><td>76485.9</td><td>0.0</td><td>97198.5</td><td>2.50898e5</td><td></td><td></td><td>Float64</td></tr><tr><th>10</th><td>NumOfProducts</td><td>1.5302</td><td>1</td><td>1.0</td><td>4</td><td></td><td></td><td>Int64</td></tr><tr><th>11</th><td>HasCrCard</td><td>0.7055</td><td>0</td><td>1.0</td><td>1</td><td></td><td></td><td>Int64</td></tr><tr><th>12</th><td>IsActiveMember</td><td>0.5151</td><td>0</td><td>1.0</td><td>1</td><td></td><td></td><td>Int64</td></tr><tr><th>13</th><td>EstimatedSalary</td><td>1.0009e5</td><td>11.58</td><td>1.00194e5</td><td>1.99992e5</td><td></td><td></td><td>Float64</td></tr><tr><th>14</th><td>Exited</td><td>0.2037</td><td>0</td><td>0.0</td><td>1</td><td></td><td></td><td>Int64</td></tr></tbody></table>
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="c"># Check column names</span>
+<span class="n">names</span><span class="p">(</span><span class="n">marketing_df</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>14-element Vector{Symbol}:
+ :RowNumber
+ :CustomerId
+ :Surname
+ :CreditScore
+ :Geography
+ :Gender
+ :Age
+ :Tenure
+ :Balance
+ :NumOfProducts
+ :HasCrCard
+ :IsActiveMember
+ :EstimatedSalary
+ :Exited
+</pre></div>
+</div>
+<div class="section" id="check-class-imbalance">
+<h3>Check Class Imbalance<a class="headerlink" href="#check-class-imbalance" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="c"># Count the classes</span>
+<span class="n">countmap</span><span class="p">(</span><span class="n">marketing_df</span><span class="o">.</span><span class="n">Exited</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Dict{Int64, Int64} with 2 entries:
+  0 =&gt; 7963
+  1 =&gt; 2037
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="data-preprocessing">
+<h2>Data Preprocessing<a class="headerlink" href="#data-preprocessing" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="one-hot-encoding">
+<h3>One Hot Encoding<a class="headerlink" href="#one-hot-encoding" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="c"># One hot encoding</span>
+<span class="n">Lathe</span><span class="o">.</span><span class="n">preprocess</span><span class="o">.</span><span class="n">OneHotEncode</span><span class="p">(</span><span class="n">marketing_df</span><span class="p">,</span><span class="ss">:Geography</span><span class="p">)</span>
+<span class="n">Lathe</span><span class="o">.</span><span class="n">preprocess</span><span class="o">.</span><span class="n">OneHotEncode</span><span class="p">(</span><span class="n">marketing_df</span><span class="p">,</span><span class="ss">:Gender</span><span class="p">)</span>
+<span class="n">select!</span><span class="p">(</span><span class="n">marketing_df</span><span class="p">,</span> <span class="n">Not</span><span class="p">([</span><span class="ss">:RowNumber</span><span class="p">,</span> <span class="ss">:CustomerId</span><span class="p">,</span><span class="ss">:Surname</span><span class="p">,</span><span class="ss">:Geography</span><span class="p">,</span><span class="ss">:Gender</span><span class="p">,</span><span class="ss">:Male</span><span class="p">]))</span>
+</pre></div>
+</div>
+<table class="data-frame"><thead><tr><th></th><th>CreditScore</th><th>Age</th><th>Tenure</th><th>Balance</th><th>NumOfProducts</th><th>HasCrCard</th><th>IsActiveMember</th></tr><tr><th></th><th>Int64</th><th>Int64</th><th>Int64</th><th>Float64</th><th>Int64</th><th>Int64</th><th>Int64</th></tr></thead><tbody><p>10,000 rows × 13 columns (omitted printing of 6 columns)</p><tr><th>1</th><td>619</td><td>42</td><td>2</td><td>0.0</td><td>1</td><td>1</td><td>1</td></tr><tr><th>2</th><td>608</td><td>41</td><td>1</td><td>83807.9</td><td>1</td><td>0</td><td>1</td></tr><tr><th>3</th><td>502</td><td>42</td><td>8</td><td>1.59661e5</td><td>3</td><td>1</td><td>0</td></tr><tr><th>4</th><td>699</td><td>39</td><td>1</td><td>0.0</td><td>2</td><td>0</td><td>0</td></tr><tr><th>5</th><td>850</td><td>43</td><td>2</td><td>1.25511e5</td><td>1</td><td>1</td><td>1</td></tr><tr><th>6</th><td>645</td><td>44</td><td>8</td><td>1.13756e5</td><td>2</td><td>1</td><td>0</td></tr><tr><th>7</th><td>822</td><td>50</td><td>7</td><td>0.0</td><td>2</td><td>1</td><td>1</td></tr><tr><th>8</th><td>376</td><td>29</td><td>4</td><td>1.15047e5</td><td>4</td><td>1</td><td>0</td></tr><tr><th>9</th><td>501</td><td>44</td><td>4</td><td>1.42051e5</td><td>2</td><td>0</td><td>1</td></tr><tr><th>10</th><td>684</td><td>27</td><td>2</td><td>1.34604e5</td><td>1</td><td>1</td><td>1</td></tr><tr><th>11</th><td>528</td><td>31</td><td>6</td><td>1.02017e5</td><td>2</td><td>0</td><td>0</td></tr><tr><th>12</th><td>497</td><td>24</td><td>3</td><td>0.0</td><td>2</td><td>1</td><td>0</td></tr><tr><th>13</th><td>476</td><td>34</td><td>10</td><td>0.0</td><td>2</td><td>1</td><td>0</td></tr><tr><th>14</th><td>549</td><td>25</td><td>5</td><td>0.0</td><td>2</td><td>0</td><td>0</td></tr><tr><th>15</th><td>635</td><td>35</td><td>7</td><td>0.0</td><td>2</td><td>1</td><td>1</td></tr><tr><th>16</th><td>616</td><td>45</td><td>3</td><td>1.43129e5</td><td>2</td><td>0</td><td>1</td></tr><tr><th>17</th><td>653</td><td>58</td><td>1</td><td>1.32603e5</td><td>1</td><td>1</td><td>0</td></tr><tr><th>18</th><td>549</td><td>24</td><td>9</td><td>0.0</td><td>2</td><td>1</td><td>1</td></tr><tr><th>19</th><td>587</td><td>45</td><td>6</td><td>0.0</td><td>1</td><td>0</td><td>0</td></tr><tr><th>20</th><td>726</td><td>24</td><td>6</td><td>0.0</td><td>2</td><td>1</td><td>1</td></tr><tr><th>21</th><td>732</td><td>41</td><td>8</td><td>0.0</td><td>2</td><td>1</td><td>1</td></tr><tr><th>22</th><td>636</td><td>32</td><td>8</td><td>0.0</td><td>2</td><td>1</td><td>0</td></tr><tr><th>23</th><td>510</td><td>38</td><td>4</td><td>0.0</td><td>1</td><td>1</td><td>0</td></tr><tr><th>24</th><td>669</td><td>46</td><td>3</td><td>0.0</td><td>2</td><td>0</td><td>1</td></tr><tr><th>25</th><td>846</td><td>38</td><td>5</td><td>0.0</td><td>1</td><td>1</td><td>1</td></tr><tr><th>26</th><td>577</td><td>25</td><td>3</td><td>0.0</td><td>2</td><td>0</td><td>1</td></tr><tr><th>27</th><td>756</td><td>36</td><td>2</td><td>1.36816e5</td><td>1</td><td>1</td><td>1</td></tr><tr><th>28</th><td>571</td><td>44</td><td>9</td><td>0.0</td><td>2</td><td>0</td><td>0</td></tr><tr><th>29</th><td>574</td><td>43</td><td>3</td><td>1.41349e5</td><td>1</td><td>1</td><td>1</td></tr><tr><th>30</th><td>411</td><td>29</td><td>0</td><td>59697.2</td><td>2</td><td>1</td><td>1</td></tr><tr><th>&vellip;</th><td>&vellip;</td><td>&vellip;</td><td>&vellip;</td><td>&vellip;</td><td>&vellip;</td><td>&vellip;</td><td>&vellip;</td></tr></tbody></table>
+</div>
+<div class="section" id="split-train-and-test-data">
+<h3>Split Train/and Test Data<a class="headerlink" href="#split-train-and-test-data" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="c"># Train test split</span>
+<span class="k">using</span> <span class="n">Lathe</span><span class="o">.</span><span class="n">preprocess</span><span class="o">:</span> <span class="n">TrainTestSplit</span>
+<span class="n">train</span><span class="p">,</span> <span class="n">test</span> <span class="o">=</span> <span class="n">TrainTestSplit</span><span class="p">(</span><span class="n">marketing_df</span><span class="p">,</span><span class="mf">.75</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="build-model">
+<h2>Build Model<a class="headerlink" href="#build-model" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="c"># Train logistic regression model</span>
+<span class="n">fm</span> <span class="o">=</span> <span class="nd">@formula</span><span class="p">(</span><span class="n">Exited</span> <span class="o">~</span> <span class="n">CreditScore</span> <span class="o">+</span> <span class="n">Age</span> <span class="o">+</span> <span class="n">Tenure</span> <span class="o">+</span> <span class="n">Balance</span> <span class="o">+</span> <span class="n">NumOfProducts</span> <span class="o">+</span> <span class="n">HasCrCard</span> <span class="o">+</span> <span class="n">IsActiveMember</span> <span class="o">+</span> <span class="n">EstimatedSalary</span> <span class="o">+</span> <span class="n">Female</span> <span class="o">+</span> <span class="n">France</span> <span class="o">+</span> <span class="n">Spain</span><span class="p">)</span>
+<span class="n">logit</span> <span class="o">=</span> <span class="n">glm</span><span class="p">(</span><span class="n">fm</span><span class="p">,</span> <span class="n">train</span><span class="p">,</span> <span class="n">Binomial</span><span class="p">(),</span> <span class="n">ProbitLink</span><span class="p">())</span>
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>StatsModels.TableRegressionModel{GeneralizedLinearModel{GLM.GlmResp{Vector{Float64}, Binomial{Float64}, ProbitLink}, GLM.DensePredChol{Float64, LinearAlgebra.Cholesky{Float64, Matrix{Float64}}}}, Matrix{Float64}}
+
+Exited ~ 1 + CreditScore + Age + Tenure + Balance + NumOfProducts + HasCrCard + IsActiveMember + EstimatedSalary + Female + France + Spain
+
+Coefficients:
+───────────────────────────────────────────────────────────────────────────────────────
+                        Coef.   Std. Error       z  Pr(&gt;|z|)     Lower 95%    Upper 95%
+───────────────────────────────────────────────────────────────────────────────────────
+(Intercept)      -1.90933      0.165007     -11.57    &lt;1e-30  -2.23274      -1.58592
+CreditScore      -0.000321917  0.000183184   -1.76    0.0789  -0.000680951   3.71172e-5
+Age               0.040893     0.00165251    24.75    &lt;1e-99   0.0376541     0.0441318
+Tenure           -0.008864     0.00611129    -1.45    0.1469  -0.0208419     0.0031139
+Balance           1.65933e-6   3.30286e-7     5.02    &lt;1e-06   1.01198e-6    2.30668e-6
+NumOfProducts    -0.040173     0.0309946     -1.30    0.1949  -0.100921      0.0205753
+HasCrCard        -0.00442931   0.0386394     -0.11    0.9087  -0.0801612     0.0713026
+IsActiveMember   -0.557894     0.0365213    -15.28    &lt;1e-51  -0.629475     -0.486314
+EstimatedSalary   2.2925e-7    3.07604e-7     0.75    0.4561  -3.73644e-7    8.32143e-7
+Female            0.301642     0.0354259      8.51    &lt;1e-16   0.232209      0.371076
+France           -0.450226     0.0446176    -10.09    &lt;1e-23  -0.537674     -0.362777
+Spain            -0.443184     0.051707      -8.57    &lt;1e-16  -0.544527     -0.34184
+───────────────────────────────────────────────────────────────────────────────────────
+</pre></div>
+</div>
+</div>
+<div class="section" id="model-predictions-and-evaluation">
+<h2>Model Predictions and Evaluation<a class="headerlink" href="#model-predictions-and-evaluation" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="c"># Predict the target variable on test data </span>
+<span class="n">prediction</span> <span class="o">=</span> <span class="n">predict</span><span class="p">(</span><span class="n">logit</span><span class="p">,</span><span class="n">test</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>2406-element Vector{Union{Missing, Float64}}:
+ 0.24401107345293602
+ 0.1266535868551322
+ 0.031721959583257124
+ 0.11357816519004983
+ 0.24824114578495612
+ 0.024688755265128235
+ 0.14209354336141483
+ 0.18528877855991494
+ 0.15470097145575007
+ 0.25962439112051505
+ 0.15117890643161475
+ 0.2110682947689441
+ 0.06358192272871947
+ ⋮
+ 0.24899439141513482
+ 0.23449577199293972
+ 0.13610439167926225
+ 0.1737934374110589
+ 0.1341643450975004
+ 0.5831068095078078
+ 0.2950497674661655
+ 0.04139159536998556
+ 0.06795785137729822
+ 0.017204995327274736
+ 0.12888818685657766
+ 0.15310112069144077
+</pre></div>
+</div>
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="c"># Convert probability score to class</span>
+<span class="n">prediction_class</span> <span class="o">=</span> <span class="p">[</span><span class="k">if</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="mf">0.5</span> <span class="mi">0</span> <span class="k">else</span> <span class="mi">1</span> <span class="k">end</span> <span class="k">for</span> <span class="n">x</span> <span class="k">in</span> <span class="n">prediction</span><span class="p">];</span>
+
+<span class="n">prediction_df</span> <span class="o">=</span> <span class="n">DataFrame</span><span class="p">(</span><span class="n">y_actual</span> <span class="o">=</span> <span class="n">test</span><span class="o">.</span><span class="n">Exited</span><span class="p">,</span> <span class="n">y_predicted</span> <span class="o">=</span> <span class="n">prediction_class</span><span class="p">,</span> <span class="n">prob_predicted</span> <span class="o">=</span> <span class="n">prediction</span><span class="p">);</span>
+<span class="n">prediction_df</span><span class="o">.</span><span class="n">correctly_classified</span> <span class="o">=</span> <span class="n">prediction_df</span><span class="o">.</span><span class="n">y_actual</span> <span class="o">.==</span> <span class="n">prediction_df</span><span class="o">.</span><span class="n">y_predicted</span>
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>2406-element BitVector:
+ 0
+ 1
+ 1
+ 1
+ 1
+ 1
+ 1
+ 1
+ 1
+ 0
+ 1
+ 1
+ 1
+ ⋮
+ 1
+ 1
+ 1
+ 1
+ 1
+ 1
+ 1
+ 1
+ 1
+ 1
+ 1
+ 1
+</pre></div>
+</div>
+<div class="section" id="prediction-accuracy">
+<h3>Prediction Accuracy<a class="headerlink" href="#prediction-accuracy" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">accuracy</span> <span class="o">=</span> <span class="n">mean</span><span class="p">(</span><span class="n">prediction_df</span><span class="o">.</span><span class="n">correctly_classified</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>0.8100581878636741
+</pre></div>
+</div>
+</div>
+<div class="section" id="confusion-matrix">
+<h3>Confusion Matrix<a class="headerlink" href="#confusion-matrix" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="c"># confusion_matrix = confusmat(2,prediction_df.y_actual, prediction_df.y_predicted)</span>
+<span class="n">confusion_matrix</span> <span class="o">=</span> <span class="n">MLBase</span><span class="o">.</span><span class="n">roc</span><span class="p">(</span><span class="n">prediction_df</span><span class="o">.</span><span class="n">y_actual</span><span class="p">,</span> <span class="n">prediction_df</span><span class="o">.</span><span class="n">y_predicted</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>ROCNums{Int64}
+  p = 510
+  n = 1896
+  tp = 105
+  tn = 1844
+  fp = 52
+  fn = 405
+</pre></div>
+</div>
+</div>
+<div class="section" id="results">
+<h3>Results<a class="headerlink" href="#results" title="Permalink to this headline">¶</a></h3>
+<p>The model is estimating far to many exiting cases.  About 4 times the true value.</p>
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">fpr</span><span class="p">,</span> <span class="n">tpr</span><span class="p">,</span> <span class="n">thresholds</span> <span class="o">=</span> <span class="n">sklearn</span><span class="o">.</span><span class="n">roc_curve</span><span class="p">(</span><span class="n">prediction_df</span><span class="o">.</span><span class="n">y_actual</span><span class="p">,</span> <span class="n">prediction_df</span><span class="o">.</span><span class="n">prob_predicted</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>([0.0, 0.0, 0.0, 0.0005274261603375527, 0.0005274261603375527, 0.0010548523206751054, 0.0010548523206751054, 0.0015822784810126582, 0.0015822784810126582, 0.0026371308016877636  …  0.8829113924050633, 0.9066455696202531, 0.9066455696202531, 0.9193037974683544, 0.9193037974683544, 0.92457805907173, 0.92457805907173, 0.9725738396624473, 0.9725738396624473, 1.0], [0.0, 0.00196078431372549, 0.00392156862745098, 0.00392156862745098, 0.00784313725490196, 0.00784313725490196, 0.01568627450980392, 0.01568627450980392, 0.03137254901960784, 0.03137254901960784  …  0.9921568627450981, 0.9921568627450981, 0.9941176470588236, 0.9941176470588236, 0.996078431372549, 0.996078431372549, 0.9980392156862745, 0.9980392156862745, 1.0, 1.0], [1.8467335270755767, 0.8467335270755767, 0.8140811888019499, 0.8092555110984978, 0.7970873802691381, 0.79684704533007, 0.7719016175181805, 0.7709263202992206, 0.7060214606993195, 0.6994801619873218  …  0.04233143871590189, 0.03786940431261241, 0.037850945580692276, 0.035665362242897694, 0.03532968973176317, 0.03416668456674327, 0.03407543014692377, 0.020932892669754958, 0.020885871157504798, 0.00597005405256463])
+</pre></div>
+</div>
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="c"># Plot ROC curve</span>
+<span class="n">plot</span><span class="p">(</span><span class="n">fpr</span><span class="p">,</span> <span class="n">tpr</span><span class="p">)</span>
+<span class="n">title!</span><span class="p">(</span><span class="s">&quot;ROC curve&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><img alt="svg" src="../_images/propensity_scoring_24_0.svg" /></p>
+</div>
+</div>
+<div class="section" id="the-class-imbalance-problem">
+<h2>The Class Imbalance Problem<a class="headerlink" href="#the-class-imbalance-problem" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="c"># Count the classes</span>
+<span class="n">countmap</span><span class="p">(</span><span class="n">marketing_df</span><span class="o">.</span><span class="n">Exited</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Dict{Int64, Int64} with 2 entries:
+  0 =&gt; 7963
+  1 =&gt; 2037
+</pre></div>
+</div>
+<div class="section" id="smote-to-fix-imbalance">
+<h3>Smote to fix imbalance<a class="headerlink" href="#smote-to-fix-imbalance" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">X2</span><span class="p">,</span> <span class="n">y2</span> <span class="o">=</span><span class="n">smote</span><span class="p">(</span><span class="n">marketing_df</span><span class="p">[</span><span class="o">!</span><span class="p">,[</span><span class="ss">:CreditScore</span><span class="p">,</span><span class="ss">:Age</span> <span class="p">,</span><span class="ss">:Tenure</span><span class="p">,</span> <span class="ss">:Balance</span><span class="p">,</span> <span class="ss">:NumOfProducts</span><span class="p">,</span> <span class="ss">:HasCrCard</span><span class="p">,</span> <span class="ss">:IsActiveMember</span><span class="p">,</span> <span class="ss">:EstimatedSalary</span><span class="p">,</span> <span class="ss">:Female</span> <span class="p">,</span> <span class="ss">:France</span><span class="p">,</span> <span class="ss">:Spain</span><span class="p">]],</span> <span class="n">marketing_df</span><span class="o">.</span><span class="n">Exited</span><span class="p">,</span> <span class="n">k</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span> <span class="n">pct_under</span> <span class="o">=</span> <span class="mi">150</span><span class="p">,</span> <span class="n">pct_over</span> <span class="o">=</span> <span class="mi">200</span><span class="p">)</span>
+<span class="n">df_balanced</span> <span class="o">=</span> <span class="n">X2</span>
+<span class="n">df_balanced</span><span class="o">.</span><span class="n">Exited</span> <span class="o">=</span> <span class="n">y2</span><span class="p">;</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">df_balanced</span><span class="p">;</span>
+
+<span class="c"># Count the classes</span>
+<span class="n">countmap</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">Exited</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Dict{Int64, Int64} with 2 entries:
+  0 =&gt; 6111
+  1 =&gt; 6111
+</pre></div>
+</div>
+</div>
+<div class="section" id="retest">
+<h3>Retest<a class="headerlink" href="#retest" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="c"># Train test split</span>
+<span class="n">train</span><span class="p">,</span> <span class="n">test</span> <span class="o">=</span> <span class="n">TrainTestSplit</span><span class="p">(</span><span class="n">df</span><span class="p">,</span><span class="mf">.75</span><span class="p">);</span>
+
+<span class="c"># Model Building</span>
+<span class="n">fm</span> <span class="o">=</span> <span class="nd">@formula</span><span class="p">(</span><span class="n">Exited</span> <span class="o">~</span> <span class="n">CreditScore</span> <span class="o">+</span> <span class="n">Age</span> <span class="o">+</span> <span class="n">Tenure</span> <span class="o">+</span> <span class="n">Balance</span> <span class="o">+</span> <span class="n">NumOfProducts</span> <span class="o">+</span> <span class="n">HasCrCard</span> <span class="o">+</span> <span class="n">IsActiveMember</span> <span class="o">+</span> <span class="n">EstimatedSalary</span> <span class="o">+</span> <span class="n">Female</span> <span class="o">+</span> <span class="n">France</span> <span class="o">+</span> <span class="n">Spain</span><span class="p">)</span>
+<span class="n">logit</span> <span class="o">=</span> <span class="n">glm</span><span class="p">(</span><span class="n">fm</span><span class="p">,</span> <span class="n">train</span><span class="p">,</span> <span class="n">Binomial</span><span class="p">(),</span> <span class="n">ProbitLink</span><span class="p">())</span>
+
+<span class="c"># Predict the target variable on test data </span>
+<span class="n">prediction</span> <span class="o">=</span> <span class="n">predict</span><span class="p">(</span><span class="n">logit</span><span class="p">,</span><span class="n">test</span><span class="p">)</span>
+
+<span class="c"># Convert probability score to class</span>
+<span class="n">prediction_class</span> <span class="o">=</span> <span class="p">[</span><span class="k">if</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="mf">0.5</span> <span class="mi">0</span> <span class="k">else</span> <span class="mi">1</span> <span class="k">end</span> <span class="k">for</span> <span class="n">x</span> <span class="k">in</span> <span class="n">prediction</span><span class="p">];</span>
+
+<span class="n">prediction_df</span> <span class="o">=</span> <span class="n">DataFrame</span><span class="p">(</span><span class="n">y_actual</span> <span class="o">=</span> <span class="n">test</span><span class="o">.</span><span class="n">Exited</span><span class="p">,</span> <span class="n">y_predicted</span> <span class="o">=</span> <span class="n">prediction_class</span><span class="p">,</span> <span class="n">prob_predicted</span> <span class="o">=</span> <span class="n">prediction</span><span class="p">);</span>
+<span class="n">prediction_df</span><span class="o">.</span><span class="n">correctly_classified</span> <span class="o">=</span> <span class="n">prediction_df</span><span class="o">.</span><span class="n">y_actual</span> <span class="o">.==</span> <span class="n">prediction_df</span><span class="o">.</span><span class="n">y_predicted</span>
+
+
+<span class="c"># Accuracy Score</span>
+<span class="n">accuracy</span> <span class="o">=</span> <span class="n">mean</span><span class="p">(</span><span class="n">prediction_df</span><span class="o">.</span><span class="n">correctly_classified</span><span class="p">)</span>
+<span class="n">print</span><span class="p">(</span><span class="s">&quot;Accuracy of the model is : &quot;</span><span class="p">,</span><span class="n">accuracy</span><span class="p">)</span>
+
+<span class="c"># Confusion Matrix</span>
+<span class="n">confusion_matrix</span> <span class="o">=</span> <span class="n">MLBase</span><span class="o">.</span><span class="n">roc</span><span class="p">(</span><span class="n">prediction_df</span><span class="o">.</span><span class="n">y_actual</span><span class="p">,</span> <span class="n">prediction_df</span><span class="o">.</span><span class="n">y_predicted</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Accuracy of the model is : 0.7169563791407019
+
+
+
+
+ROCNums{Int64}
+  p = 1550
+  n = 1499
+  tp = 1091
+  tn = 1095
+  fp = 404
+  fn = 459
+</pre></div>
+</div>
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">fpr</span><span class="p">,</span> <span class="n">tpr</span><span class="p">,</span> <span class="n">thresholds</span> <span class="o">=</span> <span class="n">sklearn</span><span class="o">.</span><span class="n">roc_curve</span><span class="p">(</span><span class="n">prediction_df</span><span class="o">.</span><span class="n">y_actual</span><span class="p">,</span> <span class="n">prediction_df</span><span class="o">.</span><span class="n">prob_predicted</span><span class="p">)</span>
+<span class="c"># Plot ROC curve</span>
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>([0.0, 0.0, 0.0, 0.00066711140760507, 0.00066711140760507, 0.00133422281521014, 0.00133422281521014, 0.0020013342228152103, 0.0020013342228152103, 0.00266844563042028  …  0.9846564376250834, 0.9893262174783188, 0.9893262174783188, 0.9913275517011341, 0.9913275517011341, 0.9973315543695798, 0.9986657771847899, 0.9993328885923949, 0.9993328885923949, 1.0], [0.0, 0.0006451612903225806, 0.0025806451612903226, 0.0025806451612903226, 0.005161290322580645, 0.005161290322580645, 0.007741935483870968, 0.007741935483870968, 0.00903225806451613, 0.00903225806451613  …  0.9980645161290322, 0.9980645161290322, 0.9987096774193548, 0.9987096774193548, 0.9993548387096775, 0.9993548387096775, 0.9993548387096775, 0.9993548387096775, 1.0, 1.0], [1.9907624292252022, 0.9907624292252022, 0.983731024429679, 0.97951657298985, 0.9730082291507035, 0.9713532719467679, 0.9629327481173712, 0.9604203755106321, 0.9593444340323958, 0.9584649467140461  …  0.06923199350115271, 0.06553287523911823, 0.06469253560487893, 0.058594401854125504, 0.057872556108602216, 0.034170953161915506, 0.03357051125028141, 0.03297342671224324, 0.030937011626933943, 0.023743078872535135])
+</pre></div>
+</div>
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">plot</span><span class="p">(</span><span class="n">fpr</span><span class="p">,</span> <span class="n">tpr</span><span class="p">)</span>
+<span class="n">title!</span><span class="p">(</span><span class="s">&quot;ROC curve&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><img alt="svg" src="../_images/propensity_scoring_32_0.svg" /></p>
+</div>
+</div>
+<div class="section" id="final-discussion">
+<h2>Final Discussion<a class="headerlink" href="#final-discussion" title="Permalink to this headline">¶</a></h2>
+<p>When accounting for class imbalance, the model accuracy is reduced to 71 percent from about 81 percent.</p>
+<p>While this seems counterintutive, the second model is actually a better model overall.</p>
+<p>The model with 81 percent accuracy is simply more accurate by chance.  The bin of exits to remains is far larger.  Thus, reported accuracy is higher.</p>
+<p>When the classes are normalized, we see a prediction of about 71 percent.  Confidently, I can say that this model would scale appropriately.</p>
+<p>The first model on the other hand would scale to about 25-30 percent accuracy.</p>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./notebooks"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="restful_api.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Restful Api to Upload Data to a BigTable Instance</p>
+        </div>
+    </a>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      By Justin Napolitano<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>

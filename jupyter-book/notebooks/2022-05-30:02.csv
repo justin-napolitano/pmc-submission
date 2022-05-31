@@ -1,0 +1,3 @@
+,coord_lon,coord_lat,weather_0_id,weather_0_main,weather_0_description,weather_0_icon,base,main_temp,main_feels_like,main_temp_min,main_temp_max,main_pressure,main_humidity,visibility,wind_speed,wind_deg,clouds_all,dt,sys_type,sys_id,sys_country,sys_sunrise,sys_sunset,timezone,id,name,cod,timestamp
+0,-118.446,34.0475,800,Clear,clear sky,01n,stations,288.76,288.49,286.73,291.1,1009,81,10000,4.12,120,0,1653896317,2,2006060,US,1653914656,1653965927,-25200,5408522,"Westwood, Los Angeles",200,2022-05-30:02:43:50:864099
+0,-118.446,34.0475,800,Clear,clear sky,01n,stations,288.76,288.49,286.73,291.1,1009,81,10000,4.12,120,0,1653896317,2,2006060,US,1653914656,1653965927,-25200,5408522,"Westwood, Los Angeles",200,2022-05-30:02:48:31:392044
