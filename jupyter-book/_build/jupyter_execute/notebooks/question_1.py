@@ -72,7 +72,7 @@ def naive_query_passengers_by_month():
 naive_df = naive_query_passengers_by_month()    
 
 
-# In[5]:
+# In[22]:
 
 
 naive_df 
@@ -80,7 +80,7 @@ naive_df
 
 # I then attempted to create intervals to unpiviot the table with the following code.  
 
-# In[6]:
+# In[108]:
 
 
 def total_passenger_total_ammount():
@@ -108,7 +108,7 @@ def total_passenger_total_ammount():
 df_first_try = total_passenger_total_ammount()
 
 
-# In[7]:
+# In[109]:
 
 
 df_first_try
@@ -120,7 +120,7 @@ df_first_try
 
 # ### Cleaning the data
 
-# In[8]:
+# In[135]:
 
 
 def clean_up_data():
@@ -173,7 +173,7 @@ def clean_up_data():
 clean_df = clean_up_data()
 
 
-# In[9]:
+# In[198]:
 
 
 clean_df.columns
@@ -188,7 +188,7 @@ clean_df.columns
 # 
 # For the sake of the problem given to me, I include the table above as a tmp table within the following working queries.  
 
-# In[10]:
+# In[156]:
 
 
 def total_passenger_total_ammount():
@@ -292,7 +292,7 @@ df = total_passenger_total_ammount()
     
 
 
-# In[11]:
+# In[157]:
 
 
 df
@@ -308,7 +308,7 @@ df
 # 
 # What has been the average hourly passenger count throughout the year?
 
-# In[12]:
+# In[169]:
 
 
 def hourly_count_through_year():
@@ -383,7 +383,7 @@ df = hourly_count_through_year()
     
 
 
-# In[13]:
+# In[170]:
 
 
 df
@@ -399,7 +399,7 @@ df
 # 
 # * What has been the change/delta in total amount billed over days? What we would like see is how much (positive or negative)?
 
-# In[14]:
+# In[188]:
 
 
 def difference_by_day():
@@ -488,7 +488,7 @@ df = difference_by_day()
     
 
 
-# In[15]:
+# In[189]:
 
 
 df
@@ -509,7 +509,7 @@ df
 # 
 # Date_trunc will return the requested results per date per hour.
 
-# In[16]:
+# In[209]:
 
 
 def longest_rides_per_hour():
@@ -604,7 +604,7 @@ df = longest_rides_per_hour()
     
 
 
-# In[17]:
+# In[210]:
 
 
 df
@@ -625,7 +625,7 @@ df
 # 
 # Extract will record the values by hour of the 24 hour clock.  It will aggregate accordinly.
 
-# In[18]:
+# In[211]:
 
 
 def longest_rides_per_hour_etracted():
@@ -720,7 +720,7 @@ df = longest_rides_per_hour_etracted()
     
 
 
-# In[19]:
+# In[212]:
 
 
 df
