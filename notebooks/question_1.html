@@ -150,6 +150,18 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
 </ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Part 4 Cost of Living Projections and Salary Expectations
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="cost_of_living_monte_carlo.html">
+   Cost of Living Projections
+  </a>
+ </li>
+</ul>
 
     </div>
 </nav> <!-- To handle the deprecated key -->
@@ -512,6 +524,19 @@ const thebe_selector_output = ".output, .cell_output"
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/jnapolitano/venvs/finance/lib/python3.9/site-packages/geopandas/_compat.py:111: UserWarning: The Shapely GEOS version (3.10.2-CAPI-1.16.0) is incompatible with the GEOS version PyGEOS was compiled with (3.10.1-CAPI-1.16.0). Conversions between both will be slow.
+  warnings.warn(
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;GOOGLE_APPLICATION_CREDENTIALS&quot;</span><span class="p">]</span> <span class="o">=</span><span class="s2">&quot;/Users/jnapolitano/.creds/creds.json&quot;</span>
+</pre></div>
+</div>
+</div>
 </div>
 </div>
 <div class="section" id="utility-big-query-function">
@@ -521,7 +546,6 @@ const thebe_selector_output = ".output, .cell_output"
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">query_big_query</span><span class="p">(</span><span class="n">query_string</span><span class="p">):</span>
     <span class="n">client</span> <span class="o">=</span> <span class="n">bigquery</span><span class="o">.</span><span class="n">Client</span><span class="p">()</span>
     <span class="n">query_job</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">query_string</span><span class="p">)</span>
-
     <span class="n">results</span> <span class="o">=</span> <span class="n">query_job</span><span class="o">.</span><span class="n">result</span><span class="p">()</span>  <span class="c1"># Waits for job to complete.</span>
     <span class="k">return</span> <span class="n">results</span>
 </pre></div>
@@ -2177,16 +2201,16 @@ const thebe_selector_output = ".output, .cell_output"
         },
         codeMirrorConfig: {
             theme: "abcdef",
-            mode: "finance"
+            mode: "venv"
         },
         kernelOptions: {
-            kernelName: "finance",
+            kernelName: "venv",
             path: "./notebooks"
         },
         predefinedOutput: true
     }
     </script>
-    <script>kernelName = 'finance'</script>
+    <script>kernelName = 'venv'</script>
 
               </div>
               

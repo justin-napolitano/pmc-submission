@@ -1,6 +1,5 @@
 # Churn Modelling Marketing Data with Julia 
 
-
 ```julia
 using Pkg
 using DataFrames

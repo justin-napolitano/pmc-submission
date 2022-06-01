@@ -150,6 +150,18 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
 </ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Part 4 Cost of Living Projections and Salary Expectations
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="cost_of_living_monte_carlo.html">
+   Cost of Living Projections
+  </a>
+ </li>
+</ul>
 
     </div>
 </nav> <!-- To handle the deprecated key -->
@@ -275,8 +287,6 @@ const thebe_selector_output = ".output, .cell_output"
     <span class="n">city_name</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">args</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;city&#39;</span><span class="p">,</span><span class="kc">None</span><span class="p">)</span>
 
     
-
-
     <span class="n">input_table</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;datetime&#39;</span><span class="p">:[</span><span class="n">datetime</span><span class="p">],</span><span class="s1">&#39;timezone&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">timezone</span><span class="p">],</span> <span class="s1">&#39;city_name&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">city_name</span><span class="p">],</span> <span class="s1">&#39;latitude&#39;</span><span class="p">:[</span><span class="n">latitude</span><span class="p">],</span> <span class="s1">&#39;longitude&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">longitude</span><span class="p">],</span> <span class="s2">&quot;temp&quot;</span><span class="p">:</span> <span class="p">[</span><span class="n">temp</span><span class="p">],</span><span class="s2">&quot;feels_like&quot;</span><span class="p">:</span> <span class="p">[</span><span class="n">feels_like</span><span class="p">],</span><span class="s2">&quot;temp_max&quot;</span><span class="p">:</span> <span class="p">[</span><span class="n">temp_max</span><span class="p">],</span> <span class="s2">&quot;temp_min&quot;</span><span class="p">:</span> <span class="p">[</span><span class="n">temp_min</span><span class="p">],</span> <span class="s2">&quot;humidity&quot;</span><span class="p">:</span> <span class="p">[</span><span class="n">humidity</span><span class="p">],</span> <span class="s2">&quot;pressure&quot;</span><span class="p">:[</span><span class="n">pressure</span><span class="p">],</span> <span class="s1">&#39;sunrise&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">sunrise</span><span class="p">],</span> <span class="s1">&#39;sunset&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">sunset</span><span class="p">]}</span>
     <span class="n">input_table</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">input_table</span><span class="p">)</span>
     <span class="c1">#input_table[&quot;datetime&quot;]= input_table[&quot;date_time&quot;].map(strdate_time_obj = datetime.strptime(date_time_str, &#39;%d/%m/%y %H:%M:%S&#39;))</span>
