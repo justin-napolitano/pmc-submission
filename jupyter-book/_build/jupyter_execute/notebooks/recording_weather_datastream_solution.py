@@ -86,10 +86,10 @@ def get_key(key_path):
 
 
 
+
 # ### Making the Weather Query String
 
 # In[3]:
-
 
 
 def make_query_string(base_url,lat,long,key):
@@ -99,6 +99,7 @@ def make_query_string(base_url,lat,long,key):
     query_string = "&".join([lat_string,long_string,appid_string])
     query_string = "?".join([base_url,query_string])
     return query_string
+
 
 
 # ### General Request function
@@ -184,6 +185,7 @@ def make_update_string(response_dict):
     query_str = base_url + query_str
     return query_str
     
+
 
 
 # In[8]:
