@@ -31,12 +31,6 @@ def query_big_query(query_string):
     return results
 
 
-# In[3]:
-
-
-os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "/Users/jnapolitano/Projects/pmc-submission/creds.json"
-
-
 # ## Question 1
 # 1) Use the publicly available BigQuery dataset named `nyc-tlc.green.trips_2015`, provide SQL queries to answer the following questions:
 # * What is the total amount and passenger counts for the months of February, March and April?
@@ -53,7 +47,7 @@ os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "/Users/jnapolitano/Projects/pmc-
 # 
 # For example the code below simply considered the pickup_datetime in the analysis.
 
-# In[4]:
+# In[3]:
 
 
 def naive_query_passengers_by_month():
