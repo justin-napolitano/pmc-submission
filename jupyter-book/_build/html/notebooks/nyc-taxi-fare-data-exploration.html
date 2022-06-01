@@ -1374,23 +1374,23 @@ dtype: object
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_43482/3595766640.py:6: MatplotlibDeprecationWarning: Auto-removal of grids by pcolor() and pcolormesh() is deprecated since 3.5 and will be removed two minor releases later; please call grid(False) first.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_46045/3595766640.py:6: MatplotlibDeprecationWarning: Auto-removal of grids by pcolor() and pcolormesh() is deprecated since 3.5 and will be removed two minor releases later; please call grid(False) first.
   cbar = fig.colorbar(im, ax=axs[0])
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_43482/3595766640.py:14: MatplotlibDeprecationWarning: Auto-removal of grids by pcolor() and pcolormesh() is deprecated since 3.5 and will be removed two minor releases later; please call grid(False) first.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_46045/3595766640.py:14: MatplotlibDeprecationWarning: Auto-removal of grids by pcolor() and pcolormesh() is deprecated since 3.5 and will be removed two minor releases later; please call grid(False) first.
   cbar = fig.colorbar(im, ax=axs[1])
 </pre></div>
 </div>
 <img alt="../_images/nyc-taxi-fare-data-exploration_34_2.png" src="../_images/nyc-taxi-fare-data-exploration_34_2.png" />
 </div>
 </div>
-<p>These plots clearly show that the datapoints concentrate around Manhatten and the three airports (JFK, EWS, LGR).</p>
+<p>These plots clearly show that the dropoff datapoints concentrate around Manhatten and the three airports (JFK, EWS, LGR).</p>
+<p>Pickup locations are typically in the boroughs.</p>
 </div>
 </div>
 <div class="section" id="pickup-traffic-density">
 <h2>Pickup traffic density<a class="headerlink" href="#pickup-traffic-density" title="Permalink to this headline">¶</a></h2>
-<p>The density plots of above triggered me to see if I can visualize traffic density by the hour (and year). By counting the number of pickups in an area we should get some impression of the traffic density. The more traffic, the longer it could take to make a drive.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># add time information</span>
@@ -1414,7 +1414,7 @@ dtype: object
 <span class="n">n_bins_lon</span> <span class="o">=</span> <span class="mi">30</span>
 <span class="n">n_bins_lat</span> <span class="o">=</span> <span class="mi">30</span>
 
-<span class="c1"># focus on traffic in Manhattan</span>
+
 <span class="n">BB_traffic</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="mf">74.5</span><span class="p">,</span> <span class="o">-</span><span class="mf">72.8</span><span class="p">,</span> <span class="mf">40.5</span><span class="p">,</span> <span class="mf">41.8</span><span class="p">)</span>
 
 <span class="c1"># define function to calculate pickup traffic density</span>
@@ -1473,7 +1473,7 @@ dtype: object
 </div>
 </div>
 <p>Now, let’s calculate the density and visualize the plots.</p>
-<p>NOTE: the quality of the plots depends on the number of datapoints used. This notebook uses by default 500k points, which is not sufficient for good traffic density plots. Increase the number of points and you get better plots.</p>
+<p>NOTE: the quality of the plots depends on the number of datapoints used. This dataset used around a million datapoints.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">traffic</span> <span class="o">=</span> <span class="n">calculate_trafic_density</span><span class="p">(</span><span class="n">gdf</span><span class="p">)</span>
@@ -1890,7 +1890,6 @@ Let’s also see the influence of <code class="docutils literal notranslate"><sp
 <p>90305 rows × 26 columns</p>
 </div></div></div>
 </div>
-<p>A <code class="docutils literal notranslate"><span class="pre">passenger_count</span></code> of zero seems odd. Perhaps a taxi transporting some goods or an administration error?</p>
 <p>Instead of looking to the <code class="docutils literal notranslate"><span class="pre">fare_amount</span></code> using the ‘fare per mile’ also provides some insights.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1928,10 +1927,10 @@ Let’s also see the influence of <code class="docutils literal notranslate"><sp
 </div>
 <p>From this plot we notice:</p>
 <ul class="simple">
-<li><p>There are trips with zero distance but with a non-zero fare. Could this be trips from and to the same location? Predicting these fares will be difficult as there is likely not sufficient information in the dataset.  They may also be due to cabbies not reporting distance but reporting a fare.</p></li>
+<li><p>There are trips with zero distance but with a non-zero fare. Could this be trips from and to the same location?  They may also be due to cabbies not reporting distance but reporting a fare.</p></li>
 <li><p>There are some trips with &gt;25 miles travel distance but low fare.</p></li>
-<li><p>The horizontal lines in the right plot might indicate again the fixed fare trips to/from JFK airport.</p></li>
-<li><p>Overall there seems to be a (linear) relation between distance and fare with an average rate of +/- 100/20 = 5 $USD/mile.</p></li>
+<li><p>The horizontal lines in the right plot might indicate again the fixed fare trips/</p></li>
+<li><p>Overall there seems to be a (linear) relation between distance and fare with an average rate of +/- 100/20 = 4 $USD/mile.</p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2005,7 +2004,7 @@ Let’s also see the influence of <code class="docutils literal notranslate"><sp
 <h2>Fare Per Mile<a class="headerlink" href="#fare-per-mile" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Lambada ensure that memory issues do not arise from improperly copying. It takes forever though.  I could probaly vectorize the function. </span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Lambda ensure that memory issues do not arise from improperly copying. It takes forever though.  I could probaly vectorize the function. </span>
 
 <span class="n">gdf</span><span class="p">[</span><span class="s1">&#39;fare_per_mile&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">gdf</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">fare_amount</span><span class="o">/</span><span class="n">x</span><span class="o">.</span><span class="n">trip_distance</span><span class="p">,</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
 <span class="n">gdf</span><span class="o">.</span><span class="n">fare_per_mile</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
@@ -2058,12 +2057,15 @@ Name: fare_per_mile, dtype: float64
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># display pivot table</span>
 <span class="n">gdf</span><span class="o">.</span><span class="n">pivot_table</span><span class="p">(</span><span class="s1">&#39;fare_per_mile&#39;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="s1">&#39;pickup_hour&#39;</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="s1">&#39;pickup_year&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Fare $USD / mile&#39;</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Fare $USD / mile&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/nyc-taxi-fare-data-exploration_62_0.png" src="../_images/nyc-taxi-fare-data-exploration_62_0.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;Fare $USD / mile&#39;)
+</pre></div>
+</div>
+<img alt="../_images/nyc-taxi-fare-data-exploration_62_1.png" src="../_images/nyc-taxi-fare-data-exploration_62_1.png" />
 </div>
 </div>
 <p>It can be clearly seen that the fare $USD/mile varies over the hour.</p>
@@ -2151,11 +2153,11 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_43482/3705102942.py:7: MatplotlibDeprecationWarning: Auto-removal of grids by pcolor() and pcolormesh() is deprecated since 3.5 and will be removed two minor releases later; please call grid(False) first.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_46045/3705102942.py:7: MatplotlibDeprecationWarning: Auto-removal of grids by pcolor() and pcolormesh() is deprecated since 3.5 and will be removed two minor releases later; please call grid(False) first.
   cbar = fig.colorbar(im, ax=axs[0])
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_43482/3705102942.py:16: MatplotlibDeprecationWarning: Auto-removal of grids by pcolor() and pcolormesh() is deprecated since 3.5 and will be removed two minor releases later; please call grid(False) first.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_46045/3705102942.py:16: MatplotlibDeprecationWarning: Auto-removal of grids by pcolor() and pcolormesh() is deprecated since 3.5 and will be removed two minor releases later; please call grid(False) first.
   cbar = fig.colorbar(im, ax=axs[1])
 </pre></div>
 </div>
@@ -2214,11 +2216,11 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_43482/1958965034.py:11: MatplotlibDeprecationWarning: Auto-removal of grids by pcolor() and pcolormesh() is deprecated since 3.5 and will be removed two minor releases later; please call grid(False) first.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_46045/1958965034.py:11: MatplotlibDeprecationWarning: Auto-removal of grids by pcolor() and pcolormesh() is deprecated since 3.5 and will be removed two minor releases later; please call grid(False) first.
   cbar = fig.colorbar(im, ax=axs[0])
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_43482/1958965034.py:20: MatplotlibDeprecationWarning: Auto-removal of grids by pcolor() and pcolormesh() is deprecated since 3.5 and will be removed two minor releases later; please call grid(False) first.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_46045/1958965034.py:20: MatplotlibDeprecationWarning: Auto-removal of grids by pcolor() and pcolormesh() is deprecated since 3.5 and will be removed two minor releases later; please call grid(False) first.
   cbar = fig.colorbar(im, ax=axs[1])
 </pre></div>
 </div>
@@ -2312,11 +2314,11 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_43482/1133551596.py:13: MatplotlibDeprecationWarning: Auto-removal of grids by pcolor() and pcolormesh() is deprecated since 3.5 and will be removed two minor releases later; please call grid(False) first.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_46045/1133551596.py:13: MatplotlibDeprecationWarning: Auto-removal of grids by pcolor() and pcolormesh() is deprecated since 3.5 and will be removed two minor releases later; please call grid(False) first.
   cbar = fig.colorbar(im, ax=axs[0])
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_43482/1133551596.py:22: MatplotlibDeprecationWarning: Auto-removal of grids by pcolor() and pcolormesh() is deprecated since 3.5 and will be removed two minor releases later; please call grid(False) first.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_46045/1133551596.py:22: MatplotlibDeprecationWarning: Auto-removal of grids by pcolor() and pcolormesh() is deprecated since 3.5 and will be removed two minor releases later; please call grid(False) first.
   cbar = fig.colorbar(im, ax=axs[1])
 </pre></div>
 </div>

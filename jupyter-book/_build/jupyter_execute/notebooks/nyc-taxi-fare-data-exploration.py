@@ -351,11 +351,12 @@ cbar = fig.colorbar(im, ax=axs[1])
 cbar.set_label('log(1 + #datapoints per sq mile)', rotation=270)
 
 
-# These plots clearly show that the datapoints concentrate around Manhatten and the three airports (JFK, EWS, LGR).
+# These plots clearly show that the dropoff datapoints concentrate around Manhatten and the three airports (JFK, EWS, LGR).
 # 
+# Pickup locations are typically in the boroughs.
 
 # ## Pickup traffic density
-# The density plots of above triggered me to see if I can visualize traffic density by the hour (and year). By counting the number of pickups in an area we should get some impression of the traffic density. The more traffic, the longer it could take to make a drive.
+# 
 
 # In[23]:
 
@@ -380,7 +381,7 @@ n_years = 7
 n_bins_lon = 30
 n_bins_lat = 30
 
-# focus on traffic in Manhattan
+
 BB_traffic = (-74.5, -72.8, 40.5, 41.8)
 
 # define function to calculate pickup traffic density
@@ -437,7 +438,7 @@ def plot_traffic(traffic, y, d):
 
 # Now, let's calculate the density and visualize the plots. 
 # 
-# NOTE: the quality of the plots depends on the number of datapoints used. This notebook uses by default 500k points, which is not sufficient for good traffic density plots. Increase the number of points and you get better plots.
+# NOTE: the quality of the plots depends on the number of datapoints used. This dataset used around a million datapoints.
 
 # In[25]:
 
@@ -486,8 +487,6 @@ gdf.trip_distance.describe()
 gdf.groupby(['passenger_count','trip_distance', 'fare_amount']).mean()
 
 
-# A `passenger_count` of zero seems odd. Perhaps a taxi transporting some goods or an administration error?
-# 
 # Instead of looking to the `fare_amount` using the 'fare per mile' also provides some insights.
 
 # In[29]:
@@ -516,10 +515,10 @@ axs[1].set_title('Zoom in on distance < 15 mile, fare < $100');
 
 # From this plot we notice:
 # 
-# - There are trips with zero distance but with a non-zero fare. Could this be trips from and to the same location? Predicting these fares will be difficult as there is likely not sufficient information in the dataset.  They may also be due to cabbies not reporting distance but reporting a fare.  
+# - There are trips with zero distance but with a non-zero fare. Could this be trips from and to the same location?  They may also be due to cabbies not reporting distance but reporting a fare.  
 # - There are some trips with >25 miles travel distance but low fare. 
-# - The horizontal lines in the right plot might indicate again the fixed fare trips to/from JFK airport.
-# - Overall there seems to be a (linear) relation between distance and fare with an average rate of +/- 100/20 = 5 \$USD/mile.
+# - The horizontal lines in the right plot might indicate again the fixed fare trips/
+# - Overall there seems to be a (linear) relation between distance and fare with an average rate of +/- 100/20 = 4 \$USD/mile.
 # 
 
 # In[31]:
@@ -577,7 +576,7 @@ plot_location_fare(lgr, 'LaGuardia Airport')
 # In[34]:
 
 
-# Lambada ensure that memory issues do not arise from improperly copying. It takes forever though.  I could probaly vectorize the function. 
+# Lambda ensure that memory issues do not arise from improperly copying. It takes forever though.  I could probaly vectorize the function. 
 
 gdf['fare_per_mile'] = gdf.apply(lambda x: x.fare_amount/x.trip_distance, axis = 1)
 gdf.fare_per_mile.describe()
@@ -606,7 +605,7 @@ plt.plot(x, theta[0]/x + theta[1], '--', c='r', lw=2);
 
 # display pivot table
 gdf.pivot_table('fare_per_mile', index='pickup_hour', columns='pickup_year').plot(figsize=(14,6))
-plt.ylabel('Fare $USD / mile');
+plt.ylabel('Fare $USD / mile')
 
 
 # It can be clearly seen that the fare $USD/mile varies over the hour. 
@@ -793,6 +792,4 @@ gdf[idx]
 # ## Final Thoughts
 # 
 # Very few of these cabs operatine in Manhattan. I was confused by this. I found that most green cabs operate in the boroughs.  The few number of these going to the center, accounted for such high rates as this is not their typical range of operation. 
-# 
-
 # 
