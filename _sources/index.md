@@ -33,7 +33,7 @@ I added a few examples of my work below the table of contents.
 
 * [Transatlantic Shipping Monte Carlo Simulation](https://blog.jnapolitano.io/posts/feasibility_study_shipping_carbon/)
 
-* [Supreme Court Case Predcition with TensorFlow](https://blog.jnapolitano.io/posts/legal-research-part-3/)
+* [Supreme Court Case Prediction with TensorFlow](https://blog.jnapolitano.io/posts/legal-research-part-3/)
 
 * [Markov Chain State Simulation of Unemployment Data](https://blog.jnapolitano.io/posts/markov-models-julia/)
 
