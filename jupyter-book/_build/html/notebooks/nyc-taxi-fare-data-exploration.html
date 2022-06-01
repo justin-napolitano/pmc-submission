@@ -464,12 +464,6 @@ const thebe_selector_output = ".output, .cell_output"
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/jnapolitano/venvs/finance/lib/python3.9/site-packages/geopandas/_compat.py:111: UserWarning: The Shapely GEOS version (3.10.2-CAPI-1.16.0) is incompatible with the GEOS version PyGEOS was compiled with (3.10.1-CAPI-1.16.0). Conversions between both will be slow.
-  warnings.warn(
-</pre></div>
-</div>
-</div>
 </div>
 </div>
 <div class="section" id="querying-the-green-cab-data-set">
@@ -546,95 +540,6 @@ const thebe_selector_output = ".output, .cell_output"
   <span class="k">return</span> <span class="n">result</span><span class="o">.</span><span class="n">to_dataframe</span><span class="p">()</span>
 
 <span class="n">clean_df</span> <span class="o">=</span> <span class="n">clean_up_data</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">DefaultCredentialsError</span><span class="g g-Whitespace">                   </span>Traceback (most recent call last)
-<span class="nn">Input In [3],</span> in <span class="ni">&lt;cell line: 55&gt;</span><span class="nt">()</span>
-<span class="g g-Whitespace">     </span><span class="mi">51</span>   <span class="n">result</span> <span class="o">=</span> <span class="n">query_big_query</span><span class="p">(</span><span class="n">query_string</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">53</span>   <span class="k">return</span> <span class="n">result</span><span class="o">.</span><span class="n">to_dataframe</span><span class="p">()</span>
-<span class="ne">---&gt; </span><span class="mi">55</span> <span class="n">clean_df</span> <span class="o">=</span> <span class="n">clean_up_data</span><span class="p">()</span>
-
-<span class="nn">Input In [3],</span> in <span class="ni">clean_up_data</span><span class="nt">()</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="k">def</span> <span class="nf">clean_up_data</span><span class="p">():</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span>   <span class="n">query_string</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span><span class="s2">       SELECT </span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span><span class="s2">       t.*,</span>
-<span class="s2">   (...)</span>
-<span class="g g-Whitespace">     </span><span class="mi">47</span><span class="s2">       limit 1000000</span>
-<span class="g g-Whitespace">     </span><span class="mi">48</span><span class="s2">       &quot;&quot;&quot;</span>
-<span class="ne">---&gt; </span><span class="mi">51</span>   <span class="n">result</span> <span class="o">=</span> <span class="n">query_big_query</span><span class="p">(</span><span class="n">query_string</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">53</span>   <span class="k">return</span> <span class="n">result</span><span class="o">.</span><span class="n">to_dataframe</span><span class="p">()</span>
-
-<span class="nn">Input In [2],</span> in <span class="ni">query_big_query</span><span class="nt">(query_string)</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="k">def</span> <span class="nf">query_big_query</span><span class="p">(</span><span class="n">query_string</span><span class="p">):</span>
-<span class="ne">----&gt; </span><span class="mi">2</span>     <span class="n">client</span> <span class="o">=</span> <span class="n">bigquery</span><span class="o">.</span><span class="n">Client</span><span class="p">()</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span>     <span class="n">query_job</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">query_string</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span>     <span class="n">results</span> <span class="o">=</span> <span class="n">query_job</span><span class="o">.</span><span class="n">result</span><span class="p">()</span>  <span class="c1"># Waits for job to complete.</span>
-
-<span class="nn">File ~/venvs/finance/lib/python3.9/site-packages/google/cloud/bigquery/client.py:226,</span> in <span class="ni">Client.__init__</span><span class="nt">(self, project, credentials, _http, location, default_query_job_config, client_info, client_options)</span>
-<span class="g g-Whitespace">    </span><span class="mi">216</span> <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">217</span>     <span class="bp">self</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">218</span>     <span class="n">project</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-   <span class="p">(</span><span class="o">...</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">224</span>     <span class="n">client_options</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">225</span> <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">226</span>     <span class="nb">super</span><span class="p">(</span><span class="n">Client</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">227</span>         <span class="n">project</span><span class="o">=</span><span class="n">project</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">228</span>         <span class="n">credentials</span><span class="o">=</span><span class="n">credentials</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">229</span>         <span class="n">client_options</span><span class="o">=</span><span class="n">client_options</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">230</span>         <span class="n">_http</span><span class="o">=</span><span class="n">_http</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">231</span>     <span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">233</span>     <span class="n">kw_args</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;client_info&quot;</span><span class="p">:</span> <span class="n">client_info</span><span class="p">}</span>
-<span class="g g-Whitespace">    </span><span class="mi">234</span>     <span class="n">bq_host</span> <span class="o">=</span> <span class="n">_get_bigquery_host</span><span class="p">()</span>
-
-<span class="nn">File ~/venvs/finance/lib/python3.9/site-packages/google/cloud/client/__init__.py:320,</span> in <span class="ni">ClientWithProject.__init__</span><span class="nt">(self, project, credentials, client_options, _http)</span>
-<span class="g g-Whitespace">    </span><span class="mi">319</span> <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">project</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">credentials</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">client_options</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">_http</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-<span class="ne">--&gt; </span><span class="mi">320</span>     <span class="n">_ClientProjectMixin</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">project</span><span class="o">=</span><span class="n">project</span><span class="p">,</span> <span class="n">credentials</span><span class="o">=</span><span class="n">credentials</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">321</span>     <span class="n">Client</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">322</span>         <span class="bp">self</span><span class="p">,</span> <span class="n">credentials</span><span class="o">=</span><span class="n">credentials</span><span class="p">,</span> <span class="n">client_options</span><span class="o">=</span><span class="n">client_options</span><span class="p">,</span> <span class="n">_http</span><span class="o">=</span><span class="n">_http</span>
-<span class="g g-Whitespace">    </span><span class="mi">323</span>     <span class="p">)</span>
-
-<span class="nn">File ~/venvs/finance/lib/python3.9/site-packages/google/cloud/client/__init__.py:268,</span> in <span class="ni">_ClientProjectMixin.__init__</span><span class="nt">(self, project, credentials)</span>
-<span class="g g-Whitespace">    </span><span class="mi">265</span>     <span class="n">project</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">credentials</span><span class="p">,</span> <span class="s2">&quot;project_id&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">267</span> <span class="k">if</span> <span class="n">project</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">268</span>     <span class="n">project</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_determine_default</span><span class="p">(</span><span class="n">project</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">270</span> <span class="k">if</span> <span class="n">project</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">271</span>     <span class="k">raise</span> <span class="ne">EnvironmentError</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">272</span>         <span class="s2">&quot;Project was not passed and could not be &quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">273</span>         <span class="s2">&quot;determined from the environment.&quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">274</span>     <span class="p">)</span>
-
-<span class="nn">File ~/venvs/finance/lib/python3.9/site-packages/google/cloud/client/__init__.py:287,</span> in <span class="ni">_ClientProjectMixin._determine_default</span><span class="nt">(project)</span>
-<span class="g g-Whitespace">    </span><span class="mi">284</span> <span class="nd">@staticmethod</span>
-<span class="g g-Whitespace">    </span><span class="mi">285</span> <span class="k">def</span> <span class="nf">_determine_default</span><span class="p">(</span><span class="n">project</span><span class="p">):</span>
-<span class="g g-Whitespace">    </span><span class="mi">286</span>     <span class="sd">&quot;&quot;&quot;Helper:  use default project detection.&quot;&quot;&quot;</span>
-<span class="ne">--&gt; </span><span class="mi">287</span>     <span class="k">return</span> <span class="n">_determine_default_project</span><span class="p">(</span><span class="n">project</span><span class="p">)</span>
-
-<span class="nn">File ~/venvs/finance/lib/python3.9/site-packages/google/cloud/_helpers/__init__.py:152,</span> in <span class="ni">_determine_default_project</span><span class="nt">(project)</span>
-<span class="g g-Whitespace">    </span><span class="mi">140</span> <span class="sd">&quot;&quot;&quot;Determine default project ID explicitly or implicitly as fall-back.</span>
-<span class="g g-Whitespace">    </span><span class="mi">141</span><span class="sd"> </span>
-<span class="g g-Whitespace">    </span><span class="mi">142</span><span class="sd"> See :func:`google.auth.default` for details on how the default project</span>
-<span class="sd">   (...)</span>
-<span class="g g-Whitespace">    </span><span class="mi">149</span><span class="sd"> :returns: Default project if it can be determined.</span>
-<span class="g g-Whitespace">    </span><span class="mi">150</span><span class="sd"> &quot;&quot;&quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">151</span> <span class="k">if</span> <span class="n">project</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">152</span>     <span class="n">_</span><span class="p">,</span> <span class="n">project</span> <span class="o">=</span> <span class="n">google</span><span class="o">.</span><span class="n">auth</span><span class="o">.</span><span class="n">default</span><span class="p">()</span>
-<span class="g g-Whitespace">    </span><span class="mi">153</span> <span class="k">return</span> <span class="n">project</span>
-
-<span class="nn">File ~/venvs/finance/lib/python3.9/site-packages/google/auth/_default.py:579,</span> in <span class="ni">default</span><span class="nt">(scopes, request, quota_project_id, default_scopes)</span>
-<span class="g g-Whitespace">    </span><span class="mi">571</span>             <span class="n">_LOGGER</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">572</span>                 <span class="s2">&quot;No project ID could be determined. Consider running &quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">573</span>                 <span class="s2">&quot;`gcloud config set project` or setting the </span><span class="si">%s</span><span class="s2"> &quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">574</span>                 <span class="s2">&quot;environment variable&quot;</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">575</span>                 <span class="n">environment_vars</span><span class="o">.</span><span class="n">PROJECT</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">576</span>             <span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">577</span>         <span class="k">return</span> <span class="n">credentials</span><span class="p">,</span> <span class="n">effective_project_id</span>
-<span class="ne">--&gt; </span><span class="mi">579</span> <span class="k">raise</span> <span class="n">exceptions</span><span class="o">.</span><span class="n">DefaultCredentialsError</span><span class="p">(</span><span class="n">_HELP_MESSAGE</span><span class="p">)</span>
-
-<span class="ne">DefaultCredentialsError</span>: Could not automatically determine credentials. Please set GOOGLE_APPLICATION_CREDENTIALS or explicitly create credentials and re-run the application. For more information, please see https://cloud.google.com/docs/authentication/getting-started
 </pre></div>
 </div>
 </div>
@@ -1284,7 +1189,9 @@ New size: 36000000
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Old size: 1000000
-New size: 998236
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>New size: 998236
 </pre></div>
 </div>
 </div>
@@ -1467,21 +1374,15 @@ dtype: object
 </div>
 </div>
 <div class="cell_output docutils container">
-<<<<<<< HEAD
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_26021/3595766640.py:6: MatplotlibDeprecationWarning: Auto-removal of grids by pcolor() and pcolormesh() is deprecated since 3.5 and will be removed two minor releases later; please call grid(False) first.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_43482/3595766640.py:6: MatplotlibDeprecationWarning: Auto-removal of grids by pcolor() and pcolormesh() is deprecated since 3.5 and will be removed two minor releases later; please call grid(False) first.
   cbar = fig.colorbar(im, ax=axs[0])
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_26021/3595766640.py:14: MatplotlibDeprecationWarning: Auto-removal of grids by pcolor() and pcolormesh() is deprecated since 3.5 and will be removed two minor releases later; please call grid(False) first.
-=======
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/kw/lt24g6yd1ml1zznc5n22lbb00000gn/T/ipykernel_11836/3595766640.py:6: MatplotlibDeprecationWarning: Auto-removal of grids by pcolor() and pcolormesh() is deprecated since 3.5 and will be removed two minor releases later; please call grid(False) first.
-  cbar = fig.colorbar(im, ax=axs[0])
-/var/folders/kw/lt24g6yd1ml1zznc5n22lbb00000gn/T/ipykernel_11836/3595766640.py:14: MatplotlibDeprecationWarning: Auto-removal of grids by pcolor() and pcolormesh() is deprecated since 3.5 and will be removed two minor releases later; please call grid(False) first.
->>>>>>> 42259da089948c2c646678efaeb87313aee7ea30
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_43482/3595766640.py:14: MatplotlibDeprecationWarning: Auto-removal of grids by pcolor() and pcolormesh() is deprecated since 3.5 and will be removed two minor releases later; please call grid(False) first.
   cbar = fig.colorbar(im, ax=axs[1])
 </pre></div>
 </div>
-<img alt="../_images/nyc-taxi-fare-data-exploration_34_1.png" src="../_images/nyc-taxi-fare-data-exploration_34_1.png" />
+<img alt="../_images/nyc-taxi-fare-data-exploration_34_2.png" src="../_images/nyc-taxi-fare-data-exploration_34_2.png" />
 </div>
 </div>
 <p>These plots clearly show that the datapoints concentrate around Manhatten and the three airports (JFK, EWS, LGR).</p>
@@ -1500,22 +1401,6 @@ dtype: object
 
 <span class="n">gdf</span><span class="p">[</span><span class="s1">&#39;pickup_codes&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">gdf</span><span class="o">.</span><span class="n">pickup_weekday_name</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">labels</span><span class="p">)</span>
 <span class="n">gdf</span><span class="p">[</span><span class="s1">&#39;dropoff_codes&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">gdf</span><span class="o">.</span><span class="n">dropoff_weekday_name</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">labels</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0         1
-1         1
-2         1
-3         1
-4         1
-         ..
-999995    4
-999996    4
-999997    4
-999998    4
-999999    4
-Name: pickup_codes, Length: 998236, dtype: int64
 </pre></div>
 </div>
 </div>
@@ -2060,7 +1945,9 @@ Let’s also see the influence of <code class="docutils literal notranslate"><sp
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Old size: 998236
-New size: 983790
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>New size: 983790
 </pre></div>
 </div>
 </div>
@@ -2126,6 +2013,14 @@ New size: 983790
 </div>
 </div>
 <div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/jnapolitano/venvs/sphinx-build/lib/python3.9/site-packages/geopandas/geodataframe.py:1351: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  super().__setitem__(key, value)
+</pre></div>
+</div>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>count    983790.000000
 mean          5.874245
 std          25.184516
@@ -2221,6 +2116,16 @@ Name: fare_per_mile, dtype: float64
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/jnapolitano/venvs/sphinx-build/lib/python3.9/site-packages/geopandas/geodataframe.py:1351: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  super().__setitem__(key, value)
+</pre></div>
+</div>
+</div>
 </div>
 <p>Plotting the distance to NYC center vs distance of the trip vs the fare amount gives some insight in this complex relation.</p>
 <div class="cell docutils container">
@@ -2246,21 +2151,15 @@ Name: fare_per_mile, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<<<<<<< HEAD
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_26021/3705102942.py:7: MatplotlibDeprecationWarning: Auto-removal of grids by pcolor() and pcolormesh() is deprecated since 3.5 and will be removed two minor releases later; please call grid(False) first.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_43482/3705102942.py:7: MatplotlibDeprecationWarning: Auto-removal of grids by pcolor() and pcolormesh() is deprecated since 3.5 and will be removed two minor releases later; please call grid(False) first.
   cbar = fig.colorbar(im, ax=axs[0])
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_26021/3705102942.py:16: MatplotlibDeprecationWarning: Auto-removal of grids by pcolor() and pcolormesh() is deprecated since 3.5 and will be removed two minor releases later; please call grid(False) first.
-=======
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/kw/lt24g6yd1ml1zznc5n22lbb00000gn/T/ipykernel_11836/3705102942.py:7: MatplotlibDeprecationWarning: Auto-removal of grids by pcolor() and pcolormesh() is deprecated since 3.5 and will be removed two minor releases later; please call grid(False) first.
-  cbar = fig.colorbar(im, ax=axs[0])
-/var/folders/kw/lt24g6yd1ml1zznc5n22lbb00000gn/T/ipykernel_11836/3705102942.py:16: MatplotlibDeprecationWarning: Auto-removal of grids by pcolor() and pcolormesh() is deprecated since 3.5 and will be removed two minor releases later; please call grid(False) first.
->>>>>>> 42259da089948c2c646678efaeb87313aee7ea30
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_43482/3705102942.py:16: MatplotlibDeprecationWarning: Auto-removal of grids by pcolor() and pcolormesh() is deprecated since 3.5 and will be removed two minor releases later; please call grid(False) first.
   cbar = fig.colorbar(im, ax=axs[1])
 </pre></div>
 </div>
-<img alt="../_images/nyc-taxi-fare-data-exploration_69_1.png" src="../_images/nyc-taxi-fare-data-exploration_69_1.png" />
+<img alt="../_images/nyc-taxi-fare-data-exploration_69_2.png" src="../_images/nyc-taxi-fare-data-exploration_69_2.png" />
 </div>
 </div>
 <p>There are a lot of ‘green’ dots, which is about $50 to $60 fare amount near 13 miles distance of NYC center of distrance of trip. This could be due to trips from/to JFK airport. Let’s remove them to see what we’re left with.</p>
@@ -2268,6 +2167,22 @@ Name: fare_per_mile, dtype: float64
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gdf</span><span class="p">[</span><span class="s1">&#39;pickup_distance_to_jfk&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">distance</span><span class="p">(</span><span class="n">jfk</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">jfk</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">gdf</span><span class="o">.</span><span class="n">pickup_latitude</span><span class="p">,</span> <span class="n">gdf</span><span class="o">.</span><span class="n">pickup_longitude</span><span class="p">)</span>
 <span class="n">gdf</span><span class="p">[</span><span class="s1">&#39;dropoff_distance_to_jfk&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">distance</span><span class="p">(</span><span class="n">jfk</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">jfk</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">gdf</span><span class="o">.</span><span class="n">dropoff_latitude</span><span class="p">,</span> <span class="n">gdf</span><span class="o">.</span><span class="n">dropoff_longitude</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/jnapolitano/venvs/sphinx-build/lib/python3.9/site-packages/geopandas/geodataframe.py:1351: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  super().__setitem__(key, value)
+/home/jnapolitano/venvs/sphinx-build/lib/python3.9/site-packages/geopandas/geodataframe.py:1351: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  super().__setitem__(key, value)
 </pre></div>
 </div>
 </div>
@@ -2299,24 +2214,18 @@ Name: fare_per_mile, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<<<<<<< HEAD
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_26021/1958965034.py:11: MatplotlibDeprecationWarning: Auto-removal of grids by pcolor() and pcolormesh() is deprecated since 3.5 and will be removed two minor releases later; please call grid(False) first.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_43482/1958965034.py:11: MatplotlibDeprecationWarning: Auto-removal of grids by pcolor() and pcolormesh() is deprecated since 3.5 and will be removed two minor releases later; please call grid(False) first.
   cbar = fig.colorbar(im, ax=axs[0])
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_26021/1958965034.py:20: MatplotlibDeprecationWarning: Auto-removal of grids by pcolor() and pcolormesh() is deprecated since 3.5 and will be removed two minor releases later; please call grid(False) first.
-=======
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/kw/lt24g6yd1ml1zznc5n22lbb00000gn/T/ipykernel_11836/1958965034.py:11: MatplotlibDeprecationWarning: Auto-removal of grids by pcolor() and pcolormesh() is deprecated since 3.5 and will be removed two minor releases later; please call grid(False) first.
-  cbar = fig.colorbar(im, ax=axs[0])
-/var/folders/kw/lt24g6yd1ml1zznc5n22lbb00000gn/T/ipykernel_11836/1958965034.py:20: MatplotlibDeprecationWarning: Auto-removal of grids by pcolor() and pcolormesh() is deprecated since 3.5 and will be removed two minor releases later; please call grid(False) first.
->>>>>>> 42259da089948c2c646678efaeb87313aee7ea30
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_43482/1958965034.py:20: MatplotlibDeprecationWarning: Auto-removal of grids by pcolor() and pcolormesh() is deprecated since 3.5 and will be removed two minor releases later; please call grid(False) first.
   cbar = fig.colorbar(im, ax=axs[1])
 </pre></div>
 </div>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;fare_amount&#39;)
 </pre></div>
 </div>
-<img alt="../_images/nyc-taxi-fare-data-exploration_72_2.png" src="../_images/nyc-taxi-fare-data-exploration_72_2.png" />
+<img alt="../_images/nyc-taxi-fare-data-exploration_72_3.png" src="../_images/nyc-taxi-fare-data-exploration_72_3.png" />
 </div>
 </div>
 <p>Now there are some ‘yellow’ dots (fare amount &gt; $80) left. To understand these datapoints we plot them on the map.</p>
@@ -2342,6 +2251,34 @@ I’ll remove all of the airports just to see what is left.</p>
 <span class="n">gdf</span><span class="p">[</span><span class="s1">&#39;dropoff_distance_to_ewr&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">distance</span><span class="p">(</span><span class="n">ewr</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">ewr</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">gdf</span><span class="o">.</span><span class="n">dropoff_latitude</span><span class="p">,</span><span class="n">gdf</span><span class="o">.</span><span class="n">dropoff_longitude</span><span class="p">)</span>
 <span class="n">gdf</span><span class="p">[</span><span class="s1">&#39;pickup_distance_to_lgr&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">distance</span><span class="p">(</span><span class="n">lgr</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">lgr</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">gdf</span><span class="o">.</span><span class="n">pickup_latitude</span><span class="p">,</span> <span class="n">gdf</span><span class="o">.</span><span class="n">pickup_longitude</span><span class="p">)</span>
 <span class="n">gdf</span><span class="p">[</span><span class="s1">&#39;dropoff_distance_to_lgr&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">distance</span><span class="p">(</span><span class="n">lgr</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">lgr</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">gdf</span><span class="o">.</span><span class="n">dropoff_latitude</span><span class="p">,</span><span class="n">gdf</span><span class="o">.</span><span class="n">dropoff_longitude</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/jnapolitano/venvs/sphinx-build/lib/python3.9/site-packages/geopandas/geodataframe.py:1351: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  super().__setitem__(key, value)
+/home/jnapolitano/venvs/sphinx-build/lib/python3.9/site-packages/geopandas/geodataframe.py:1351: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  super().__setitem__(key, value)
+/home/jnapolitano/venvs/sphinx-build/lib/python3.9/site-packages/geopandas/geodataframe.py:1351: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  super().__setitem__(key, value)
+/home/jnapolitano/venvs/sphinx-build/lib/python3.9/site-packages/geopandas/geodataframe.py:1351: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  super().__setitem__(key, value)
 </pre></div>
 </div>
 </div>
@@ -2375,21 +2312,18 @@ I’ll remove all of the airports just to see what is left.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<<<<<<< HEAD
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_26021/1133551596.py:13: MatplotlibDeprecationWarning: Auto-removal of grids by pcolor() and pcolormesh() is deprecated since 3.5 and will be removed two minor releases later; please call grid(False) first.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_43482/1133551596.py:13: MatplotlibDeprecationWarning: Auto-removal of grids by pcolor() and pcolormesh() is deprecated since 3.5 and will be removed two minor releases later; please call grid(False) first.
   cbar = fig.colorbar(im, ax=axs[0])
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_26021/1133551596.py:22: MatplotlibDeprecationWarning: Auto-removal of grids by pcolor() and pcolormesh() is deprecated since 3.5 and will be removed two minor releases later; please call grid(False) first.
-=======
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/kw/lt24g6yd1ml1zznc5n22lbb00000gn/T/ipykernel_11836/3812692053.py:13: MatplotlibDeprecationWarning: Auto-removal of grids by pcolor() and pcolormesh() is deprecated since 3.5 and will be removed two minor releases later; please call grid(False) first.
-  cbar = fig.colorbar(im, ax=axs[0])
-/var/folders/kw/lt24g6yd1ml1zznc5n22lbb00000gn/T/ipykernel_11836/3812692053.py:22: MatplotlibDeprecationWarning: Auto-removal of grids by pcolor() and pcolormesh() is deprecated since 3.5 and will be removed two minor releases later; please call grid(False) first.
->>>>>>> 42259da089948c2c646678efaeb87313aee7ea30
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_43482/1133551596.py:22: MatplotlibDeprecationWarning: Auto-removal of grids by pcolor() and pcolormesh() is deprecated since 3.5 and will be removed two minor releases later; please call grid(False) first.
   cbar = fig.colorbar(im, ax=axs[1])
 </pre></div>
 </div>
-<img alt="../_images/nyc-taxi-fare-data-exploration_77_1.png" src="../_images/nyc-taxi-fare-data-exploration_77_1.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;fare_amount&#39;)
+</pre></div>
+</div>
+<img alt="../_images/nyc-taxi-fare-data-exploration_77_3.png" src="../_images/nyc-taxi-fare-data-exploration_77_3.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -2446,9 +2380,9 @@ I’ll remove all of the airports just to see what is left.</p>
       <th>passenger_count</th>
       <th>trip_distance</th>
       <th>...</th>
+      <th>pickup_codes</th>
       <th>dropoff_codes</th>
       <th>fare_per_mile</th>
-      <th>farry</th>
       <th>distance_to_center</th>
       <th>pickup_distance_to_jfk</th>
       <th>dropoff_distance_to_jfk</th>
@@ -2473,7 +2407,7 @@ I’ll remove all of the airports just to see what is left.</p>
       <td>1.49</td>
       <td>...</td>
       <td>1</td>
-      <td>4.697987</td>
+      <td>1</td>
       <td>4.697987</td>
       <td>5.918672</td>
       <td>12.892809</td>
@@ -2497,7 +2431,7 @@ I’ll remove all of the airports just to see what is left.</p>
       <td>5.74</td>
       <td>...</td>
       <td>1</td>
-      <td>4.442509</td>
+      <td>1</td>
       <td>4.442509</td>
       <td>3.360027</td>
       <td>9.392720</td>
@@ -2521,7 +2455,7 @@ I’ll remove all of the airports just to see what is left.</p>
       <td>0.63</td>
       <td>...</td>
       <td>1</td>
-      <td>7.936508</td>
+      <td>1</td>
       <td>7.936508</td>
       <td>3.305239</td>
       <td>10.033491</td>
@@ -2545,7 +2479,7 @@ I’ll remove all of the airports just to see what is left.</p>
       <td>3.26</td>
       <td>...</td>
       <td>1</td>
-      <td>3.834356</td>
+      <td>1</td>
       <td>3.834356</td>
       <td>8.188606</td>
       <td>7.799317</td>
@@ -2569,7 +2503,7 @@ I’ll remove all of the airports just to see what is left.</p>
       <td>5.35</td>
       <td>...</td>
       <td>1</td>
-      <td>3.364486</td>
+      <td>1</td>
       <td>3.364486</td>
       <td>6.319518</td>
       <td>6.807010</td>
@@ -2617,7 +2551,7 @@ I’ll remove all of the airports just to see what is left.</p>
       <td>1.10</td>
       <td>...</td>
       <td>4</td>
-      <td>5.454545</td>
+      <td>4</td>
       <td>5.454545</td>
       <td>3.425569</td>
       <td>10.064154</td>
@@ -2641,7 +2575,7 @@ I’ll remove all of the airports just to see what is left.</p>
       <td>2.68</td>
       <td>...</td>
       <td>4</td>
-      <td>5.597015</td>
+      <td>4</td>
       <td>5.597015</td>
       <td>5.748388</td>
       <td>13.087848</td>
@@ -2665,7 +2599,7 @@ I’ll remove all of the airports just to see what is left.</p>
       <td>0.43</td>
       <td>...</td>
       <td>4</td>
-      <td>9.302326</td>
+      <td>4</td>
       <td>9.302326</td>
       <td>7.250292</td>
       <td>14.651729</td>
@@ -2689,7 +2623,7 @@ I’ll remove all of the airports just to see what is left.</p>
       <td>1.70</td>
       <td>...</td>
       <td>4</td>
-      <td>5.000000</td>
+      <td>4</td>
       <td>5.000000</td>
       <td>7.900250</td>
       <td>14.856027</td>
@@ -2713,7 +2647,7 @@ I’ll remove all of the airports just to see what is left.</p>
       <td>2.50</td>
       <td>...</td>
       <td>4</td>
-      <td>4.600000</td>
+      <td>4</td>
       <td>4.600000</td>
       <td>8.158682</td>
       <td>15.169326</td>
@@ -2725,7 +2659,7 @@ I’ll remove all of the airports just to see what is left.</p>
     </tr>
   </tbody>
 </table>
-<p>949194 rows × 50 columns</p>
+<p>949194 rows × 48 columns</p>
 </div></div></div>
 </div>
 <p>Removing the to/from airport trips doesn’t really change the outcome of the data.  The number of to and from trips within the set are marginal.</p>

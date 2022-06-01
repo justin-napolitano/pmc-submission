@@ -512,12 +512,6 @@ const thebe_selector_output = ".output, .cell_output"
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/jnapolitano/venvs/finance/lib/python3.9/site-packages/geopandas/_compat.py:111: UserWarning: The Shapely GEOS version (3.10.2-CAPI-1.16.0) is incompatible with the GEOS version PyGEOS was compiled with (3.10.1-CAPI-1.16.0). Conversions between both will be slow.
-  warnings.warn(
-</pre></div>
-</div>
-</div>
 </div>
 </div>
 <div class="section" id="utility-big-query-function">
@@ -576,98 +570,6 @@ const thebe_selector_output = ".output, .cell_output"
 </pre></div>
 </div>
 </div>
-<<<<<<< HEAD
-=======
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">DefaultCredentialsError</span><span class="g g-Whitespace">                   </span>Traceback (most recent call last)
-<span class="nn">Input In [3],</span> in <span class="ni">&lt;cell line: 14&gt;</span><span class="nt">()</span>
-<span class="g g-Whitespace">     </span><span class="mi">11</span>     <span class="n">result</span> <span class="o">=</span> <span class="n">query_big_query</span><span class="p">(</span><span class="n">query_string</span> <span class="o">=</span> <span class="n">query_string</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">13</span>     <span class="k">return</span> <span class="n">result</span><span class="o">.</span><span class="n">to_dataframe</span><span class="p">()</span>
-<span class="ne">---&gt; </span><span class="mi">14</span> <span class="n">naive_df</span> <span class="o">=</span> <span class="n">naive_query_passengers_by_month</span><span class="p">()</span>
-
-<span class="nn">Input In [3],</span> in <span class="ni">naive_query_passengers_by_month</span><span class="nt">()</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="k">def</span> <span class="nf">naive_query_passengers_by_month</span><span class="p">():</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span>     <span class="n">query_string</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span><span class="s2">         SELECT date_trunc(dropoff_datetime,MONTH) as Month,</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span><span class="s2">         sum(passenger_count) as Sum_PASS,</span>
-<span class="s2">   (...)</span>
-<span class="g g-Whitespace">      </span><span class="mi">8</span><span class="s2">         GROUP BY Month;</span>
-<span class="g g-Whitespace">      </span><span class="mi">9</span><span class="s2">         &quot;&quot;&quot;</span>
-<span class="ne">---&gt; </span><span class="mi">11</span>     <span class="n">result</span> <span class="o">=</span> <span class="n">query_big_query</span><span class="p">(</span><span class="n">query_string</span> <span class="o">=</span> <span class="n">query_string</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">13</span>     <span class="k">return</span> <span class="n">result</span><span class="o">.</span><span class="n">to_dataframe</span><span class="p">()</span>
-
-<span class="nn">Input In [2],</span> in <span class="ni">query_big_query</span><span class="nt">(query_string)</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="k">def</span> <span class="nf">query_big_query</span><span class="p">(</span><span class="n">query_string</span><span class="p">):</span>
-<span class="ne">----&gt; </span><span class="mi">2</span>     <span class="n">client</span> <span class="o">=</span> <span class="n">bigquery</span><span class="o">.</span><span class="n">Client</span><span class="p">()</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span>     <span class="n">query_job</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">query_string</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span>     <span class="n">results</span> <span class="o">=</span> <span class="n">query_job</span><span class="o">.</span><span class="n">result</span><span class="p">()</span>  <span class="c1"># Waits for job to complete.</span>
-
-<span class="nn">File ~/venvs/finance/lib/python3.9/site-packages/google/cloud/bigquery/client.py:226,</span> in <span class="ni">Client.__init__</span><span class="nt">(self, project, credentials, _http, location, default_query_job_config, client_info, client_options)</span>
-<span class="g g-Whitespace">    </span><span class="mi">216</span> <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">217</span>     <span class="bp">self</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">218</span>     <span class="n">project</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-   <span class="p">(</span><span class="o">...</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">224</span>     <span class="n">client_options</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">225</span> <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">226</span>     <span class="nb">super</span><span class="p">(</span><span class="n">Client</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">227</span>         <span class="n">project</span><span class="o">=</span><span class="n">project</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">228</span>         <span class="n">credentials</span><span class="o">=</span><span class="n">credentials</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">229</span>         <span class="n">client_options</span><span class="o">=</span><span class="n">client_options</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">230</span>         <span class="n">_http</span><span class="o">=</span><span class="n">_http</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">231</span>     <span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">233</span>     <span class="n">kw_args</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;client_info&quot;</span><span class="p">:</span> <span class="n">client_info</span><span class="p">}</span>
-<span class="g g-Whitespace">    </span><span class="mi">234</span>     <span class="n">bq_host</span> <span class="o">=</span> <span class="n">_get_bigquery_host</span><span class="p">()</span>
-
-<span class="nn">File ~/venvs/finance/lib/python3.9/site-packages/google/cloud/client/__init__.py:320,</span> in <span class="ni">ClientWithProject.__init__</span><span class="nt">(self, project, credentials, client_options, _http)</span>
-<span class="g g-Whitespace">    </span><span class="mi">319</span> <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">project</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">credentials</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">client_options</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">_http</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-<span class="ne">--&gt; </span><span class="mi">320</span>     <span class="n">_ClientProjectMixin</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">project</span><span class="o">=</span><span class="n">project</span><span class="p">,</span> <span class="n">credentials</span><span class="o">=</span><span class="n">credentials</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">321</span>     <span class="n">Client</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">322</span>         <span class="bp">self</span><span class="p">,</span> <span class="n">credentials</span><span class="o">=</span><span class="n">credentials</span><span class="p">,</span> <span class="n">client_options</span><span class="o">=</span><span class="n">client_options</span><span class="p">,</span> <span class="n">_http</span><span class="o">=</span><span class="n">_http</span>
-<span class="g g-Whitespace">    </span><span class="mi">323</span>     <span class="p">)</span>
-
-<span class="nn">File ~/venvs/finance/lib/python3.9/site-packages/google/cloud/client/__init__.py:268,</span> in <span class="ni">_ClientProjectMixin.__init__</span><span class="nt">(self, project, credentials)</span>
-<span class="g g-Whitespace">    </span><span class="mi">265</span>     <span class="n">project</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">credentials</span><span class="p">,</span> <span class="s2">&quot;project_id&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">267</span> <span class="k">if</span> <span class="n">project</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">268</span>     <span class="n">project</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_determine_default</span><span class="p">(</span><span class="n">project</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">270</span> <span class="k">if</span> <span class="n">project</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">271</span>     <span class="k">raise</span> <span class="ne">EnvironmentError</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">272</span>         <span class="s2">&quot;Project was not passed and could not be &quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">273</span>         <span class="s2">&quot;determined from the environment.&quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">274</span>     <span class="p">)</span>
-
-<span class="nn">File ~/venvs/finance/lib/python3.9/site-packages/google/cloud/client/__init__.py:287,</span> in <span class="ni">_ClientProjectMixin._determine_default</span><span class="nt">(project)</span>
-<span class="g g-Whitespace">    </span><span class="mi">284</span> <span class="nd">@staticmethod</span>
-<span class="g g-Whitespace">    </span><span class="mi">285</span> <span class="k">def</span> <span class="nf">_determine_default</span><span class="p">(</span><span class="n">project</span><span class="p">):</span>
-<span class="g g-Whitespace">    </span><span class="mi">286</span>     <span class="sd">&quot;&quot;&quot;Helper:  use default project detection.&quot;&quot;&quot;</span>
-<span class="ne">--&gt; </span><span class="mi">287</span>     <span class="k">return</span> <span class="n">_determine_default_project</span><span class="p">(</span><span class="n">project</span><span class="p">)</span>
-
-<span class="nn">File ~/venvs/finance/lib/python3.9/site-packages/google/cloud/_helpers/__init__.py:152,</span> in <span class="ni">_determine_default_project</span><span class="nt">(project)</span>
-<span class="g g-Whitespace">    </span><span class="mi">140</span> <span class="sd">&quot;&quot;&quot;Determine default project ID explicitly or implicitly as fall-back.</span>
-<span class="g g-Whitespace">    </span><span class="mi">141</span><span class="sd"> </span>
-<span class="g g-Whitespace">    </span><span class="mi">142</span><span class="sd"> See :func:`google.auth.default` for details on how the default project</span>
-<span class="sd">   (...)</span>
-<span class="g g-Whitespace">    </span><span class="mi">149</span><span class="sd"> :returns: Default project if it can be determined.</span>
-<span class="g g-Whitespace">    </span><span class="mi">150</span><span class="sd"> &quot;&quot;&quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">151</span> <span class="k">if</span> <span class="n">project</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">152</span>     <span class="n">_</span><span class="p">,</span> <span class="n">project</span> <span class="o">=</span> <span class="n">google</span><span class="o">.</span><span class="n">auth</span><span class="o">.</span><span class="n">default</span><span class="p">()</span>
-<span class="g g-Whitespace">    </span><span class="mi">153</span> <span class="k">return</span> <span class="n">project</span>
-
-<span class="nn">File ~/venvs/finance/lib/python3.9/site-packages/google/auth/_default.py:579,</span> in <span class="ni">default</span><span class="nt">(scopes, request, quota_project_id, default_scopes)</span>
-<span class="g g-Whitespace">    </span><span class="mi">571</span>             <span class="n">_LOGGER</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">572</span>                 <span class="s2">&quot;No project ID could be determined. Consider running &quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">573</span>                 <span class="s2">&quot;`gcloud config set project` or setting the </span><span class="si">%s</span><span class="s2"> &quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">574</span>                 <span class="s2">&quot;environment variable&quot;</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">575</span>                 <span class="n">environment_vars</span><span class="o">.</span><span class="n">PROJECT</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">576</span>             <span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">577</span>         <span class="k">return</span> <span class="n">credentials</span><span class="p">,</span> <span class="n">effective_project_id</span>
-<span class="ne">--&gt; </span><span class="mi">579</span> <span class="k">raise</span> <span class="n">exceptions</span><span class="o">.</span><span class="n">DefaultCredentialsError</span><span class="p">(</span><span class="n">_HELP_MESSAGE</span><span class="p">)</span>
-
-<span class="ne">DefaultCredentialsError</span>: Could not automatically determine credentials. Please set GOOGLE_APPLICATION_CREDENTIALS or explicitly create credentials and re-run the application. For more information, please see https://cloud.google.com/docs/authentication/getting-started
-</pre></div>
-</div>
-</div>
->>>>>>> 42259da089948c2c646678efaeb87313aee7ea30
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">

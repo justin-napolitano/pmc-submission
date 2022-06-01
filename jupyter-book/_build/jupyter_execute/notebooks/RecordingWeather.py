@@ -39,8 +39,8 @@ def get_key(key_path):
 
 
 
-
 # In[3]:
+
 
 
 def make_query_string(base_url,lat,long,key):
@@ -50,7 +50,6 @@ def make_query_string(base_url,lat,long,key):
     query_string = "&".join([lat_string,long_string,appid_string])
     query_string = "?".join([base_url,query_string])
     return query_string
-
 
 
 # In[4]:
@@ -104,7 +103,6 @@ def response_to_line(response_dict):
     
     #pprint(keys)
     return value_line
-
 
 
 # In[9]:
