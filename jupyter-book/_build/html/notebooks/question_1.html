@@ -528,13 +528,6 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 </div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;GOOGLE_APPLICATION_CREDENTIALS&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;/Users/jnapolitano/Projects/pmc-submission/creds.json&quot;</span>
-</pre></div>
-</div>
-</div>
-</div>
 </div>
 </div>
 <div class="section" id="question-1">
@@ -574,140 +567,6 @@ const thebe_selector_output = ".output, .cell_output"
 
     <span class="k">return</span> <span class="n">result</span><span class="o">.</span><span class="n">to_dataframe</span><span class="p">()</span>
 <span class="n">naive_df</span> <span class="o">=</span> <span class="n">naive_query_passengers_by_month</span><span class="p">()</span>    
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">DefaultCredentialsError</span><span class="g g-Whitespace">                   </span>Traceback (most recent call last)
-<span class="nn">Input In [4],</span> in <span class="ni">&lt;cell line: 14&gt;</span><span class="nt">()</span>
-<span class="g g-Whitespace">     </span><span class="mi">11</span>     <span class="n">result</span> <span class="o">=</span> <span class="n">query_big_query</span><span class="p">(</span><span class="n">query_string</span> <span class="o">=</span> <span class="n">query_string</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">13</span>     <span class="k">return</span> <span class="n">result</span><span class="o">.</span><span class="n">to_dataframe</span><span class="p">()</span>
-<span class="ne">---&gt; </span><span class="mi">14</span> <span class="n">naive_df</span> <span class="o">=</span> <span class="n">naive_query_passengers_by_month</span><span class="p">()</span>
-
-<span class="nn">Input In [4],</span> in <span class="ni">naive_query_passengers_by_month</span><span class="nt">()</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="k">def</span> <span class="nf">naive_query_passengers_by_month</span><span class="p">():</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span>     <span class="n">query_string</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span><span class="s2">         SELECT date_trunc(dropoff_datetime,MONTH) as Month,</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span><span class="s2">         sum(passenger_count) as Sum_PASS,</span>
-<span class="s2">   (...)</span>
-<span class="g g-Whitespace">      </span><span class="mi">8</span><span class="s2">         GROUP BY Month;</span>
-<span class="g g-Whitespace">      </span><span class="mi">9</span><span class="s2">         &quot;&quot;&quot;</span>
-<span class="ne">---&gt; </span><span class="mi">11</span>     <span class="n">result</span> <span class="o">=</span> <span class="n">query_big_query</span><span class="p">(</span><span class="n">query_string</span> <span class="o">=</span> <span class="n">query_string</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">13</span>     <span class="k">return</span> <span class="n">result</span><span class="o">.</span><span class="n">to_dataframe</span><span class="p">()</span>
-
-<span class="nn">Input In [2],</span> in <span class="ni">query_big_query</span><span class="nt">(query_string)</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="k">def</span> <span class="nf">query_big_query</span><span class="p">(</span><span class="n">query_string</span><span class="p">):</span>
-<span class="ne">----&gt; </span><span class="mi">2</span>     <span class="n">client</span> <span class="o">=</span> <span class="n">bigquery</span><span class="o">.</span><span class="n">Client</span><span class="p">()</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span>     <span class="n">query_job</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">query_string</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span>     <span class="n">results</span> <span class="o">=</span> <span class="n">query_job</span><span class="o">.</span><span class="n">result</span><span class="p">()</span>  <span class="c1"># Waits for job to complete.</span>
-
-<span class="nn">File ~/venvs/sphinx-build/lib/python3.9/site-packages/google/cloud/bigquery/client.py:226,</span> in <span class="ni">Client.__init__</span><span class="nt">(self, project, credentials, _http, location, default_query_job_config, client_info, client_options)</span>
-<span class="g g-Whitespace">    </span><span class="mi">216</span> <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">217</span>     <span class="bp">self</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">218</span>     <span class="n">project</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-   <span class="p">(</span><span class="o">...</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">224</span>     <span class="n">client_options</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">225</span> <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">226</span>     <span class="nb">super</span><span class="p">(</span><span class="n">Client</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">227</span>         <span class="n">project</span><span class="o">=</span><span class="n">project</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">228</span>         <span class="n">credentials</span><span class="o">=</span><span class="n">credentials</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">229</span>         <span class="n">client_options</span><span class="o">=</span><span class="n">client_options</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">230</span>         <span class="n">_http</span><span class="o">=</span><span class="n">_http</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">231</span>     <span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">233</span>     <span class="n">kw_args</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;client_info&quot;</span><span class="p">:</span> <span class="n">client_info</span><span class="p">}</span>
-<span class="g g-Whitespace">    </span><span class="mi">234</span>     <span class="n">bq_host</span> <span class="o">=</span> <span class="n">_get_bigquery_host</span><span class="p">()</span>
-
-<span class="nn">File ~/venvs/sphinx-build/lib/python3.9/site-packages/google/cloud/client/__init__.py:320,</span> in <span class="ni">ClientWithProject.__init__</span><span class="nt">(self, project, credentials, client_options, _http)</span>
-<span class="g g-Whitespace">    </span><span class="mi">319</span> <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">project</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">credentials</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">client_options</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">_http</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-<span class="ne">--&gt; </span><span class="mi">320</span>     <span class="n">_ClientProjectMixin</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">project</span><span class="o">=</span><span class="n">project</span><span class="p">,</span> <span class="n">credentials</span><span class="o">=</span><span class="n">credentials</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">321</span>     <span class="n">Client</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">322</span>         <span class="bp">self</span><span class="p">,</span> <span class="n">credentials</span><span class="o">=</span><span class="n">credentials</span><span class="p">,</span> <span class="n">client_options</span><span class="o">=</span><span class="n">client_options</span><span class="p">,</span> <span class="n">_http</span><span class="o">=</span><span class="n">_http</span>
-<span class="g g-Whitespace">    </span><span class="mi">323</span>     <span class="p">)</span>
-
-<span class="nn">File ~/venvs/sphinx-build/lib/python3.9/site-packages/google/cloud/client/__init__.py:268,</span> in <span class="ni">_ClientProjectMixin.__init__</span><span class="nt">(self, project, credentials)</span>
-<span class="g g-Whitespace">    </span><span class="mi">265</span>     <span class="n">project</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">credentials</span><span class="p">,</span> <span class="s2">&quot;project_id&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">267</span> <span class="k">if</span> <span class="n">project</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">268</span>     <span class="n">project</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_determine_default</span><span class="p">(</span><span class="n">project</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">270</span> <span class="k">if</span> <span class="n">project</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">271</span>     <span class="k">raise</span> <span class="ne">EnvironmentError</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">272</span>         <span class="s2">&quot;Project was not passed and could not be &quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">273</span>         <span class="s2">&quot;determined from the environment.&quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">274</span>     <span class="p">)</span>
-
-<span class="nn">File ~/venvs/sphinx-build/lib/python3.9/site-packages/google/cloud/client/__init__.py:287,</span> in <span class="ni">_ClientProjectMixin._determine_default</span><span class="nt">(project)</span>
-<span class="g g-Whitespace">    </span><span class="mi">284</span> <span class="nd">@staticmethod</span>
-<span class="g g-Whitespace">    </span><span class="mi">285</span> <span class="k">def</span> <span class="nf">_determine_default</span><span class="p">(</span><span class="n">project</span><span class="p">):</span>
-<span class="g g-Whitespace">    </span><span class="mi">286</span>     <span class="sd">&quot;&quot;&quot;Helper:  use default project detection.&quot;&quot;&quot;</span>
-<span class="ne">--&gt; </span><span class="mi">287</span>     <span class="k">return</span> <span class="n">_determine_default_project</span><span class="p">(</span><span class="n">project</span><span class="p">)</span>
-
-<span class="nn">File ~/venvs/sphinx-build/lib/python3.9/site-packages/google/cloud/_helpers/__init__.py:152,</span> in <span class="ni">_determine_default_project</span><span class="nt">(project)</span>
-<span class="g g-Whitespace">    </span><span class="mi">140</span> <span class="sd">&quot;&quot;&quot;Determine default project ID explicitly or implicitly as fall-back.</span>
-<span class="g g-Whitespace">    </span><span class="mi">141</span><span class="sd"> </span>
-<span class="g g-Whitespace">    </span><span class="mi">142</span><span class="sd"> See :func:`google.auth.default` for details on how the default project</span>
-<span class="sd">   (...)</span>
-<span class="g g-Whitespace">    </span><span class="mi">149</span><span class="sd"> :returns: Default project if it can be determined.</span>
-<span class="g g-Whitespace">    </span><span class="mi">150</span><span class="sd"> &quot;&quot;&quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">151</span> <span class="k">if</span> <span class="n">project</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">152</span>     <span class="n">_</span><span class="p">,</span> <span class="n">project</span> <span class="o">=</span> <span class="n">google</span><span class="o">.</span><span class="n">auth</span><span class="o">.</span><span class="n">default</span><span class="p">()</span>
-<span class="g g-Whitespace">    </span><span class="mi">153</span> <span class="k">return</span> <span class="n">project</span>
-
-<span class="nn">File ~/venvs/sphinx-build/lib/python3.9/site-packages/google/auth/_default.py:546,</span> in <span class="ni">default</span><span class="nt">(scopes, request, quota_project_id, default_scopes)</span>
-<span class="g g-Whitespace">    </span><span class="mi">534</span> <span class="n">checkers</span> <span class="o">=</span> <span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">535</span>     <span class="c1"># Avoid passing scopes here to prevent passing scopes to user credentials.</span>
-<span class="g g-Whitespace">    </span><span class="mi">536</span>     <span class="c1"># with_scopes_if_required() below will ensure scopes/default scopes are</span>
-   <span class="p">(</span><span class="o">...</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">542</span>     <span class="k">lambda</span><span class="p">:</span> <span class="n">_get_gce_credentials</span><span class="p">(</span><span class="n">request</span><span class="p">),</span>
-<span class="g g-Whitespace">    </span><span class="mi">543</span> <span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">545</span> <span class="k">for</span> <span class="n">checker</span> <span class="ow">in</span> <span class="n">checkers</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">546</span>     <span class="n">credentials</span><span class="p">,</span> <span class="n">project_id</span> <span class="o">=</span> <span class="n">checker</span><span class="p">()</span>
-<span class="g g-Whitespace">    </span><span class="mi">547</span>     <span class="k">if</span> <span class="n">credentials</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">548</span>         <span class="n">credentials</span> <span class="o">=</span> <span class="n">with_scopes_if_required</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">549</span>             <span class="n">credentials</span><span class="p">,</span> <span class="n">scopes</span><span class="p">,</span> <span class="n">default_scopes</span><span class="o">=</span><span class="n">default_scopes</span>
-<span class="g g-Whitespace">    </span><span class="mi">550</span>         <span class="p">)</span>
-
-<span class="nn">File ~/venvs/sphinx-build/lib/python3.9/site-packages/google/auth/_default.py:539,</span> in <span class="ni">default.&lt;locals&gt;.&lt;lambda&gt;</span><span class="nt">()</span>
-<span class="g g-Whitespace">    </span><span class="mi">528</span> <span class="kn">from</span> <span class="nn">google.auth.credentials</span> <span class="kn">import</span> <span class="n">CredentialsWithQuotaProject</span>
-<span class="g g-Whitespace">    </span><span class="mi">530</span> <span class="n">explicit_project_id</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">531</span>     <span class="n">environment_vars</span><span class="o">.</span><span class="n">PROJECT</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">environment_vars</span><span class="o">.</span><span class="n">LEGACY_PROJECT</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">532</span> <span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">534</span> <span class="n">checkers</span> <span class="o">=</span> <span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">535</span>     <span class="c1"># Avoid passing scopes here to prevent passing scopes to user credentials.</span>
-<span class="g g-Whitespace">    </span><span class="mi">536</span>     <span class="c1"># with_scopes_if_required() below will ensure scopes/default scopes are</span>
-<span class="g g-Whitespace">    </span><span class="mi">537</span>     <span class="c1"># safely set on the returned credentials since requires_scopes will</span>
-<span class="g g-Whitespace">    </span><span class="mi">538</span>     <span class="c1"># guard against setting scopes on user credentials.</span>
-<span class="ne">--&gt; </span><span class="mi">539</span>     <span class="k">lambda</span><span class="p">:</span> <span class="n">_get_explicit_environ_credentials</span><span class="p">(</span><span class="n">quota_project_id</span><span class="o">=</span><span class="n">quota_project_id</span><span class="p">),</span>
-<span class="g g-Whitespace">    </span><span class="mi">540</span>     <span class="k">lambda</span><span class="p">:</span> <span class="n">_get_gcloud_sdk_credentials</span><span class="p">(</span><span class="n">quota_project_id</span><span class="o">=</span><span class="n">quota_project_id</span><span class="p">),</span>
-<span class="g g-Whitespace">    </span><span class="mi">541</span>     <span class="n">_get_gae_credentials</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">542</span>     <span class="k">lambda</span><span class="p">:</span> <span class="n">_get_gce_credentials</span><span class="p">(</span><span class="n">request</span><span class="p">),</span>
-<span class="g g-Whitespace">    </span><span class="mi">543</span> <span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">545</span> <span class="k">for</span> <span class="n">checker</span> <span class="ow">in</span> <span class="n">checkers</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">546</span>     <span class="n">credentials</span><span class="p">,</span> <span class="n">project_id</span> <span class="o">=</span> <span class="n">checker</span><span class="p">()</span>
-
-<span class="nn">File ~/venvs/sphinx-build/lib/python3.9/site-packages/google/auth/_default.py:218,</span> in <span class="ni">_get_explicit_environ_credentials</span><span class="nt">(quota_project_id)</span>
-<span class="g g-Whitespace">    </span><span class="mi">215</span>     <span class="k">return</span> <span class="n">_get_gcloud_sdk_credentials</span><span class="p">(</span><span class="n">quota_project_id</span><span class="o">=</span><span class="n">quota_project_id</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">217</span> <span class="k">if</span> <span class="n">explicit_file</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">218</span>     <span class="n">credentials</span><span class="p">,</span> <span class="n">project_id</span> <span class="o">=</span> <span class="n">load_credentials_from_file</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">219</span>         <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="n">environment_vars</span><span class="o">.</span><span class="n">CREDENTIALS</span><span class="p">],</span> <span class="n">quota_project_id</span><span class="o">=</span><span class="n">quota_project_id</span>
-<span class="g g-Whitespace">    </span><span class="mi">220</span>     <span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">222</span>     <span class="k">return</span> <span class="n">credentials</span><span class="p">,</span> <span class="n">project_id</span>
-<span class="g g-Whitespace">    </span><span class="mi">224</span> <span class="k">else</span><span class="p">:</span>
-
-<span class="nn">File ~/venvs/sphinx-build/lib/python3.9/site-packages/google/auth/_default.py:117,</span> in <span class="ni">load_credentials_from_file</span><span class="nt">(filename, scopes, default_scopes, quota_project_id, request)</span>
-<span class="g g-Whitespace">     </span><span class="mi">85</span> <span class="sd">&quot;&quot;&quot;Loads Google credentials from a file.</span>
-<span class="g g-Whitespace">     </span><span class="mi">86</span><span class="sd"> </span>
-<span class="g g-Whitespace">     </span><span class="mi">87</span><span class="sd"> The credentials file must be a service account key, stored authorized</span>
-<span class="sd">   (...)</span>
-<span class="g g-Whitespace">    </span><span class="mi">114</span><span class="sd">         wrong format or is missing.</span>
-<span class="g g-Whitespace">    </span><span class="mi">115</span><span class="sd"> &quot;&quot;&quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">116</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
-<span class="ne">--&gt; </span><span class="mi">117</span>     <span class="k">raise</span> <span class="n">exceptions</span><span class="o">.</span><span class="n">DefaultCredentialsError</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">118</span>         <span class="s2">&quot;File </span><span class="si">{}</span><span class="s2"> was not found.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">119</span>     <span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">121</span> <span class="k">with</span> <span class="n">io</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file_obj</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">122</span>     <span class="k">try</span><span class="p">:</span>
-
-<span class="ne">DefaultCredentialsError</span>: File /Users/jnapolitano/Projects/pmc-submission/creds.json was not found.
 </pre></div>
 </div>
 </div>
@@ -1007,8 +866,8 @@ const thebe_selector_output = ".output, .cell_output"
        &#39;extra&#39;, &#39;mta_tax&#39;, &#39;tip_amount&#39;, &#39;tolls_amount&#39;, &#39;ehail_fee&#39;,
        &#39;total_amount&#39;, &#39;payment_type&#39;, &#39;distance_between_service&#39;,
        &#39;time_between_service&#39;, &#39;trip_type&#39;, &#39;time_duration_in_secs&#39;,
-       &#39;driving_speed_miles_per_hour&#39;, &#39;tip_rate&#39;, &#39;pickup_year&#39;,
-       &#39;pickup_month&#39;, &#39;pickup_yearmonth&#39;, &#39;pickup_date&#39;,
+       &#39;time_duration_in_mins&#39;, &#39;driving_speed_miles_per_hour&#39;, &#39;tip_rate&#39;,
+       &#39;pickup_year&#39;, &#39;pickup_month&#39;, &#39;pickup_yearmonth&#39;, &#39;pickup_date&#39;,
        &#39;pickup_weekday_name&#39;, &#39;pickup_hour&#39;, &#39;dropoff_year&#39;, &#39;dropoff_month&#39;,
        &#39;dropoff_yearmonth&#39;, &#39;dropoff_date&#39;, &#39;dropoff_weekday_name&#39;,
        &#39;dropoff_hour&#39;],
@@ -1544,27 +1403,27 @@ const thebe_selector_output = ".output, .cell_output"
     </tr>
     <tr>
       <th>2</th>
-      <td>2015-03-19 00:00:00+00:00</td>
-      <td>54132</td>
-      <td>789391.34</td>
-      <td>14.582712</td>
-      <td>35033.37</td>
+      <td>2015-01-02 00:00:00+00:00</td>
+      <td>44343</td>
+      <td>613961.10</td>
+      <td>13.845728</td>
+      <td>-349817.92</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>2015-04-08 00:00:00+00:00</td>
-      <td>51470</td>
-      <td>743100.24</td>
-      <td>14.437541</td>
-      <td>36901.22</td>
+      <td>2015-02-17 00:00:00+00:00</td>
+      <td>42433</td>
+      <td>607052.73</td>
+      <td>14.306147</td>
+      <td>-61255.96</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>2015-01-09 00:00:00+00:00</td>
-      <td>54182</td>
-      <td>763192.68</td>
-      <td>14.085724</td>
-      <td>97547.60</td>
+      <td>2015-04-01 00:00:00+00:00</td>
+      <td>53156</td>
+      <td>779533.09</td>
+      <td>14.665007</td>
+      <td>22250.61</td>
     </tr>
     <tr>
       <th>...</th>
@@ -1576,43 +1435,43 @@ const thebe_selector_output = ".output, .cell_output"
     </tr>
     <tr>
       <th>177</th>
-      <td>2015-05-18 00:00:00+00:00</td>
-      <td>48132</td>
-      <td>745917.03</td>
-      <td>15.497320</td>
-      <td>-271863.63</td>
+      <td>2015-01-15 00:00:00+00:00</td>
+      <td>48662</td>
+      <td>703349.06</td>
+      <td>14.453764</td>
+      <td>71308.53</td>
     </tr>
     <tr>
       <th>178</th>
-      <td>2015-06-14 00:00:00+00:00</td>
-      <td>65101</td>
-      <td>978721.99</td>
-      <td>15.033901</td>
-      <td>-116852.44</td>
+      <td>2015-02-24 00:00:00+00:00</td>
+      <td>51009</td>
+      <td>735429.01</td>
+      <td>14.417632</td>
+      <td>-63239.31</td>
     </tr>
     <tr>
       <th>179</th>
-      <td>2015-02-23 00:00:00+00:00</td>
-      <td>53761</td>
-      <td>798668.32</td>
-      <td>14.855905</td>
-      <td>-19776.49</td>
+      <td>2015-03-07 00:00:00+00:00</td>
+      <td>74557</td>
+      <td>1113229.81</td>
+      <td>14.931258</td>
+      <td>120360.35</td>
     </tr>
     <tr>
       <th>180</th>
-      <td>2015-03-16 00:00:00+00:00</td>
-      <td>45735</td>
-      <td>673452.43</td>
-      <td>14.725100</td>
-      <td>-244233.85</td>
+      <td>2015-03-10 00:00:00+00:00</td>
+      <td>52225</td>
+      <td>798785.92</td>
+      <td>15.295087</td>
+      <td>107550.57</td>
     </tr>
     <tr>
       <th>181</th>
-      <td>2015-06-30 00:00:00+00:00</td>
-      <td>43692</td>
-      <td>670744.92</td>
-      <td>15.351664</td>
-      <td>26634.03</td>
+      <td>2015-05-29 00:00:00+00:00</td>
+      <td>62678</td>
+      <td>980866.89</td>
+      <td>15.649301</td>
+      <td>150118.05</td>
     </tr>
   </tbody>
 </table>
