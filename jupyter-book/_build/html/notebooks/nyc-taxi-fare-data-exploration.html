@@ -55,7 +55,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Question 2a: CSV Solution" href="RecordingWeather.html" />
-    <link rel="prev" title="Part 1: BigQuery and SQL" href="question_1.html" />
+    <link rel="prev" title="Question 1: BigQuery and SQL" href="question_1.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -95,19 +95,43 @@ const thebe_selector_output = ".output, .cell_output"
         <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../index.html">
-   Justin Napolitano’s Technical Submission to PMC
+   Justin Napolitano
   </a>
  </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
-  Part 1 SQL Queries and Data Exploration
+  Part 1 Cover Letter
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="why.html">
+   Why Work for Penske?
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Part 2 Cost of Living and Salary Justification
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="cost_of_living_monte_carlo.html">
+   Cost of Living Projections
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Part 2 Technical Interview
  </span>
 </p>
 <ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="question_1.html">
-   Part 1: BigQuery and SQL
+   Question 1: BigQuery and SQL
   </a>
  </li>
  <li class="toctree-l1 current active">
@@ -115,13 +139,6 @@ const thebe_selector_output = ".output, .cell_output"
    New York City Taxi Fare Data Exploration
   </a>
  </li>
-</ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Part 2 Rest Api's and DB's
- </span>
-</p>
-<ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="RecordingWeather.html">
    Question 2a: CSV Solution
@@ -137,13 +154,6 @@ const thebe_selector_output = ".output, .cell_output"
    Restful Api to Upload Data to a BigTable Instance
   </a>
  </li>
-</ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Part 3 Logistic Regression Model of Customer Churn Rate
- </span>
-</p>
-<ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="propensity_scoring.html">
    Churn Modelling Marketing Data with Julia
@@ -461,6 +471,19 @@ const thebe_selector_output = ".output, .cell_output"
 <span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">date</span><span class="p">,</span> <span class="n">datetime</span>
 <span class="kn">import</span> <span class="nn">contextily</span> <span class="k">as</span> <span class="nn">cx</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/jnapolitano/venvs/finance/lib/python3.9/site-packages/geopandas/_compat.py:111: UserWarning: The Shapely GEOS version (3.10.2-CAPI-1.16.0) is incompatible with the GEOS version PyGEOS was compiled with (3.10.1-CAPI-1.16.0). Conversions between both will be slow.
+  warnings.warn(
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;GOOGLE_APPLICATION_CREDENTIALS&quot;</span><span class="p">]</span> <span class="o">=</span><span class="s2">&quot;/Users/jnapolitano/.creds/creds.json&quot;</span>
 </pre></div>
 </div>
 </div>
@@ -1030,7 +1053,9 @@ dtype: object
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Old size: 1000000
-New size: 1000000
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>New size: 1000000
 </pre></div>
 </div>
 </div>
@@ -1046,7 +1071,7 @@ New size: 1000000
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/nyc-taxi-fare-data-exploration_12_0.png" src="../_images/nyc-taxi-fare-data-exploration_12_0.png" />
+<img alt="../_images/nyc-taxi-fare-data-exploration_13_0.png" src="../_images/nyc-taxi-fare-data-exploration_13_0.png" />
 </div>
 </div>
 <p>In the histogram of the <code class="docutils literal notranslate"><span class="pre">fare_amount</span></code> there are some small spikes between $40 and $55. This could indicate some fixed fare price (e.g. to/from airport). This will be explored further.</p>
@@ -1298,7 +1323,7 @@ dtype: object
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/nyc-taxi-fare-data-exploration_31_0.png" src="../_images/nyc-taxi-fare-data-exploration_31_0.png" />
+<img alt="../_images/nyc-taxi-fare-data-exploration_32_0.png" src="../_images/nyc-taxi-fare-data-exploration_32_0.png" />
 </div>
 </div>
 </div>
@@ -1374,15 +1399,15 @@ dtype: object
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_46045/3595766640.py:6: MatplotlibDeprecationWarning: Auto-removal of grids by pcolor() and pcolormesh() is deprecated since 3.5 and will be removed two minor releases later; please call grid(False) first.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/kw/lt24g6yd1ml1zznc5n22lbb00000gn/T/ipykernel_43707/3595766640.py:6: MatplotlibDeprecationWarning: Auto-removal of grids by pcolor() and pcolormesh() is deprecated since 3.5 and will be removed two minor releases later; please call grid(False) first.
   cbar = fig.colorbar(im, ax=axs[0])
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_46045/3595766640.py:14: MatplotlibDeprecationWarning: Auto-removal of grids by pcolor() and pcolormesh() is deprecated since 3.5 and will be removed two minor releases later; please call grid(False) first.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/kw/lt24g6yd1ml1zznc5n22lbb00000gn/T/ipykernel_43707/3595766640.py:14: MatplotlibDeprecationWarning: Auto-removal of grids by pcolor() and pcolormesh() is deprecated since 3.5 and will be removed two minor releases later; please call grid(False) first.
   cbar = fig.colorbar(im, ax=axs[1])
 </pre></div>
 </div>
-<img alt="../_images/nyc-taxi-fare-data-exploration_34_2.png" src="../_images/nyc-taxi-fare-data-exploration_34_2.png" />
+<img alt="../_images/nyc-taxi-fare-data-exploration_35_2.png" src="../_images/nyc-taxi-fare-data-exploration_35_2.png" />
 </div>
 </div>
 <p>These plots clearly show that the dropoff datapoints concentrate around Manhatten and the three airports (JFK, EWS, LGR).</p>
@@ -1490,9 +1515,9 @@ dtype: object
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/nyc-taxi-fare-data-exploration_41_0.png" src="../_images/nyc-taxi-fare-data-exploration_41_0.png" />
-<img alt="../_images/nyc-taxi-fare-data-exploration_41_1.png" src="../_images/nyc-taxi-fare-data-exploration_41_1.png" />
-<img alt="../_images/nyc-taxi-fare-data-exploration_41_2.png" src="../_images/nyc-taxi-fare-data-exploration_41_2.png" />
+<img alt="../_images/nyc-taxi-fare-data-exploration_42_0.png" src="../_images/nyc-taxi-fare-data-exploration_42_0.png" />
+<img alt="../_images/nyc-taxi-fare-data-exploration_42_1.png" src="../_images/nyc-taxi-fare-data-exploration_42_1.png" />
+<img alt="../_images/nyc-taxi-fare-data-exploration_42_2.png" src="../_images/nyc-taxi-fare-data-exploration_42_2.png" />
 </div>
 </div>
 </div>
@@ -1530,7 +1555,7 @@ max         121.050000
 Name: trip_distance, dtype: float64
 </pre></div>
 </div>
-<img alt="../_images/nyc-taxi-fare-data-exploration_44_1.png" src="../_images/nyc-taxi-fare-data-exploration_44_1.png" />
+<img alt="../_images/nyc-taxi-fare-data-exploration_45_1.png" src="../_images/nyc-taxi-fare-data-exploration_45_1.png" />
 </div>
 </div>
 <p>It seems that most rides are just short rides, with a small peak at ~3 miles.
@@ -1922,7 +1947,7 @@ Let’s also see the influence of <code class="docutils literal notranslate"><sp
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/nyc-taxi-fare-data-exploration_49_0.png" src="../_images/nyc-taxi-fare-data-exploration_49_0.png" />
+<img alt="../_images/nyc-taxi-fare-data-exploration_50_0.png" src="../_images/nyc-taxi-fare-data-exploration_50_0.png" />
 </div>
 </div>
 <p>From this plot we notice:</p>
@@ -1980,7 +2005,7 @@ Let’s also see the influence of <code class="docutils literal notranslate"><sp
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/nyc-taxi-fare-data-exploration_53_0.png" src="../_images/nyc-taxi-fare-data-exploration_53_0.png" />
+<img alt="../_images/nyc-taxi-fare-data-exploration_54_0.png" src="../_images/nyc-taxi-fare-data-exploration_54_0.png" />
 </div>
 </div>
 <p>The majority of rides seem to be going to the airport in this set.  The price is probably fxed around 55-60 dollars.  The price from the airport to manhattan is probably around 25-27 dollars.</p>
@@ -1994,8 +2019,8 @@ Let’s also see the influence of <code class="docutils literal notranslate"><sp
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/nyc-taxi-fare-data-exploration_55_0.png" src="../_images/nyc-taxi-fare-data-exploration_55_0.png" />
-<img alt="../_images/nyc-taxi-fare-data-exploration_55_1.png" src="../_images/nyc-taxi-fare-data-exploration_55_1.png" />
+<img alt="../_images/nyc-taxi-fare-data-exploration_56_0.png" src="../_images/nyc-taxi-fare-data-exploration_56_0.png" />
+<img alt="../_images/nyc-taxi-fare-data-exploration_56_1.png" src="../_images/nyc-taxi-fare-data-exploration_56_1.png" />
 </div>
 </div>
 <p>Trips from newark are rare.  Trips to newark are occasional.  Laguardia pickpus and dropoff rates are nearly identical.  Interestingly there are more dropoffs to the airport.  The rate is fairly normal with shifting fares it seems according to distance.</p>
@@ -2012,14 +2037,6 @@ Let’s also see the influence of <code class="docutils literal notranslate"><sp
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/jnapolitano/venvs/sphinx-build/lib/python3.9/site-packages/geopandas/geodataframe.py:1351: SettingWithCopyWarning: 
-A value is trying to be set on a copy of a slice from a DataFrame.
-Try using .loc[row_indexer,col_indexer] = value instead
-
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-  super().__setitem__(key, value)
-</pre></div>
-</div>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>count    983790.000000
 mean          5.874245
 std          25.184516
@@ -2048,7 +2065,7 @@ Name: fare_per_mile, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/nyc-taxi-fare-data-exploration_59_0.png" src="../_images/nyc-taxi-fare-data-exploration_59_0.png" />
+<img alt="../_images/nyc-taxi-fare-data-exploration_60_0.png" src="../_images/nyc-taxi-fare-data-exploration_60_0.png" />
 </div>
 </div>
 <p>There is a large spread at low distances. Probably due to slow traffic.  There is also some values reported as high as 1400.  I assume this is due to cabbies padding and cleaning their earnings.</p>
@@ -2065,7 +2082,7 @@ Name: fare_per_mile, dtype: float64
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;Fare $USD / mile&#39;)
 </pre></div>
 </div>
-<img alt="../_images/nyc-taxi-fare-data-exploration_62_1.png" src="../_images/nyc-taxi-fare-data-exploration_62_1.png" />
+<img alt="../_images/nyc-taxi-fare-data-exploration_63_1.png" src="../_images/nyc-taxi-fare-data-exploration_63_1.png" />
 </div>
 </div>
 <p>It can be clearly seen that the fare $USD/mile varies over the hour.</p>
@@ -2104,7 +2121,7 @@ Name: fare_per_mile, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/nyc-taxi-fare-data-exploration_65_0.png" src="../_images/nyc-taxi-fare-data-exploration_65_0.png" />
+<img alt="../_images/nyc-taxi-fare-data-exploration_66_0.png" src="../_images/nyc-taxi-fare-data-exploration_66_0.png" />
 </div>
 </div>
 </div>
@@ -2115,16 +2132,6 @@ Name: fare_per_mile, dtype: float64
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># add new column to dataframe with distance in mile</span>
 <span class="n">gdf</span><span class="p">[</span><span class="s1">&#39;distance_to_center&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">distance</span><span class="p">(</span><span class="n">nyc</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">nyc</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">gdf</span><span class="o">.</span><span class="n">pickup_latitude</span><span class="p">,</span> <span class="n">gdf</span><span class="o">.</span><span class="n">pickup_longitude</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/jnapolitano/venvs/sphinx-build/lib/python3.9/site-packages/geopandas/geodataframe.py:1351: SettingWithCopyWarning: 
-A value is trying to be set on a copy of a slice from a DataFrame.
-Try using .loc[row_indexer,col_indexer] = value instead
-
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-  super().__setitem__(key, value)
 </pre></div>
 </div>
 </div>
@@ -2153,15 +2160,15 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_46045/3705102942.py:7: MatplotlibDeprecationWarning: Auto-removal of grids by pcolor() and pcolormesh() is deprecated since 3.5 and will be removed two minor releases later; please call grid(False) first.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/kw/lt24g6yd1ml1zznc5n22lbb00000gn/T/ipykernel_43707/3705102942.py:7: MatplotlibDeprecationWarning: Auto-removal of grids by pcolor() and pcolormesh() is deprecated since 3.5 and will be removed two minor releases later; please call grid(False) first.
   cbar = fig.colorbar(im, ax=axs[0])
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_46045/3705102942.py:16: MatplotlibDeprecationWarning: Auto-removal of grids by pcolor() and pcolormesh() is deprecated since 3.5 and will be removed two minor releases later; please call grid(False) first.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/kw/lt24g6yd1ml1zznc5n22lbb00000gn/T/ipykernel_43707/3705102942.py:16: MatplotlibDeprecationWarning: Auto-removal of grids by pcolor() and pcolormesh() is deprecated since 3.5 and will be removed two minor releases later; please call grid(False) first.
   cbar = fig.colorbar(im, ax=axs[1])
 </pre></div>
 </div>
-<img alt="../_images/nyc-taxi-fare-data-exploration_69_2.png" src="../_images/nyc-taxi-fare-data-exploration_69_2.png" />
+<img alt="../_images/nyc-taxi-fare-data-exploration_70_2.png" src="../_images/nyc-taxi-fare-data-exploration_70_2.png" />
 </div>
 </div>
 <p>There are a lot of ‘green’ dots, which is about $50 to $60 fare amount near 13 miles distance of NYC center of distrance of trip. This could be due to trips from/to JFK airport. Let’s remove them to see what we’re left with.</p>
@@ -2169,22 +2176,6 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gdf</span><span class="p">[</span><span class="s1">&#39;pickup_distance_to_jfk&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">distance</span><span class="p">(</span><span class="n">jfk</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">jfk</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">gdf</span><span class="o">.</span><span class="n">pickup_latitude</span><span class="p">,</span> <span class="n">gdf</span><span class="o">.</span><span class="n">pickup_longitude</span><span class="p">)</span>
 <span class="n">gdf</span><span class="p">[</span><span class="s1">&#39;dropoff_distance_to_jfk&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">distance</span><span class="p">(</span><span class="n">jfk</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">jfk</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">gdf</span><span class="o">.</span><span class="n">dropoff_latitude</span><span class="p">,</span> <span class="n">gdf</span><span class="o">.</span><span class="n">dropoff_longitude</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/jnapolitano/venvs/sphinx-build/lib/python3.9/site-packages/geopandas/geodataframe.py:1351: SettingWithCopyWarning: 
-A value is trying to be set on a copy of a slice from a DataFrame.
-Try using .loc[row_indexer,col_indexer] = value instead
-
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-  super().__setitem__(key, value)
-/home/jnapolitano/venvs/sphinx-build/lib/python3.9/site-packages/geopandas/geodataframe.py:1351: SettingWithCopyWarning: 
-A value is trying to be set on a copy of a slice from a DataFrame.
-Try using .loc[row_indexer,col_indexer] = value instead
-
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-  super().__setitem__(key, value)
 </pre></div>
 </div>
 </div>
@@ -2216,18 +2207,18 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_46045/1958965034.py:11: MatplotlibDeprecationWarning: Auto-removal of grids by pcolor() and pcolormesh() is deprecated since 3.5 and will be removed two minor releases later; please call grid(False) first.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/kw/lt24g6yd1ml1zznc5n22lbb00000gn/T/ipykernel_43707/1958965034.py:11: MatplotlibDeprecationWarning: Auto-removal of grids by pcolor() and pcolormesh() is deprecated since 3.5 and will be removed two minor releases later; please call grid(False) first.
   cbar = fig.colorbar(im, ax=axs[0])
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_46045/1958965034.py:20: MatplotlibDeprecationWarning: Auto-removal of grids by pcolor() and pcolormesh() is deprecated since 3.5 and will be removed two minor releases later; please call grid(False) first.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/kw/lt24g6yd1ml1zznc5n22lbb00000gn/T/ipykernel_43707/1958965034.py:20: MatplotlibDeprecationWarning: Auto-removal of grids by pcolor() and pcolormesh() is deprecated since 3.5 and will be removed two minor releases later; please call grid(False) first.
   cbar = fig.colorbar(im, ax=axs[1])
 </pre></div>
 </div>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;fare_amount&#39;)
 </pre></div>
 </div>
-<img alt="../_images/nyc-taxi-fare-data-exploration_72_3.png" src="../_images/nyc-taxi-fare-data-exploration_72_3.png" />
+<img alt="../_images/nyc-taxi-fare-data-exploration_73_3.png" src="../_images/nyc-taxi-fare-data-exploration_73_3.png" />
 </div>
 </div>
 <p>Now there are some ‘yellow’ dots (fare amount &gt; $80) left. To understand these datapoints we plot them on the map.</p>
@@ -2242,7 +2233,7 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/nyc-taxi-fare-data-exploration_74_0.png" src="../_images/nyc-taxi-fare-data-exploration_74_0.png" />
+<img alt="../_images/nyc-taxi-fare-data-exploration_75_0.png" src="../_images/nyc-taxi-fare-data-exploration_75_0.png" />
 </div>
 </div>
 <p>There are a surpsing numbder of data points.<br />
@@ -2253,34 +2244,6 @@ I’ll remove all of the airports just to see what is left.</p>
 <span class="n">gdf</span><span class="p">[</span><span class="s1">&#39;dropoff_distance_to_ewr&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">distance</span><span class="p">(</span><span class="n">ewr</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">ewr</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">gdf</span><span class="o">.</span><span class="n">dropoff_latitude</span><span class="p">,</span><span class="n">gdf</span><span class="o">.</span><span class="n">dropoff_longitude</span><span class="p">)</span>
 <span class="n">gdf</span><span class="p">[</span><span class="s1">&#39;pickup_distance_to_lgr&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">distance</span><span class="p">(</span><span class="n">lgr</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">lgr</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">gdf</span><span class="o">.</span><span class="n">pickup_latitude</span><span class="p">,</span> <span class="n">gdf</span><span class="o">.</span><span class="n">pickup_longitude</span><span class="p">)</span>
 <span class="n">gdf</span><span class="p">[</span><span class="s1">&#39;dropoff_distance_to_lgr&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">distance</span><span class="p">(</span><span class="n">lgr</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">lgr</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">gdf</span><span class="o">.</span><span class="n">dropoff_latitude</span><span class="p">,</span><span class="n">gdf</span><span class="o">.</span><span class="n">dropoff_longitude</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/jnapolitano/venvs/sphinx-build/lib/python3.9/site-packages/geopandas/geodataframe.py:1351: SettingWithCopyWarning: 
-A value is trying to be set on a copy of a slice from a DataFrame.
-Try using .loc[row_indexer,col_indexer] = value instead
-
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-  super().__setitem__(key, value)
-/home/jnapolitano/venvs/sphinx-build/lib/python3.9/site-packages/geopandas/geodataframe.py:1351: SettingWithCopyWarning: 
-A value is trying to be set on a copy of a slice from a DataFrame.
-Try using .loc[row_indexer,col_indexer] = value instead
-
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-  super().__setitem__(key, value)
-/home/jnapolitano/venvs/sphinx-build/lib/python3.9/site-packages/geopandas/geodataframe.py:1351: SettingWithCopyWarning: 
-A value is trying to be set on a copy of a slice from a DataFrame.
-Try using .loc[row_indexer,col_indexer] = value instead
-
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-  super().__setitem__(key, value)
-/home/jnapolitano/venvs/sphinx-build/lib/python3.9/site-packages/geopandas/geodataframe.py:1351: SettingWithCopyWarning: 
-A value is trying to be set on a copy of a slice from a DataFrame.
-Try using .loc[row_indexer,col_indexer] = value instead
-
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-  super().__setitem__(key, value)
 </pre></div>
 </div>
 </div>
@@ -2314,18 +2277,18 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_46045/1133551596.py:13: MatplotlibDeprecationWarning: Auto-removal of grids by pcolor() and pcolormesh() is deprecated since 3.5 and will be removed two minor releases later; please call grid(False) first.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/kw/lt24g6yd1ml1zznc5n22lbb00000gn/T/ipykernel_43707/1133551596.py:13: MatplotlibDeprecationWarning: Auto-removal of grids by pcolor() and pcolormesh() is deprecated since 3.5 and will be removed two minor releases later; please call grid(False) first.
   cbar = fig.colorbar(im, ax=axs[0])
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_46045/1133551596.py:22: MatplotlibDeprecationWarning: Auto-removal of grids by pcolor() and pcolormesh() is deprecated since 3.5 and will be removed two minor releases later; please call grid(False) first.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/kw/lt24g6yd1ml1zznc5n22lbb00000gn/T/ipykernel_43707/1133551596.py:22: MatplotlibDeprecationWarning: Auto-removal of grids by pcolor() and pcolormesh() is deprecated since 3.5 and will be removed two minor releases later; please call grid(False) first.
   cbar = fig.colorbar(im, ax=axs[1])
 </pre></div>
 </div>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;fare_amount&#39;)
 </pre></div>
 </div>
-<img alt="../_images/nyc-taxi-fare-data-exploration_77_3.png" src="../_images/nyc-taxi-fare-data-exploration_77_3.png" />
+<img alt="../_images/nyc-taxi-fare-data-exploration_78_3.png" src="../_images/nyc-taxi-fare-data-exploration_78_3.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -2340,7 +2303,7 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/nyc-taxi-fare-data-exploration_78_0.png" src="../_images/nyc-taxi-fare-data-exploration_78_0.png" />
+<img alt="../_images/nyc-taxi-fare-data-exploration_79_0.png" src="../_images/nyc-taxi-fare-data-exploration_79_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -2681,16 +2644,16 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
         },
         codeMirrorConfig: {
             theme: "abcdef",
-            mode: "finance"
+            mode: "venv"
         },
         kernelOptions: {
-            kernelName: "finance",
+            kernelName: "venv",
             path: "./notebooks"
         },
         predefinedOutput: true
     }
     </script>
-    <script>kernelName = 'finance'</script>
+    <script>kernelName = 'venv'</script>
 
               </div>
               
@@ -2701,7 +2664,7 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Part 1: BigQuery and SQL</p>
+            <p class="prev-next-title">Question 1: BigQuery and SQL</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="RecordingWeather.html" title="next page">

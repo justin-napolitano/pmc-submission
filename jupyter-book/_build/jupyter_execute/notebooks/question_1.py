@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# # Part 1: BigQuery and SQL
+# # Question 1: BigQuery and SQL
 
 # ## Python Solutions
 # 
@@ -18,15 +18,20 @@ from pprint import pprint
 import os
 
 
+# In[2]:
+
+
+os.environ["GOOGLE_APPLICATION_CREDENTIALS"] ="/Users/jnapolitano/.creds/creds.json"
+
+
 # ### Utility Big Query Function
 
-# In[2]:
+# In[3]:
 
 
 def query_big_query(query_string):
     client = bigquery.Client()
     query_job = client.query(query_string)
-
     results = query_job.result()  # Waits for job to complete.
     return results
 
@@ -47,7 +52,7 @@ def query_big_query(query_string):
 # 
 # For example the code below simply considered the pickup_datetime in the analysis.
 
-# In[3]:
+# In[4]:
 
 
 def naive_query_passengers_by_month():
@@ -66,7 +71,7 @@ def naive_query_passengers_by_month():
 naive_df = naive_query_passengers_by_month()    
 
 
-# In[4]:
+# In[5]:
 
 
 naive_df 
@@ -74,7 +79,7 @@ naive_df
 
 # I then attempted to create intervals to unpiviot the table with the following code.  
 
-# In[5]:
+# In[6]:
 
 
 def total_passenger_total_ammount():
@@ -102,7 +107,7 @@ def total_passenger_total_ammount():
 df_first_try = total_passenger_total_ammount()
 
 
-# In[6]:
+# In[7]:
 
 
 df_first_try
@@ -114,7 +119,7 @@ df_first_try
 
 # ### Cleaning the data
 
-# In[7]:
+# In[8]:
 
 
 def clean_up_data():
@@ -167,7 +172,7 @@ def clean_up_data():
 clean_df = clean_up_data()
 
 
-# In[8]:
+# In[9]:
 
 
 clean_df.columns
@@ -182,7 +187,7 @@ clean_df.columns
 # 
 # For the sake of the problem given to me, I include the table above as a tmp table within the following working queries.  
 
-# In[9]:
+# In[10]:
 
 
 def total_passenger_total_ammount():
@@ -286,7 +291,7 @@ df = total_passenger_total_ammount()
     
 
 
-# In[10]:
+# In[11]:
 
 
 df
@@ -302,7 +307,7 @@ df
 # 
 # What has been the average hourly passenger count throughout the year?
 
-# In[11]:
+# In[12]:
 
 
 def hourly_count_through_year():
@@ -377,7 +382,7 @@ df = hourly_count_through_year()
     
 
 
-# In[12]:
+# In[13]:
 
 
 df
@@ -393,7 +398,7 @@ df
 # 
 # * What has been the change/delta in total amount billed over days? What we would like see is how much (positive or negative)?
 
-# In[13]:
+# In[14]:
 
 
 def difference_by_day():
@@ -482,7 +487,7 @@ df = difference_by_day()
     
 
 
-# In[14]:
+# In[15]:
 
 
 df
@@ -503,7 +508,7 @@ df
 # 
 # Date_trunc will return the requested results per date per hour.
 
-# In[15]:
+# In[16]:
 
 
 def longest_rides_per_hour():
@@ -598,7 +603,7 @@ df = longest_rides_per_hour()
     
 
 
-# In[16]:
+# In[17]:
 
 
 df
@@ -619,7 +624,7 @@ df
 # 
 # Extract will record the values by hour of the 24 hour clock.  It will aggregate accordinly.
 
-# In[17]:
+# In[18]:
 
 
 def longest_rides_per_hour_etracted():
@@ -714,7 +719,7 @@ df = longest_rides_per_hour_etracted()
     
 
 
-# In[18]:
+# In[19]:
 
 
 df

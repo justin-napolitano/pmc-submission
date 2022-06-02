@@ -4,18 +4,21 @@
 format: jb-book
 root: index
 parts:
-  - caption: Part 1 SQL Queries and Data Exploration
-    maxdepth: 4
-    chapters:
-     - file: notebooks/question_1.ipynb
-     - file: notebooks/nyc-taxi-fare-data-exploration.ipynb
-  - caption: Part 2 Rest Api's and DB's
+  - caption: Part 1 Cover Letter
     maxdepth: 3
     chapters:
+      - file: notebooks/why
+  - caption: Part 2 Cost of Living and Salary Justification
+    maxdepth: 3
+    chapters:
+      - file: notebooks/cost_of_living_monte_carlo.md
+  - caption: Part 2 Technical Interview
+    maxdepth: 3
+    chapters:
+      - file: notebooks/question_1.ipynb
+      - file: notebooks/nyc-taxi-fare-data-exploration.ipynb
       - file: notebooks/RecordingWeather.ipynb
       - file: notebooks/recording_weather_datastream_solution.ipynb
       - file: notebooks/restful_api.ipynb
-  - caption: Part 3 Logistic Regression Model of Customer Churn Rate
-    maxdepth: 3
-    chapters:
       - file: notebooks/propensity_scoring.md
+

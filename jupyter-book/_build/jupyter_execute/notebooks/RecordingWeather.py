@@ -39,8 +39,8 @@ def get_key(key_path):
 
 
 
-# In[3]:
 
+# In[3]:
 
 
 def make_query_string(base_url,lat,long,key):
@@ -50,6 +50,7 @@ def make_query_string(base_url,lat,long,key):
     query_string = "&".join([lat_string,long_string,appid_string])
     query_string = "?".join([base_url,query_string])
     return query_string
+
 
 
 # In[4]:
@@ -105,6 +106,7 @@ def response_to_line(response_dict):
     return value_line
 
 
+
 # In[9]:
 
 
@@ -143,8 +145,6 @@ def main():
     response_dict = add_date_stamp(response_dict)
     response_df = response_to_df(response_dict)
     outfile = response_df_to_csv(response_df,outpath)
-    
-    
 
 
 # 

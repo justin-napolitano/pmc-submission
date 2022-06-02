@@ -31,8 +31,6 @@
 #     city_name = request.args.get('city',None)
 # 
 #     
-# 
-# 
 #     input_table = {'datetime':[datetime],'timezone': [timezone], 'city_name': [city_name], 'latitude':[latitude], 'longitude': [longitude], "temp": [temp],"feels_like": [feels_like],"temp_max": [temp_max], "temp_min": [temp_min], "humidity": [humidity], "pressure":[pressure], 'sunrise': [sunrise], 'sunset': [sunset]}
 #     input_table = pd.DataFrame(input_table)
 #     #input_table["datetime"]= input_table["date_time"].map(strdate_time_obj = datetime.strptime(date_time_str, '%d/%m/%y %H:%M:%S'))
