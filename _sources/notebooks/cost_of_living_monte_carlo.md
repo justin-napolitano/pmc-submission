@@ -101,7 +101,7 @@ cost_of_living_df
 
 
 
-<div>
+<div style="overflow-x:auto;">
 <style scoped>
     .dataframe tbody tr th:only-of-type {
         vertical-align: middle;
@@ -285,7 +285,7 @@ prediction_df.describe()
 
 
 
-<div>
+<div style="overflow-x:auto;">
 <style scoped>
     .dataframe tbody tr th:only-of-type {
         vertical-align: middle;
@@ -471,7 +471,7 @@ nyc_df.describe()
 
 
 
-<div>
+<div style="overflow-x:auto;">
 <style scoped>
     .dataframe tbody tr th:only-of-type {
         vertical-align: middle;
@@ -557,7 +557,7 @@ nyc_df.describe()
 
 
 
-<div>
+<div style="overflow-x:auto;">
 <style scoped>
     .dataframe tbody tr th:only-of-type {
         vertical-align: middle;
@@ -695,7 +695,7 @@ cost_of_living_df
 
 
 
-<div>
+<div style="overflow-x:auto;">
 <style scoped>
     .dataframe tbody tr th:only-of-type {
         vertical-align: middle;
@@ -879,7 +879,7 @@ prediction_df.describe()
 
 
 
-<div>
+<div style="overflow-x:auto;">
 <style scoped>
     .dataframe tbody tr th:only-of-type {
         vertical-align: middle;

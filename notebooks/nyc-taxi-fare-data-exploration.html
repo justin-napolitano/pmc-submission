@@ -55,7 +55,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Question 2a: CSV Solution" href="RecordingWeather.html" />
-    <link rel="prev" title="Part 1: BigQuery and SQL" href="question_1.html" />
+    <link rel="prev" title="Question 1: BigQuery and SQL" href="question_1.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -95,19 +95,43 @@ const thebe_selector_output = ".output, .cell_output"
         <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../index.html">
-   Justin Napolitano’s Technical Submission to PMC
+   Justin Napolitano
   </a>
  </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
-  Part 1 SQL Queries and Data Exploration
+  Part 1 Cover Letter
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="why.html">
+   Why Work for Penske?
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Part 2 Cost of Living and Salary Justification
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="cost_of_living_monte_carlo.html">
+   Cost of Living Projections
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Part 2 Technical Interview
  </span>
 </p>
 <ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="question_1.html">
-   Part 1: BigQuery and SQL
+   Question 1: BigQuery and SQL
   </a>
  </li>
  <li class="toctree-l1 current active">
@@ -115,13 +139,6 @@ const thebe_selector_output = ".output, .cell_output"
    New York City Taxi Fare Data Exploration
   </a>
  </li>
-</ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Part 2 Rest Api's and DB's
- </span>
-</p>
-<ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="RecordingWeather.html">
    Question 2a: CSV Solution
@@ -137,28 +154,9 @@ const thebe_selector_output = ".output, .cell_output"
    Restful Api to Upload Data to a BigTable Instance
   </a>
  </li>
-</ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Part 3 Logistic Regression Model of Customer Churn Rate
- </span>
-</p>
-<ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="propensity_scoring.html">
    Churn Modelling Marketing Data with Julia
-  </a>
- </li>
-</ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Part 4 Cost of Living Projections and Salary Expectations
- </span>
-</p>
-<ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="cost_of_living_monte_carlo.html">
-   Cost of Living Projections
   </a>
  </li>
 </ul>
@@ -1401,11 +1399,11 @@ dtype: object
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/kw/lt24g6yd1ml1zznc5n22lbb00000gn/T/ipykernel_36075/3595766640.py:6: MatplotlibDeprecationWarning: Auto-removal of grids by pcolor() and pcolormesh() is deprecated since 3.5 and will be removed two minor releases later; please call grid(False) first.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/kw/lt24g6yd1ml1zznc5n22lbb00000gn/T/ipykernel_43707/3595766640.py:6: MatplotlibDeprecationWarning: Auto-removal of grids by pcolor() and pcolormesh() is deprecated since 3.5 and will be removed two minor releases later; please call grid(False) first.
   cbar = fig.colorbar(im, ax=axs[0])
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/kw/lt24g6yd1ml1zznc5n22lbb00000gn/T/ipykernel_36075/3595766640.py:14: MatplotlibDeprecationWarning: Auto-removal of grids by pcolor() and pcolormesh() is deprecated since 3.5 and will be removed two minor releases later; please call grid(False) first.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/kw/lt24g6yd1ml1zznc5n22lbb00000gn/T/ipykernel_43707/3595766640.py:14: MatplotlibDeprecationWarning: Auto-removal of grids by pcolor() and pcolormesh() is deprecated since 3.5 and will be removed two minor releases later; please call grid(False) first.
   cbar = fig.colorbar(im, ax=axs[1])
 </pre></div>
 </div>
@@ -2162,11 +2160,11 @@ Name: fare_per_mile, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/kw/lt24g6yd1ml1zznc5n22lbb00000gn/T/ipykernel_36075/3705102942.py:7: MatplotlibDeprecationWarning: Auto-removal of grids by pcolor() and pcolormesh() is deprecated since 3.5 and will be removed two minor releases later; please call grid(False) first.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/kw/lt24g6yd1ml1zznc5n22lbb00000gn/T/ipykernel_43707/3705102942.py:7: MatplotlibDeprecationWarning: Auto-removal of grids by pcolor() and pcolormesh() is deprecated since 3.5 and will be removed two minor releases later; please call grid(False) first.
   cbar = fig.colorbar(im, ax=axs[0])
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/kw/lt24g6yd1ml1zznc5n22lbb00000gn/T/ipykernel_36075/3705102942.py:16: MatplotlibDeprecationWarning: Auto-removal of grids by pcolor() and pcolormesh() is deprecated since 3.5 and will be removed two minor releases later; please call grid(False) first.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/kw/lt24g6yd1ml1zznc5n22lbb00000gn/T/ipykernel_43707/3705102942.py:16: MatplotlibDeprecationWarning: Auto-removal of grids by pcolor() and pcolormesh() is deprecated since 3.5 and will be removed two minor releases later; please call grid(False) first.
   cbar = fig.colorbar(im, ax=axs[1])
 </pre></div>
 </div>
@@ -2209,11 +2207,11 @@ Name: fare_per_mile, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/kw/lt24g6yd1ml1zznc5n22lbb00000gn/T/ipykernel_36075/1958965034.py:11: MatplotlibDeprecationWarning: Auto-removal of grids by pcolor() and pcolormesh() is deprecated since 3.5 and will be removed two minor releases later; please call grid(False) first.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/kw/lt24g6yd1ml1zznc5n22lbb00000gn/T/ipykernel_43707/1958965034.py:11: MatplotlibDeprecationWarning: Auto-removal of grids by pcolor() and pcolormesh() is deprecated since 3.5 and will be removed two minor releases later; please call grid(False) first.
   cbar = fig.colorbar(im, ax=axs[0])
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/kw/lt24g6yd1ml1zznc5n22lbb00000gn/T/ipykernel_36075/1958965034.py:20: MatplotlibDeprecationWarning: Auto-removal of grids by pcolor() and pcolormesh() is deprecated since 3.5 and will be removed two minor releases later; please call grid(False) first.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/kw/lt24g6yd1ml1zznc5n22lbb00000gn/T/ipykernel_43707/1958965034.py:20: MatplotlibDeprecationWarning: Auto-removal of grids by pcolor() and pcolormesh() is deprecated since 3.5 and will be removed two minor releases later; please call grid(False) first.
   cbar = fig.colorbar(im, ax=axs[1])
 </pre></div>
 </div>
@@ -2279,11 +2277,11 @@ I’ll remove all of the airports just to see what is left.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/kw/lt24g6yd1ml1zznc5n22lbb00000gn/T/ipykernel_36075/1133551596.py:13: MatplotlibDeprecationWarning: Auto-removal of grids by pcolor() and pcolormesh() is deprecated since 3.5 and will be removed two minor releases later; please call grid(False) first.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/kw/lt24g6yd1ml1zznc5n22lbb00000gn/T/ipykernel_43707/1133551596.py:13: MatplotlibDeprecationWarning: Auto-removal of grids by pcolor() and pcolormesh() is deprecated since 3.5 and will be removed two minor releases later; please call grid(False) first.
   cbar = fig.colorbar(im, ax=axs[0])
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/kw/lt24g6yd1ml1zznc5n22lbb00000gn/T/ipykernel_36075/1133551596.py:22: MatplotlibDeprecationWarning: Auto-removal of grids by pcolor() and pcolormesh() is deprecated since 3.5 and will be removed two minor releases later; please call grid(False) first.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/kw/lt24g6yd1ml1zznc5n22lbb00000gn/T/ipykernel_43707/1133551596.py:22: MatplotlibDeprecationWarning: Auto-removal of grids by pcolor() and pcolormesh() is deprecated since 3.5 and will be removed two minor releases later; please call grid(False) first.
   cbar = fig.colorbar(im, ax=axs[1])
 </pre></div>
 </div>
@@ -2666,7 +2664,7 @@ I’ll remove all of the airports just to see what is left.</p>
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Part 1: BigQuery and SQL</p>
+            <p class="prev-next-title">Question 1: BigQuery and SQL</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="RecordingWeather.html" title="next page">

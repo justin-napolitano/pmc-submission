@@ -1,23 +1,19 @@
-# Justin Napolitano's Technical Submission to PMC
+# Justin Napolitano
 
 Thank you for considering me for the data analyst role at PMC. 
 
+In preparation for this discussion, I questioned why I would like to work for Penske.  I wrote a pensive letter in an attempt to answer that question. 
 
-Please review the contents below for the solutions to the technical questions you presented to me.  
+As such, I have reorganized this site to present that letter in part 1.  
 
+Part 2 is a cost of living model that I presented to get an idea of what I would like to earn in order to maintain my current standard of living.  Frankly, I am very uncomfortable with negotiating salary.  Especially without clearly defined ranges.   I present that model to you to justify my expectations.
 
-In addition to those questions I included:
-* A Logistic regression based propensity model of customer churn rate prepared in the Julia language. 
-* Data Exploration and analysis of the Green Cab data. 
+Part 3 contains the answers to the technical questions presented to me prior to my discussion with Chelsea and Tynelle.  
 
-```{admonition} Updates
-I added a few examples of my work below the table of contents.
-
-I also included a cost of living estimation to project salary expectations.  
-```
+I also included some examples of my other work below the table of contents.  
 
 
-## PMC Technical
+## Contents
 
 ```{tableofcontents}
 ```
