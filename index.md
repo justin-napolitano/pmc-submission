@@ -1,12 +1,28 @@
 ---
-slug: "github-pmc-submission"
-title: "pmc-submission"
-repo: "justin-napolitano/pmc-submission"
-githubUrl: "https://github.com/justin-napolitano/pmc-submission"
-generatedAt: "2025-11-23T09:24:38.257102Z"
-source: "github-auto"
+slug: github-pmc-submission
+title: Data Analysis and Ingestion with BigQuery and Bigtable on Google Cloud
+repo: justin-napolitano/pmc-submission
+githubUrl: https://github.com/justin-napolitano/pmc-submission
+generatedAt: '2025-11-23T09:24:38.257102Z'
+source: github-auto
+summary: >-
+  Overview of querying NYC taxi data with BigQuery, scalable weather data ingestion via Bigtable,
+  and Jupyter Book documentation automation.
+tags:
+  - bigquery
+  - bigtable
+  - google-cloud
+  - data-ingestion
+  - jupyter-book
+  - python
+seoPrimaryKeyword: bigquery
+seoSecondaryKeywords:
+  - bigtable
+  - data ingestion
+  - google cloud
+  - jupyter book
+seoOptimized: true
 ---
-
 
 # PMC Submission: Technical Overview and Implementation Notes
 
