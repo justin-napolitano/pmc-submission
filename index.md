@@ -22,6 +22,13 @@ seoSecondaryKeywords:
   - google cloud
   - jupyter book
 seoOptimized: true
+topicFamily: datascience
+topicFamilyConfidence: 0.95
+topicFamilyNotes: >-
+  The post primarily focuses on data analysis projects using BigQuery and Bigtable, includes ETL
+  data ingestion pipelines, exploratory SQL analytics, and usage of notebooks and pandas. This
+  aligns very closely with the 'datascience' family description and example slugs, including the
+  exact example 'github-pmc-submission'.
 ---
 
 # PMC Submission: Technical Overview and Implementation Notes
@@ -87,3 +94,4 @@ A build automation script (`python_build.py`) handles dependency installation, c
 ## Summary
 
 This project exemplifies a pragmatic approach to data analysis and engineering challenges using Google Cloud technologies. It balances exploratory SQL analytics, scalable data ingestion strategies, and structured documentation. The codebase serves as a reference for implementing data pipelines, querying large datasets, and organizing technical content for presentation and review.
+
