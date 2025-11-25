@@ -7,8 +7,8 @@ githubUrl: https://github.com/justin-napolitano/pmc-submission
 generatedAt: '2025-11-24T21:35:53.810Z'
 source: github-auto
 summary: >-
-  Explore a collection of data analysis projects using Python, Jupyter
-  Notebooks, and Google Cloud services like BigQuery and Bigtable.
+  Explore a collection of data analysis projects using Python, Jupyter Notebooks, and Google Cloud
+  services like BigQuery and Bigtable.
 tags:
   - python
   - jupyter notebook
@@ -26,8 +26,8 @@ seoSecondaryKeywords:
   - automated testing for data pipelines
   - python scripts for bigquery
 seoOptimized: true
-topicFamily: null
-topicFamilyConfidence: null
+topicFamily: datascience
+topicFamilyConfidence: 0.9
 kind: project
 entryLayout: project
 showInProjects: true
@@ -131,3 +131,4 @@ pmc-submission/
 ---
 
 *Assumptions: The project is a personal portfolio of data analysis and technical interview work using Google Cloud services. Some files appear incomplete or duplicated, suggesting ongoing development.*
+
