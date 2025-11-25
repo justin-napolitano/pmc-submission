@@ -1,19 +1,31 @@
 ---
 slug: github-pmc-submission
 id: github-pmc-submission
-title: PMC Submission
+title: Data Analysis Projects with Google Cloud and Python
 repo: justin-napolitano/pmc-submission
 githubUrl: https://github.com/justin-napolitano/pmc-submission
 generatedAt: '2025-11-24T21:35:53.810Z'
 source: github-auto
 summary: >-
-  A collection of data analysis projects and technical interview solutions by
-  Justin Napolitano, primarily using Jupyter Notebooks and Python scripts
-  interfacing with Google Cloud services such as BigQuery and Bigtable.
-tags: []
-seoPrimaryKeyword: ''
-seoSecondaryKeywords: []
-seoOptimized: false
+  Explore a collection of data analysis projects using Python, Jupyter
+  Notebooks, and Google Cloud services like BigQuery and Bigtable.
+tags:
+  - python
+  - jupyter notebook
+  - google cloud
+  - bigquery
+  - bigtable
+  - data analysis
+  - ci/cd
+  - api integration
+seoPrimaryKeyword: data analysis with google cloud
+seoSecondaryKeywords:
+  - jupyter book documentation
+  - nyc taxi data analysis
+  - weather data streaming
+  - automated testing for data pipelines
+  - python scripts for bigquery
+seoOptimized: true
 topicFamily: null
 topicFamilyConfidence: null
 kind: project
