@@ -1,13 +1,13 @@
 ---
 slug: github-pmc-submission
-title: Data Analysis and Ingestion with BigQuery and Bigtable on Google Cloud
+title: Technical Overview of PMC Submission with Google Cloud
 repo: justin-napolitano/pmc-submission
 githubUrl: https://github.com/justin-napolitano/pmc-submission
 generatedAt: '2025-11-23T09:24:38.257102Z'
 source: github-auto
 summary: >-
-  Overview of querying NYC taxi data with BigQuery, scalable weather data ingestion via Bigtable,
-  and Jupyter Book documentation automation.
+  Explore a technical overview of data analysis projects using BigQuery and
+  Bigtable for efficient data ingestion and querying.
 tags:
   - bigquery
   - bigtable
@@ -15,20 +15,24 @@ tags:
   - data-ingestion
   - jupyter-book
   - python
-seoPrimaryKeyword: bigquery
+seoPrimaryKeyword: google cloud data analysis
 seoSecondaryKeywords:
-  - bigtable
-  - data ingestion
-  - google cloud
-  - jupyter book
+  - bigquery sql analytics
+  - weather data collection
+  - data ingestion pipelines
+  - jupyter book documentation
+  - technical interview solutions
 seoOptimized: true
 topicFamily: datascience
 topicFamilyConfidence: 0.95
 topicFamilyNotes: >-
-  The post primarily focuses on data analysis projects using BigQuery and Bigtable, includes ETL
-  data ingestion pipelines, exploratory SQL analytics, and usage of notebooks and pandas. This
-  aligns very closely with the 'datascience' family description and example slugs, including the
-  exact example 'github-pmc-submission'.
+  The post primarily focuses on data analysis projects using BigQuery and
+  Bigtable, includes ETL data ingestion pipelines, exploratory SQL analytics,
+  and usage of notebooks and pandas. This aligns very closely with the
+  'datascience' family description and example slugs, including the exact
+  example 'github-pmc-submission'.
+kind: project
+id: github-pmc-submission
 ---
 
 # PMC Submission: Technical Overview and Implementation Notes
